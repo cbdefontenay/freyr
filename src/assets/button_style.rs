@@ -11,23 +11,34 @@ pub const BUTTON_STYLES: &str = r#"
     }
 
     .btn-default {
-        background-color: #f0f0f0;
-        color: black;
+        background-color: black;
+        color: white;
     }
 
     .btn-primary {
-        background-color: #6200ea;
+        background-color: #007bff; /* Nice blue color */
         color: white;
     }
 
     .btn-success {
-        background-color: #28a745;
+        background-color: #28a745; /* Nice green */
         color: white;
     }
 
     .btn-danger {
-        background-color: #dc3545;
+        background-color: #dc3545; /* Nice red */
         color: white;
+    }
+
+    .btn-black {
+        background-color: black;
+        color: white;
+    }
+
+    .btn-transparent {
+        background-color: transparent;
+        color: black;
+        border: 1px solid black;
     }
 
     button:hover {
