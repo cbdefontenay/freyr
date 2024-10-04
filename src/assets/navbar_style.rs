@@ -11,6 +11,7 @@ pub const NAVBAR_STYLES: &str = r#"
         align-items: center;
         padding: 15px 25px;
         position: relative;
+        z-index: 10; /* Ensure navbar stays above default content */
     }
 
     .nav-div {
@@ -64,38 +65,36 @@ pub const NAVBAR_STYLES: &str = r#"
             padding: 0;
             position: absolute;
             right: 15px;
+            z-index: 20; /* Ensure hamburger/cross is on top */
         }
 
         .menu {
             display: none;
-            flex-direction: row;
+            flex-direction: column; /* Change to column for full-screen nav items */
             justify-content: center;
             align-items: center;
-            position: absolute;
+            position: fixed; /* Fix position to cover the whole screen */
             left: 0;
-            top: 100%;
+            top: 0;
             width: 100%;
-            height: 100vh;
+            height: 100vh; /* Full screen */
             background-color: var(--background-color);
             padding: 20px 0;
-            z-index: 999;
+            z-index: 15; /* Menu appears over navbar */
         }
 
         .menu.open {
             display: flex;
-            animation: slideDown 0.3s ease-in-out;
+            animation: slideDown 0.4s ease-in-out;
         }
 
         .menu-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 20px;
-            font-size: 1.2rem;
+            display: block;
+            font-size: 1.5rem;
             text-decoration: none;
             transition: color 0.3s ease, background-color 0.3s ease;
             color: var(--nav-item-color); /* Dynamic nav item color */
+            padding: 20px; /* Increased padding for full-screen items */
         }
 
         .menu-item:hover {
@@ -106,7 +105,7 @@ pub const NAVBAR_STYLES: &str = r#"
 
     @keyframes slideDown {
         from {
-            transform: translateY(-20%);
+            transform: translateY(-10%);
             opacity: 0;
         }
         to {

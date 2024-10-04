@@ -1,6 +1,25 @@
 use dioxus::prelude::*;
 use crate::assets::navbar_style::NAVBAR_STYLES;
 
+/// Represents different background color schemes for the navbar.
+///
+/// # Examples
+///
+/// Using a dark background:
+/// ```rust
+/// let config = NavbarConfig {
+///     background_color: ColorScheme::Dark,
+///     ..Default::default()
+/// };
+/// ```
+///
+/// Using a custom background color:
+/// ```rust
+/// let config = NavbarConfig {
+///     background_color: ColorScheme::Custom("#ff5733"),
+///     ..Default::default()
+/// };
+/// ```
 #[derive(PartialEq, Clone)]
 pub enum ColorScheme {
     Dark,
@@ -8,29 +27,8 @@ pub enum ColorScheme {
     Custom(&'static str),
 }
 
-#[derive(PartialEq, Clone)]
-pub enum NavItemsColor {
-    Dark,
-    Light,
-    Custom(&'static str),
-}
-
-#[derive(PartialEq, Clone)]
-pub enum IconColor {
-    White,
-    Black,
-    Custom(&'static str),
-}
-
-#[derive(PartialEq, Clone)]
-pub struct NavbarConfig {
-    pub background_color: ColorScheme,
-    pub nav_items: Vec<String>,
-    pub nav_item_color: NavItemsColor,
-    pub icon_color: IconColor,
-}
-
 impl ColorScheme {
+    /// Returns the CSS class or custom color for the background.
     pub fn as_css_class(&self) -> &'static str {
         match self {
             ColorScheme::Dark => "#222",
@@ -40,7 +38,34 @@ impl ColorScheme {
     }
 }
 
+/// Represents different color options for the navigation items.
+///
+/// # Examples
+///
+/// Using a light color for nav items:
+/// ```rust
+/// let config = NavbarConfig {
+///     nav_item_color: NavItemsColor::Light,
+///     ..Default::default()
+/// };
+/// ```
+///
+/// Using a custom color for nav items:
+/// ```rust
+/// let config = NavbarConfig {
+///     nav_item_color: NavItemsColor::Custom("#34ebba"),
+///     ..Default::default()
+/// };
+/// ```
+#[derive(PartialEq, Clone)]
+pub enum NavItemsColor {
+    Dark,
+    Light,
+    Custom(&'static str),
+}
+
 impl NavItemsColor {
+    /// Returns the CSS class or custom color for the navigation items.
     pub fn as_css_class(&self) -> &'static str {
         match self {
             NavItemsColor::Dark => "#000",
@@ -50,7 +75,32 @@ impl NavItemsColor {
     }
 }
 
+/// Represents different color options for the menu icons (hamburger and cross).
+///
+/// # Examples
+///
+/// Using a white icon:
+/// ```rust
+/// let config = NavbarConfig {
+///     icon_color: IconColor::White,
+/// };
+/// ```
+///
+/// Using a custom color for the icons:
+/// ```rust
+/// let config = NavbarConfig {
+///     icon_color: IconColor::Custom("#ffcc00"),
+/// };
+/// ```
+#[derive(PartialEq, Clone)]
+pub enum IconColor {
+    White,
+    Black,
+    Custom(&'static str),
+}
+
 impl IconColor {
+    /// Returns the CSS class or custom color for the icons.
     pub fn as_css_class(&self) -> &'static str {
         match self {
             IconColor::White => "#fff",
@@ -60,26 +110,47 @@ impl IconColor {
     }
 }
 
+/// Configuration for the Navbar component.
+///
+/// # Examples
+///
+/// Creating a navbar with a dark background and light navigation items:
+/// ```rust
+/// let config = NavbarConfig {
+///     background_color: ColorScheme::Dark,
+///     nav_items: vec!["Home".into(), "About".into(), "Contact".into()],
+///     nav_links: vec!["/".into(), "/about".into(), "/contact".into()],
+///     nav_item_color: NavItemsColor::Light,
+///     icon_color: IconColor::White,
+/// };
+/// ```
+#[derive(PartialEq, Clone)]
+pub struct NavbarConfig {
+    pub background_color: ColorScheme,
+    pub nav_items: Vec<String>,
+    pub nav_links: Vec<String>,
+    pub nav_item_color: NavItemsColor,
+    pub icon_color: IconColor,
+}
+
 #[component]
 pub fn Navbar(config: NavbarConfig) -> Element {
     let mut menu_open = use_signal(|| false);
 
     rsx! {
         div {
-            style { "{NAVBAR_STYLES}" } // Load general styles
+            style { "{NAVBAR_STYLES}" }
 
             nav {
-                class: "navbar", // General navbar class for layout
-
-                // Apply user-defined background color via inline style
+                class: "navbar",
                 style: "background-color: {config.background_color.as_css_class()};",
 
                 div {
-                    class: "nav-div", // Flex container for logo and hamburger
+                    class: "nav-div",
 
                     div {
                         class: "nav-header-wrapper",
-                        "Logo" // User can modify this later as needed
+                        "Logo"
                     }
 
                     button {
@@ -88,7 +159,6 @@ pub fn Navbar(config: NavbarConfig) -> Element {
 
                         match menu_open() {
                             true => {
-                                // Customizable Cross Icon
                                 rsx! {
                                     svg {
                                         xmlns: "http://www.w3.org/2000/svg",
@@ -96,18 +166,15 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                                         height: "32",
                                         view_box: "0 0 24 24",
                                         fill: "none",
-                                        stroke: "{config.icon_color.as_css_class()}", // Custom icon color
+                                        stroke: "{config.icon_color.as_css_class()}",
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
-                                        path {
-                                            d: "M18 6L6 18M6 6L18 18",
-                                        }
+                                        path { d: "M18 6L6 18M6 6L18 18", }
                                     }
                                 }
                             },
                             false => {
-                                // Customizable Hamburger Icon
                                 rsx! {
                                     svg {
                                         xmlns: "http://www.w3.org/2000/svg",
@@ -115,13 +182,11 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                                         height: "32",
                                         view_box: "0 0 24 24",
                                         fill: "none",
-                                        stroke: "{config.icon_color.as_css_class()}", // Custom icon color
+                                        stroke: "{config.icon_color.as_css_class()}",
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
-                                        path {
-                                            d: "M4 6h16M4 12h16M4 18h16",
-                                        }
+                                        path { d: "M4 6h16M4 12h16M4 18h16", }
                                     }
                                 }
                             },
@@ -134,19 +199,15 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                         true => "menu open",
                         false => "menu",
                     },
-
-                    // Apply user-defined background color to the opened menu
                     style: "background-color: {config.background_color.as_css_class()};",
 
                     div {
                         class: "menu-items",
 
-
-                        // TODO: Custom navigation links
-                        for item in &config.nav_items {
+                        for (item, link) in config.nav_items.iter().zip(config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
-                                to: "/",
+                                to: "{link}",
                                 style: "color: {config.nav_item_color.as_css_class()};",
                                 "{item}"
                             }
