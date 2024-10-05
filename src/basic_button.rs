@@ -16,6 +16,7 @@ pub enum ButtonColor {
 }
 
 impl ButtonColor {
+
     pub fn to_css_class(&self) -> &'static str {
         match self {
             ButtonColor::Default => "btn-default",
@@ -28,7 +29,7 @@ impl ButtonColor {
     }
 }
 
-/// A Defines which kind of button you want to use (Default, Primary, Success, Danger, Black or Transparent.
+/// Defines which kind of button you want to use: Default, Primary, Success, Danger, Black or Transparent.
 ///
 /// # Examples
 ///

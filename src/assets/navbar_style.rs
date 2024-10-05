@@ -11,7 +11,7 @@ pub const NAVBAR_STYLES: &str = r#"
         align-items: center;
         padding: 15px 25px;
         position: relative;
-        z-index: 10; /* Ensure navbar stays above default content */
+        z-index: 99;
     }
 
     .nav-div {

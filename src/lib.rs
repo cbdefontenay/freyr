@@ -28,10 +28,19 @@
 //! use freyr::{BasicButton, ButtonColor, Navbar, NavbarConfig, ColorScheme, NavItemsColor, IconColor};
 //! use dioxus::prelude::*;
 //!
+//! #[derive(Clone, Routable, Debug, PartialEq)]
+//! enum Route {
+//!     #[layout(Navigation)]
+//!     #[route("/")]
+//!     Home {},
+//! }
+//!
+//!
 //! #[component]
-//! fn HomePage() -> Element {
+//! fn Navigation() -> Element {
 //!     let navbar_config = NavbarConfig {
 //!         background_color: ColorScheme::Dark,
+//!         nav_header: "Freyr".to_string(),
 //!         nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
 //!         nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
 //!         nav_item_color: NavItemsColor::Custom("#990000"),
@@ -40,17 +49,23 @@
 //!
 //!     rsx! {
 //!         Navbar { config: navbar_config }
+//!         Outlet::<Route> {}
+//!     }
+//! }
 //!
+//! #[component]
+//! fn Home() -> Element {
+//!     rsx! {
 //!         div {
-//!             style: "margin-top: 5em;",
-//!             BasicButton { color: ButtonColor::Success, label: "Success" }
+//!             BasicButton { color: ButtonColor::Primary, label: "Primary" }
+//!             BasicButton { color: ButtonColor::Default, label: "Default" }
 //!         }
 //!     }
 //! }
 //! ```
 //!
 //! ## Features in Development
-//! - Additional components (e.g., modals, dropdowns)
+//! - Additional components (e.g., carousel, dropdowns)
 //! - Extended customization options for more complex layouts
 //!
 //! ## Contribution
@@ -58,7 +73,8 @@
 
 mod basic_button;
 mod assets;
-pub mod nav_bar;
-
+mod nav_bar;
+mod enums;
 pub use basic_button::{BasicButton, ButtonColor};
-pub use nav_bar::{Navbar, NavbarConfig, ColorScheme, NavItemsColor, IconColor};
+pub use nav_bar::Navbar;
+pub use enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig};

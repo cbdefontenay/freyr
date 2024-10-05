@@ -4,6 +4,10 @@
 
  Freyr is the norse god of fertility and prosperity, as should your UI and app be.
 
+```bash
+cargo add freyr
+```
+
  This crate provides a set of customizable UI components for use in Dioxus projects.
  It allows developers to easily integrate and style components such as navbars and buttons,
  with flexible configuration options for color schemes, layouts, and responsiveness.
