@@ -39,6 +39,7 @@ impl ColorScheme {
 }
 
 /// Represents different color options for the navigation items.
+/// There are three available colors: Dark, Light, Custom (for example "#ff66a3").
 ///
 /// # Examples
 ///
@@ -46,15 +47,13 @@ impl ColorScheme {
 /// ```rust
 /// let config = NavbarConfig {
 ///     nav_item_color: NavItemsColor::Light,
-///     ..Default::default()
 /// };
 /// ```
 ///
 /// Using a custom color for nav items:
 /// ```rust
 /// let config = NavbarConfig {
-///     nav_item_color: NavItemsColor::Custom("#34ebba"),
-///     ..Default::default()
+///     nav_item_color: NavItemsColor::Custom("#ff66a3"),
 /// };
 /// ```
 #[derive(PartialEq, Clone)]
@@ -79,7 +78,7 @@ impl NavItemsColor {
 ///
 /// # Examples
 ///
-/// Using a white icon:
+/// Using a white icon (_hamburger or cross SVG_):
 /// ```rust
 /// let config = NavbarConfig {
 ///     icon_color: IconColor::White,
@@ -118,8 +117,8 @@ impl IconColor {
 /// ```rust
 /// let config = NavbarConfig {
 ///     background_color: ColorScheme::Dark,
-///     nav_items: vec!["Home".into(), "About".into(), "Contact".into()],
-///     nav_links: vec!["/".into(), "/about".into(), "/contact".into()],
+///     nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
+///     nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
 ///     nav_item_color: NavItemsColor::Light,
 ///     icon_color: IconColor::White,
 /// };
@@ -170,7 +169,9 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
-                                        path { d: "M18 6L6 18M6 6L18 18", }
+                                        path {
+                                            d: "M18 6L6 18M6 6L18 18",
+                                        }
                                     }
                                 }
                             },
@@ -186,7 +187,9 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
-                                        path { d: "M4 6h16M4 12h16M4 18h16", }
+                                        path {
+                                            d: "M4 6h16M4 12h16M4 18h16",
+                                        }
                                     }
                                 }
                             },
@@ -209,6 +212,9 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                                 class: "menu-item",
                                 to: "{link}",
                                 style: "color: {config.nav_item_color.as_css_class()};",
+                                onclick: move |_| {
+                                    menu_open.set(false);  // Close the menu after being clicked
+                                },
                                 "{item}"
                             }
                         }
@@ -218,3 +224,4 @@ pub fn Navbar(config: NavbarConfig) -> Element {
         }
     }
 }
+

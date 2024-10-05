@@ -11,22 +11,22 @@ pub const BUTTON_STYLES: &str = r#"
     }
 
     .btn-default {
-        background-color: black;
+        background-color: #999999;
         color: white;
     }
 
     .btn-primary {
-        background-color: #007bff; /* Nice blue color */
+        background-color: #007bff;
         color: white;
     }
 
     .btn-success {
-        background-color: #28a745; /* Nice green */
+        background-color: #28a745;
         color: white;
     }
 
     .btn-danger {
-        background-color: #dc3545; /* Nice red */
+        background-color: #dc3545;
         color: white;
     }
 
