@@ -1,4 +1,4 @@
-/// Configuration options for the `Navbar` component, including color schemes and menu settings.
+/// Configuration options for the **`Navbar`** component, including color schemes and menu settings.
 
 /// Represents different background color schemes for the navbar.
 #[derive(PartialEq, Clone)]
@@ -57,7 +57,7 @@ impl IconColor {
     }
 }
 
-/// Configuration struct for the `Navbar` component.
+/// Configuration struct for the **`Navbar`** component.
 #[derive(PartialEq, Clone)]
 pub struct NavbarConfig {
     pub background_color: ColorScheme,

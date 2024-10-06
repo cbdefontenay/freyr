@@ -11,4 +11,3 @@ repository = "https://github.com/cbdefontenay/freyr"
 [dependencies]
 dioxus = { version = "0.5.6", features = ["web", "router"] }
 dioxus-logger = "0.5.1"
-manganis = "0.2.2"

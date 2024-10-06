@@ -75,6 +75,12 @@ mod basic_button;
 mod assets;
 mod nav_bar;
 mod enums;
+mod nav_bar_side;
+mod dropdown;
+
 pub use basic_button::{BasicButton, ButtonColor};
 pub use nav_bar::Navbar;
+pub use nav_bar_side::NavbarSide;
+pub use dropdown::DropdownMenu;
 pub use enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig};
+pub use enums::dropdown_enums::{DropdownColorScheme, DropdownConfig, DropdownLabelsColor, DropdownItem};

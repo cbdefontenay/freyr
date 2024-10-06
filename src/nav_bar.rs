@@ -2,7 +2,6 @@ use dioxus::prelude::*;
 use crate::assets::navbar_style::NAVBAR_STYLES;
 use crate::enums::navbar_enums::NavbarConfig;
 
-/// The `Navbar` component that renders a customizable navigation bar.
 /// You can configure background color, navigation items, and icon colors.
 ///
 /// # Examples
@@ -18,7 +17,7 @@ use crate::enums::navbar_enums::NavbarConfig;
 /// };
 ///
 /// rsx! {
-///     Navbar(config: config)
+///     Navbar { config }
 /// };
 /// ```
 #[component]

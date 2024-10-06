@@ -65,22 +65,22 @@ pub const NAVBAR_STYLES: &str = r#"
             padding: 0;
             position: absolute;
             right: 15px;
-            z-index: 20; /* Ensure hamburger/cross is on top */
+            z-index: 20;
         }
 
         .menu {
             display: none;
-            flex-direction: column; /* Change to column for full-screen nav items */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: fixed; /* Fix position to cover the whole screen */
+            position: fixed;
             left: 0;
             top: 0;
             width: 100%;
-            height: 100vh; /* Full screen */
+            height: 100vh;
             background-color: var(--background-color);
             padding: 20px 0;
-            z-index: 15; /* Menu appears over navbar */
+            z-index: 15;
         }
 
         .menu.open {
@@ -93,8 +93,8 @@ pub const NAVBAR_STYLES: &str = r#"
             font-size: 1.5rem;
             text-decoration: none;
             transition: color 0.3s ease, background-color 0.3s ease;
-            color: var(--nav-item-color); /* Dynamic nav item color */
-            padding: 20px; /* Increased padding for full-screen items */
+            color: var(--nav-item-color);
+            padding: 20px;
         }
 
         .menu-item:hover {
