@@ -77,10 +77,10 @@ mod nav_bar;
 mod enums;
 mod nav_bar_side;
 mod dropdown;
-
-pub use basic_button::{BasicButton, ButtonColor};
-pub use nav_bar::Navbar;
-pub use nav_bar_side::NavbarSide;
-pub use dropdown::DropdownMenu;
-pub use enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig};
-pub use enums::dropdown_enums::{DropdownColorScheme, DropdownConfig, DropdownLabelsColor, DropdownItem};
+pub mod prelude;
+pub use crate::basic_button::{BasicButton, ButtonColor};
+pub use crate::nav_bar::Navbar;
+pub use crate::nav_bar_side::NavbarSide;
+pub use crate::dropdown::DropdownMenu;
+pub use crate::enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig};
+pub use crate::enums::dropdown_enums::{DropdownColorScheme, DropdownConfig, DropdownTitleColor, DropdownLabelsColor, DropdownItem};
