@@ -19,6 +19,7 @@ cargo add freyr
 
  - **BasicButton**: A customizable button with color options, hover effects, and more.
  - **Navbar**: A fully customizable navigation bar with support for dark/light modes, custom colors, and responsive layouts.
+ - **Dropdown**: A dropdown menu with customizable background colors and labels colors.
 
  ## Key Features
  - Full customization of colors, sizes, and layouts using configuration structs and enums.
