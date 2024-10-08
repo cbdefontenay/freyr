@@ -2,7 +2,7 @@
 
  ## Why the name Freyr?
 
- Freyr is the norse god of fertility and prosperity, as should your UI and app be.
+Freyr is the norse god of fertility and prosperity and is known for his beauty. Your Dioxus app should also look good.
 
 ```bash
 cargo add freyr
@@ -29,7 +29,7 @@ cargo add freyr
 
  ```rust
  #![allow(non_snake_case)]
- use freyr::{BasicButton, ButtonColor, Navbar, NavbarConfig, ColorScheme, NavItemsColor, IconColor};
+ use freyr::prelude::*;
  use dioxus::prelude::*;
 
  #[component]
@@ -44,7 +44,7 @@ cargo add freyr
      };
 
      rsx! {
-         Navbar { config: navbar_config }
+         Navbar { navbar_config }
 
          div {
              style: "margin-top: 5em;",
@@ -53,10 +53,6 @@ cargo add freyr
      }
  }
  ```
-
- ## Features in Development
- - Additional components (e.g., modals, dropdowns)
- - Extended customization options for more complex layouts
 
  ## Contribution
  Contributions are welcome! Feel free to open an issue or submit a pull request on [GitHub](https://github.com/cbdefontenay/freyr).
