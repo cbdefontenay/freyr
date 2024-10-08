@@ -10,8 +10,8 @@ pub const BUTTON_STYLES: &str = r#"
         margin: 0 auto; /* Center the button horizontally */
     }
 
-    .btn-default {
-        background-color: #999999;
+    .btn-freyr {
+        background-color: #3795BD;
         color: white;
     }
 

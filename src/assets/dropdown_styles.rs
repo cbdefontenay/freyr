@@ -38,5 +38,44 @@ pub const DROPDOWN_STYLES: &str = r#"
         display: block;
         transition: background-color 0.3s ease, color 0.3s ease;
         font-size: 15px;
+
+          &:hover {
+             background: var(--custom_color);
+            }
+    }
+
+    .dropdown-toggle:hover {
+        background-color: #2980b9;
+    }
+
+      @media (max-width: 768px) {
+        .dropdown {
+            width: 100%;
+        }
+
+        .dropdown-toggle {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+        }
+
+        .dropdown-content {
+            position: static;
+            width: 100%;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0;
+            background-color: #1E201E;
+        }
+
+        .link {
+            padding: 16px 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .dropdown-toggle svg {
+            margin-left: auto;
+        }
     }
 "#;

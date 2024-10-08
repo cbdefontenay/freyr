@@ -9,12 +9,13 @@
 //! with flexible configuration options for color schemes, layouts, and responsiveness.
 //!
 //! > ### **Warning:**
-//! > **_This component is in the early stage of development. Right now there are only two components available: the navbar and the buttons._**
-//!
+//! > **_This component is in the early stage of development. Right now there are only three components available: the navbar, the dropdown and the buttons._**
+//! > **_New components will be added, and some features may change._**
 //! ## Components
 //!
-//! - **BasicButton**: A customizable button with color options, hover effects, and more.
-//! - **Navbar**: A fully customizable navigation bar with support for dark/light modes, custom colors, and responsive layouts.
+//! - **BasicButton**: A customizable button with color options, and an arbitrary hover effect.
+//! - **Navbar**: A fully customizable navigation bar with custom colors, and responsive layouts.
+//! - **Dropdown**: A dropdown menu with customizable background colors and labels colors.
 //!
 //! ## Key Features
 //! - Full customization of colors, sizes, and layouts using configuration structs and enums.
@@ -25,8 +26,8 @@
 //!
 //! ```rust
 //! #![allow(non_snake_case)]
-//! use freyr::{BasicButton, ButtonColor, Navbar, NavbarConfig, ColorScheme, NavItemsColor, IconColor};
 //! use dioxus::prelude::*;
+//! use freyr::prelude::*;
 //!
 //! #[derive(Clone, Routable, Debug, PartialEq)]
 //! enum Route {
@@ -44,11 +45,11 @@
 //!         nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
 //!         nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
 //!         nav_item_color: NavItemsColor::Custom("#990000"),
-//!         icon_color: IconColor::Custom("#99cc00"),
+//!         icon_color: IconColor::Custom("#99cc00"), // Sets the color for both the hamburger SVG and the cross SVG.
 //!     };
 //!
 //!     rsx! {
-//!         Navbar { config: navbar_config }
+//!         Navbar { navbar_config }
 //!         Outlet::<Route> {}
 //!     }
 //! }
@@ -58,7 +59,30 @@
 //!     rsx! {
 //!         div {
 //!             BasicButton { color: ButtonColor::Primary, label: "Primary" }
-//!             BasicButton { color: ButtonColor::Default, label: "Default" }
+//!             BasicButton { color: ButtonColor::Freyr, label: "Freyr" }
+//!         }
+//!     }
+//! }
+//!
+//! #[component]
+//! fn Dropdown() -> Element {
+//!     let dropdown_items = vec![
+//!        DropdownItem { label: String::from("Freyr"), url: String::from("/") },
+//!        DropdownItem { label: "See freyr's components".to_string(), url: "/components".to_string() },
+//!        DropdownItem { label: "Learn about dioxus".to_string(), url: "/learn-dioxus".to_string() },
+//!    ];
+//!
+//!    let config_dropdown = DropdownConfig {
+//!        title: String::from("Menu"),
+//!        label: dropdown_items,
+//!        background_color: DropdownColorScheme::Freyr,
+//!        title_color: DropdownTitleColor::Light,
+//!        labels_color: DropdownLabelsColor::Dark,
+//!        hover_color: DropdownHoverColor::Custom("#03346E"),
+//!    };
+//!     rsx! {
+//!         div {
+//!             DropdownMenu { config_dropdown }
 //!         }
 //!     }
 //! }
@@ -75,12 +99,10 @@ mod basic_button;
 mod assets;
 mod nav_bar;
 mod enums;
-mod nav_bar_side;
 mod dropdown;
 pub mod prelude;
 pub use crate::basic_button::{BasicButton, ButtonColor};
 pub use crate::nav_bar::Navbar;
-pub use crate::nav_bar_side::NavbarSide;
 pub use crate::dropdown::DropdownMenu;
 pub use crate::enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig};
-pub use crate::enums::dropdown_enums::{DropdownColorScheme, DropdownConfig, DropdownTitleColor, DropdownLabelsColor, DropdownItem};
+pub use crate::enums::dropdown_enums::{DropdownColorScheme, DropdownConfig, DropdownTitleColor, DropdownLabelsColor, DropdownItem, DropdownHoverColor};

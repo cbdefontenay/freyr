@@ -2,12 +2,9 @@ use dioxus::prelude::*;
 use crate::assets::button_style::BUTTON_STYLES;
 
 /// Enum that defines which color you want to use for the button.
-///
-///  # Colors available:
-/// Default (gray), Primary (blue), Success (green), Danger (red), Black (black), Transparent (transparent).
 #[derive(PartialEq, Clone)]
 pub enum ButtonColor {
-    Default,
+    Freyr,
     Primary,
     Success,
     Danger,
@@ -16,10 +13,9 @@ pub enum ButtonColor {
 }
 
 impl ButtonColor {
-
     pub fn to_css_class(&self) -> &'static str {
         match self {
-            ButtonColor::Default => "btn-default",
+            ButtonColor::Freyr => "btn-freyr",
             ButtonColor::Primary => "btn-primary",
             ButtonColor::Success => "btn-success",
             ButtonColor::Danger => "btn-danger",
@@ -29,14 +25,14 @@ impl ButtonColor {
     }
 }
 
-/// Defines which kind of button you want to use: Default, Primary, Success, Danger, Black or Transparent.
+/// Defines which kind of button you want to use: Freyr, Primary, Success, Danger, Black or Transparent.
 ///
 /// # Examples
 ///
-/// Using a "Success", and a "Transparent" button:
+/// Using a "Freyr", and a "Transparent" button:
 ///
 /// ```rust
-/// BasicButton { color: ButtonColor::Success, label: "Success!" }
+/// BasicButton { color: ButtonColor::Freyr, label: "Freyr!" }
 /// BasicButton { color: ButtonColor::Transparent, label: "I am transparent" }
 /// ```
 ///

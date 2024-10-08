@@ -7,7 +7,7 @@ use crate::enums::navbar_enums::NavbarConfig;
 /// # Examples
 ///
 /// ```rust
-/// let config = NavbarConfig {
+/// let navbar_config = NavbarConfig {
 ///     background_color: ColorScheme::Dark,
 ///     nav_header: "Freyr".to_string(),
 ///     nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
@@ -21,7 +21,7 @@ use crate::enums::navbar_enums::NavbarConfig;
 /// };
 /// ```
 #[component]
-pub fn Navbar(config: NavbarConfig) -> Element {
+pub fn Navbar(navbar_config: NavbarConfig) -> Element {
     let mut menu_open = use_signal(|| false);
 
     rsx! {
@@ -30,14 +30,14 @@ pub fn Navbar(config: NavbarConfig) -> Element {
 
             nav {
                 class: "navbar",
-                style: "background-color: {config.background_color.as_css_class()};",
+                style: "background-color: {navbar_config.background_color.as_css_class()};",
 
                 div {
                     class: "nav-div",
 
                     div {
                         class: "nav-header-wrapper",
-                        "{config.nav_header}"
+                        "{navbar_config.nav_header}"
                     }
 
                     button {
@@ -53,7 +53,7 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                                         height: "32",
                                         view_box: "0 0 24 24",
                                         fill: "none",
-                                        stroke: "{config.icon_color.as_css_class()}",
+                                        stroke: "{navbar_config.icon_color.as_css_class()}",
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
@@ -71,7 +71,7 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                                         height: "32",
                                         view_box: "0 0 24 24",
                                         fill: "none",
-                                        stroke: "{config.icon_color.as_css_class()}",
+                                        stroke: "{navbar_config.icon_color.as_css_class()}",
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
@@ -90,16 +90,16 @@ pub fn Navbar(config: NavbarConfig) -> Element {
                         true => "menu open",
                         false => "menu",
                     },
-                    style: "background-color: {config.background_color.as_css_class()};",
+                    style: "background-color: {navbar_config.background_color.as_css_class()};",
 
                     div {
                         class: "menu-items",
 
-                        for (item, link) in config.nav_items.iter().zip(config.nav_links.iter()) {
+                        for (item, link) in navbar_config.nav_items.iter().zip(navbar_config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
                                 to: "{link}",
-                                style: "color: {config.nav_item_color.as_css_class()};",
+                                style: "color: {navbar_config.nav_item_color.as_css_class()};",
                                 onclick: move |_| {
                                     menu_open.set(false);  // Close the menu after being clicked
                                 },

@@ -62,6 +62,26 @@ impl DropdownLabelsColor {
         }
     }
 }
+/// Defines different color options for dropdown labels.
+#[derive(PartialEq, Clone)]
+pub enum DropdownHoverColor {
+    Freyr,
+    Dark,
+    Light,
+    Custom(&'static str),
+}
+
+impl DropdownHoverColor {
+    /// Returns the CSS class or custom color for the dropdown labels.
+    pub fn as_css_class(&self) -> &'static str {
+        match self {
+            DropdownHoverColor::Freyr => "#3795BD",
+            DropdownHoverColor::Dark => "#1E201E",
+            DropdownHoverColor::Light => "#F7F7F8",
+            DropdownHoverColor::Custom(color) => color,
+        }
+    }
+}
 
 /// `DropdownItem` represents an individual item in the dropdown menu,
 /// containing a label and a URL for navigation.
@@ -80,4 +100,5 @@ pub struct DropdownConfig {
     pub background_color: DropdownColorScheme,
     pub title_color: DropdownTitleColor,
     pub labels_color: DropdownLabelsColor,
+    pub hover_color:  DropdownHoverColor,
 }

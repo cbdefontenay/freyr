@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use crate::assets::dropdown_styles::DROPDOWN_STYLES;
 use crate::enums::dropdown_enums::{
-    DropdownConfig, DropdownItem, DropdownColorScheme, DropdownTitleColor, DropdownLabelsColor,
+    DropdownConfig, DropdownItem, DropdownColorScheme, DropdownTitleColor, DropdownLabelsColor, DropdownHoverColor,
 };
 
 
@@ -15,7 +15,7 @@ use crate::enums::dropdown_enums::{
 /// # Example
 /// ```rust
 /// use dioxus::prelude::*;
-/// use freyr::{DropdownMenu, DropdownConfig, DropdownItem, DropdownColorScheme, DropdownLabelsColor, DropdownTitleColor};
+/// use freyr::prelude::*;
 ///
 /// #[component]
 /// fn Home() -> Element {
@@ -28,9 +28,10 @@ use crate::enums::dropdown_enums::{
 ///     let config_dropdown = DropdownConfig {
 ///         title: "My dropdown".to_string(),
 ///         label: dropdown_items,
-///         background_color: DropdownColorScheme::Dark,
-///         title_color: DropdownTitleColor::Custom("#F9E400"),
-///         labels_color: DropdownLabelsColor::Custom("#C5705D"),
+///         background_color: DropdownColorScheme::Freyr,
+///         title_color: DropdownTitleColor::Light,
+///         labels_color: DropdownLabelsColor::Light,
+///         hover_color: DropdownHoverColor::Custom("#03346E"),
 ///     };
 ///
 ///     rsx! {
@@ -43,12 +44,15 @@ use crate::enums::dropdown_enums::{
 ///
 /// This example demonstrates how to create a dropdown menu with three items: "Home", "About", and "Contact".
 /// The background color is set to black, and the text color is customized.
+
 #[component]
 pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
     let mut is_open = use_signal(|| false);
 
     let style_tag = rsx! {
-        style { "{DROPDOWN_STYLES}" }
+        style {
+            "{DROPDOWN_STYLES}"
+        }
     };
 
     let arrow_down_svg = rsx! {
@@ -110,7 +114,7 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
                                         Link {
                                             class: "link",
                                             to: item.url.clone(),
-                                             style: "color: {config_dropdown.labels_color.as_css_class()};",
+                                            style: "color: {config_dropdown.labels_color.as_css_class()}; --custom_color: {config_dropdown.hover_color.as_css_class()};",
                                             "{item.label}"
                                         }
                                     }
