@@ -43,7 +43,6 @@ use crate::enums::dropdown_enums::{
 /// **NOTE:** The name **_"config_dropdown"_** is mandatory.
 ///
 /// This example demonstrates how to create a dropdown menu with three items: "Home", "About", and "Contact".
-/// The background color is set to black, and the text color is customized.
 
 #[component]
 pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {

@@ -1,12 +1,12 @@
 //! # Freyr UI Components Library for Dioxus.
 //!
-//! ## Why the name Freyr?
-//!
-//! Freyr is the norse god of fertility and prosperity, as should your UI and app be.
-//!
 //! This crate provides a set of customizable UI components for use in Dioxus projects.
 //! It allows developers to easily integrate and style components such as navbars and buttons,
 //! with flexible configuration options for color schemes, layouts, and responsiveness.
+//!
+//! ## Why the name Freyr?
+//!
+//! Freyr is the norse god of fertility and prosperity and is known for his beauty. Your Dioxus app should also look good.
 //!
 //! > ### **Warning:**
 //! > **_This component is in the early stage of development. Right now there are only three components available: the navbar, the dropdown and the buttons._**

@@ -1,5 +1,3 @@
-// dropdown.rs
-
 /// Represents different background color schemes for the dropdown.
 #[derive(PartialEq, Clone)]
 pub enum DropdownColorScheme {
@@ -62,7 +60,7 @@ impl DropdownLabelsColor {
         }
     }
 }
-/// Defines different color options for dropdown labels.
+/// Defines different color options for dropdown background hover color.
 #[derive(PartialEq, Clone)]
 pub enum DropdownHoverColor {
     Freyr,
@@ -72,7 +70,7 @@ pub enum DropdownHoverColor {
 }
 
 impl DropdownHoverColor {
-    /// Returns the CSS class or custom color for the dropdown labels.
+    /// Returns the CSS class or custom color for the dropdown background hover color.
     pub fn as_css_class(&self) -> &'static str {
         match self {
             DropdownHoverColor::Freyr => "#3795BD",
@@ -100,5 +98,5 @@ pub struct DropdownConfig {
     pub background_color: DropdownColorScheme,
     pub title_color: DropdownTitleColor,
     pub labels_color: DropdownLabelsColor,
-    pub hover_color:  DropdownHoverColor,
+    pub hover_color: DropdownHoverColor,
 }
