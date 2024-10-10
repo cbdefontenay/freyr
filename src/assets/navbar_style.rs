@@ -25,6 +25,12 @@ pub const NAVBAR_STYLES: &str = r#"
         color: #fff;
     }
 
+    .nav-logo {
+        height: 55px;
+        width: 55px;
+        cursor: pointer;
+    }
+
     .hamburger {
         display: none;
     }

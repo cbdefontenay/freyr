@@ -1,27 +1,35 @@
 use dioxus::prelude::*;
 use crate::assets::navbar_style::NAVBAR_STYLES;
-use crate::enums::navbar_enums::NavbarConfig;
+use crate::enums::navbar_enums::NavbarWithLogoConfig;
 
-/// You can configure background color, navigation items, and icon colors.
+/// This navbar works the same as the normal **navbar** component, but instead of taking a logo as _String_ it takes an _image_.
 ///
 /// # Examples
 ///
 /// ```rust
-/// let navbar_config = NavbarConfig {
-///     background_color: ColorScheme::Dark,
-///     nav_header: "Freyr".to_string(),
-///     nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
-///     nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
-///     nav_item_color: NavItemsColor::Light,
-///     icon_color: IconColor::White,
-/// };
+///    #[component]
+///    fn Navigation() -> Element {
+///     const LOGO: ImageAsset = mg!(image("./assets/logo.png"));
 ///
-/// rsx! {
-///     Navbar { navbar_config }
-/// };
+///     let navbar_logo_config = NavbarWithLogoConfig {
+///         background_color: ColorScheme::Freyr,
+///         nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
+///         nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
+///         nav_item_color: NavItemsColor::Light,
+///         icon_color: IconColor::White,
+///         logo_url: String::from("/"),
+///         logo_src: LOGO,
+///         logo_alt: String::from("logo"),
+///     };
+///
+///     rsx! {
+///         NavbarWithLogo { navbar_logo_config }
+///         Outlet::<Route> {}
+///     }
+///    }
 /// ```
 #[component]
-pub fn Navbar(navbar_config: NavbarConfig) -> Element {
+pub fn NavbarWithLogo(navbar_logo_config: NavbarWithLogoConfig) -> Element {
     let mut menu_open = use_signal(|| false);
 
     rsx! {
@@ -30,14 +38,18 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
 
             nav {
                 class: "navbar",
-                style: "background-color: {navbar_config.background_color.as_css_class()};",
+                style: "background-color: {navbar_logo_config.background_color.as_css_class()};",
 
                 div {
                     class: "nav-div",
 
-                    div {
-                        class: "nav-header-wrapper",
-                        "{navbar_config.nav_header}"
+                    Link {
+                        to: "{navbar_logo_config.logo_url}",
+                            img {
+                            class: "nav-logo",
+                            src: "{navbar_logo_config.logo_src}",
+                            alt: "{navbar_logo_config.logo_alt}"
+                        }
                     }
 
                     button {
@@ -53,7 +65,7 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
                                         height: "32",
                                         view_box: "0 0 24 24",
                                         fill: "none",
-                                        stroke: "{navbar_config.icon_color.as_css_class()}",
+                                        stroke: "{navbar_logo_config.icon_color.as_css_class()}",
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
@@ -71,7 +83,7 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
                                         height: "32",
                                         view_box: "0 0 24 24",
                                         fill: "none",
-                                        stroke: "{navbar_config.icon_color.as_css_class()}",
+                                        stroke: "{navbar_logo_config.icon_color.as_css_class()}",
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
@@ -90,16 +102,16 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
                         true => "menu open",
                         false => "menu",
                     },
-                    style: "background-color: {navbar_config.background_color.as_css_class()};",
+                    style: "background-color: {navbar_logo_config.background_color.as_css_class()};",
 
                     div {
                         class: "menu-items",
 
-                        for (item, link) in navbar_config.nav_items.iter().zip(navbar_config.nav_links.iter()) {
+                        for (item, link) in navbar_logo_config.nav_items.iter().zip(navbar_logo_config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
                                 to: "{link}",
-                                style: "color: {navbar_config.nav_item_color.as_css_class()};",
+                                style: "color: {navbar_logo_config.nav_item_color.as_css_class()};",
                                 onclick: move |_| {
                                     menu_open.set(false);  // Close the menu after being clicked
                                 },
