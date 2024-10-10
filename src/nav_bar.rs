@@ -8,7 +8,7 @@ use crate::enums::navbar_enums::NavbarConfig;
 ///
 /// ```rust
 /// let navbar_config = NavbarConfig {
-///     background_color: ColorScheme::Dark,
+///     background_color: ColorScheme::Freyr,
 ///     nav_header: "Freyr".to_string(),
 ///     nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
 ///     nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],

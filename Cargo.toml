@@ -1,7 +1,7 @@
 [package]
 name = "freyr"
 authors = ["Cyprien"]
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 description = "A UI crate for the Dioxus framework."
 license = "MIT"

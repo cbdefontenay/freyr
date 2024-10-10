@@ -13,12 +13,13 @@ cargo add freyr
  with flexible configuration options for color schemes, layouts, and responsiveness.
 
  > ### **Warning:**
- > **This component is in the early stage of development. Right now there are only two components available: the navbar and the buttons.**
+ > **This component is in the early stage of development. Right now there are only four components available: two navbar components, a dropdown and the buttons.**
 
  ## Components
 
  - **BasicButton**: A customizable button with color options, hover effects, and more.
- - **Navbar**: A fully customizable navigation bar with support for dark/light modes, custom colors, and responsive layouts.
+ - **Navbar**: A fully customizable navigation bar, custom colors, and responsive layouts.
+ - **NavbarWithLogo**: A fully customizable navigation bar, custom colors, and responsive layouts with an image logo.
  - **Dropdown**: A dropdown menu with customizable background colors and labels colors.
 
  ## Key Features
@@ -36,7 +37,7 @@ cargo add freyr
  #[component]
  fn HomePage() -> Element {
      let navbar_config = NavbarConfig {
-         background_color: ColorScheme::Dark, 
+         background_color: ColorScheme::Freyr, 
          nav_header: "Freyr".to_string(),
          nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
          nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
