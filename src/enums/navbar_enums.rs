@@ -1,5 +1,4 @@
-use manganis::ImageAsset;
-
+use dioxus::prelude::*;
 /// Configuration options for the **`Navbar`** component, including color schemes and menu settings.
 
 /// Represents different background color schemes for the navbar.
@@ -85,6 +84,6 @@ pub struct NavbarWithLogoConfig {
     pub nav_item_color: NavItemsColor,
     pub icon_color: IconColor,
     pub logo_url: String,
-    pub logo_src: ImageAsset,
+    pub logo_src: Asset,
     pub logo_alt: String,
 }

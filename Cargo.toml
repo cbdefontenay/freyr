@@ -3,12 +3,12 @@ name = "freyr"
 authors = ["Cyprien"]
 version = "0.1.4"
 edition = "2021"
-description = "A UI crate for the Dioxus framework."
+description = "A UI crate for Dioxus web."
 license = "MIT"
 documentation = "https://docs.rs/freyr/latest/freyr/"
 repository = "https://github.com/cbdefontenay/freyr"
 
 [dependencies]
-dioxus = { version = "0.5.6", features = ["web", "router"] }
+dioxus = { git = "https://github.com/DioxusLabs/dioxus", features = ["web", "router"] }
 dioxus-logger = "0.5.1"
-manganis = "0.2.2"
+manganis = "0.6.0-alpha.4"
