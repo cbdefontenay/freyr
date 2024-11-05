@@ -1,7 +1,7 @@
 [package]
 name = "freyr"
 authors = ["Cyprien"]
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 description = "A UI crate for Dioxus web."
 license = "MIT"
@@ -9,6 +9,6 @@ documentation = "https://docs.rs/freyr/latest/freyr/"
 repository = "https://github.com/cbdefontenay/freyr"
 
 [dependencies]
-dioxus = { git = "https://github.com/DioxusLabs/dioxus", features = ["web", "router"] }
+dioxus = { version = "0.6.0-alpha.4", features = ["web", "router"] }
 dioxus-logger = "0.5.1"
 manganis = "0.6.0-alpha.4"

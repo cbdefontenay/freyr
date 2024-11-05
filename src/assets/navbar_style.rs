@@ -9,7 +9,7 @@ pub const NAVBAR_STYLES: &str = r#"
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 25px;
+        padding: 7px 25px;
         position: relative;
         z-index: 99;
     }

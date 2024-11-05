@@ -7,7 +7,11 @@ pub const BUTTON_STYLES: &str = r#"
         cursor: pointer;
         transition: background-color 0.3s ease;
         max-width: 300px;
-        margin: 0 auto; /* Center the button horizontally */
+        margin: 0 auto;
+    }
+
+    a {
+        text-decoration: none;
     }
 
     .btn-freyr {
