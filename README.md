@@ -50,7 +50,7 @@ cargo add freyr
 
          div {
              style: "margin-top: 5em;",
-             BasicButton { color: ButtonColor::Success, label: "Success" }
+             BasicButton { color: ButtonColor::Freyr, label: "Go Home", link: ButtonUrl { url: "/".to_string() } }
          }
      }
  }
