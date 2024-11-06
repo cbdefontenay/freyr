@@ -9,7 +9,7 @@ use crate::enums::navbar_enums::NavbarWithLogoConfig;
 /// ```rust
 ///    #[component]
 ///    fn Navigation() -> Element {
-///     const LOGO: ImageAsset = mg!(image("./assets/logo.png"));
+///     const LOGO: Asset = asset!("./assets/logo.png");
 ///
 ///     let navbar_logo_config = NavbarWithLogoConfig {
 ///         background_color: ColorScheme::Freyr,

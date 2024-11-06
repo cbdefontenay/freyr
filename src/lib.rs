@@ -58,8 +58,8 @@
 //! fn Home() -> Element {
 //!     rsx! {
 //!         div {
-//!             BasicButton { color: ButtonColor::Primary, label: "Primary" }
-//!             BasicButton { color: ButtonColor::Freyr, label: "Freyr" }
+//!             BasicButton { color: ButtonColor::Freyr, label: "Go Home", link: ButtonUrl { url: "/".to_string() } }
+//!             BasicButton { color: ButtonColor::Primary, label: "Go to About", link: ButtonUrl { url: "/about".to_string() } }
 //!         }
 //!     }
 //! }

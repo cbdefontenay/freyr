@@ -1,4 +1,4 @@
- # Freyr UI Components Library for Dioxus.
+ # Freyr UI web Components Library for Dioxus.
 
  ## Why the name Freyr?
 
@@ -14,6 +14,8 @@ cargo add freyr
 
  > ### **Warning:**
  > **This component is in the early stage of development. Right now there are only four components available: two navbar components, a dropdown and the buttons.**
+> 
+> **_If you are using Dioxus version ```0.5```, please download the ```version 0.1.4```, else the higher ones._**
 
  ## Components
 
@@ -24,10 +26,10 @@ cargo add freyr
 
  ## Key Features
  - Full customization of colors, sizes, and layouts using configuration structs and enums.
- - Responsive designs that adapt seamlessly to mobile and desktop layouts.
+ - Responsive designs that adapt seamlessly to web layouts.
  - Easy integration into Dioxus projects, with CSS styles scoped to each component.
 
- ## Example Usage
+ ## Example Usage (_using the version 0.6-alpha4_)
 
  ```rust
  #![allow(non_snake_case)]
@@ -55,6 +57,3 @@ cargo add freyr
      }
  }
  ```
-
- ## Contribution
- Contributions are welcome! Feel free to open an issue or submit a pull request on [GitHub](https://github.com/cbdefontenay/freyr).
