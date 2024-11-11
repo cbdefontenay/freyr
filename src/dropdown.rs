@@ -4,7 +4,6 @@ use crate::enums::dropdown_enums::{
     DropdownConfig, DropdownItem, DropdownColorScheme, DropdownTitleColor, DropdownLabelsColor, DropdownHoverColor,
 };
 
-
 /// `DropdownMenu` is a customizable dropdown menu component.
 /// You can pass a `DropdownConfig` to customize the list of items,
 /// background color, and text color.
@@ -20,9 +19,11 @@ use crate::enums::dropdown_enums::{
 /// #[component]
 /// fn Home() -> Element {
 ///     let dropdown_items = vec![
-///         DropdownItem { label: "Home".to_string(), url: "/".to_string() },
-///         DropdownItem { label: "About".to_string(), url: "/about".to_string() },
-///         DropdownItem { label: "Contact".to_string(), url: "/contact".to_string() },
+///         DropdownItem { label: "Home".to_string(), url: Some("/".to_string()) },
+///         DropdownItem { label: "About".to_string(), url: Some("/about".to_string()) },
+///         DropdownItem { label: "Contact".to_string(), url: None },
+///         // without routing
+///         DropdownItem::without_url("A Label without route"),
 ///     ];
 ///
 ///     let config_dropdown = DropdownConfig {
@@ -42,7 +43,6 @@ use crate::enums::dropdown_enums::{
 ///
 /// **NOTE:** The name **_"config_dropdown"_** is mandatory.
 ///
-/// This example demonstrates how to create a dropdown menu with three items: "Home", "About", and "Contact".
 
 #[component]
 pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
@@ -110,11 +110,19 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
                                     style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.labels_color.as_css_class()};",
 
                                     for item in config_dropdown.label {
-                                        Link {
-                                            class: "link",
-                                            to: item.url.clone(),
-                                            style: "color: {config_dropdown.labels_color.as_css_class()}; --custom_color: {config_dropdown.hover_color.as_css_class()};",
-                                            "{item.label}"
+                                        if let Some(url) = &item.url {
+                                            Link {
+                                                class: "link",
+                                                to: url.clone(),
+                                                style: "color: {config_dropdown.labels_color.as_css_class()}; --custom_color: {config_dropdown.hover_color.as_css_class()};",
+                                                "{item.label}"
+                                            }
+                                        } else {
+                                            span {
+                                                class: "link",
+                                                style: "color: {config_dropdown.labels_color.as_css_class()};",
+                                                "{item.label}"
+                                            }
                                         }
                                     }
                                 }

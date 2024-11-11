@@ -86,8 +86,28 @@ impl DropdownHoverColor {
 #[derive(PartialEq, Clone)]
 pub struct DropdownItem {
     pub label: String,
-    pub url: String,
+    pub url: Option<String>,
 }
+
+impl DropdownItem {
+    /// Creates a new `DropdownItem` with a label and an optional URL.
+    /// If the URL is not provided, it defaults to `None`.
+    pub fn new(label: impl Into<String>, url: Option<String>) -> Self {
+        Self {
+            label: label.into(),
+            url,
+        }
+    }
+
+    /// Creates a `DropdownItem` with only a label and no URL.
+    pub fn without_url(label: impl Into<String>) -> Self {
+        Self {
+            label: label.into(),
+            url: None,
+        }
+    }
+}
+
 
 /// `DropdownConfig` holds the configuration for the dropdown menu, including
 /// the list of dropdown items, background color, and text color.
