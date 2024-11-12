@@ -21,9 +21,10 @@ use crate::enums::dropdown_enums::{
 ///     let dropdown_items = vec![
 ///         DropdownItem { label: "Home".to_string(), url: Some("/".to_string()) },
 ///         DropdownItem { label: "About".to_string(), url: Some("/about".to_string()) },
-///         DropdownItem { label: "Contact".to_string(), url: None },
 ///         // without routing
 ///         DropdownItem::without_url("A Label without route"),
+///         // Or like that
+///         DropdownItem { label: "Contact".to_string(), url: None },
 ///     ];
 ///
 ///     let config_dropdown = DropdownConfig {
