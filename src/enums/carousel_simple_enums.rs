@@ -18,11 +18,11 @@ impl CarouselSize {
     /// # Returns
     ///
     /// A string representing the CSS size for the carousel.
-    pub fn to_css_size(&self) -> &'static str {
+    pub fn to_css_size(&self) -> String {
         match self {
-            CarouselSize::Small => "width: 300px; height: 200px;",
-            CarouselSize::Medium => "width: 600px; height: 400px;",
-            CarouselSize::Large => "width: 900px; height: 600px;",
+            CarouselSize::Small => "width: 30%; height: 200px;".to_string(),
+            CarouselSize::Medium => "width: 50%; height: 400px;".to_string(),
+            CarouselSize::Large => "width: 80%; height: 600px;".to_string(),
         }
     }
 }

@@ -2,8 +2,6 @@ pub const CAROUSEL_STYLES: &str = r#"
 .carousel-container {
     position: relative;
     overflow: hidden;
-    width: 100%;
-    height: 100%;
 }
 
 .carousel {
@@ -45,9 +43,6 @@ pub const CAROUSEL_STYLES: &str = r#"
 }
 
 @media (max-width: 768px) {
-    .carousel-container {
-        height: 80%;
-    }
 
     .carousel-image {
         object-position: center center;
@@ -64,23 +59,15 @@ pub const CAROUSEL_STYLES: &str = r#"
 }
 
 @media (max-width: 480px) {
-    .carousel-container {
-        height: 60%; /* Reduce height even further for mobile */
-    }
-
-    .carousel-image {
-        object-position: center center; /* Ensure image remains centered */
-    }
 
     .carousel-dots {
-        bottom: 6px; /* Move dots closer to the bottom for mobile */
+        bottom: 6px;
     }
 
     .carousel-dot {
-        width: 6px; /* Smaller dots for mobile */
+        width: 6px;
         height: 6px;
     }
 }
-"#;
 
-// TODO: make the responsiveness work
+"#;

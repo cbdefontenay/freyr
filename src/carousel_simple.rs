@@ -45,17 +45,28 @@ use crate::assets::carousel_simple_styles::CAROUSEL_STYLES;
 /// and an optional caption. The `CarouselSimple` component is then rendered with the provided
 /// `items` and `size` properties.
 #[component]
-pub fn CarouselSimple(items: Vec<CarouselItem>, size: CarouselSize) -> Element {
+pub fn CarouselSimple(
+    items: Vec<CarouselItem>,
+    class: Option<String>, // Make this optional, so the user can provide custom class
+    size: Option<CarouselSize>, // Also optional, if the user does not want to use a preset size
+) -> Element {
     let mut current_index = use_signal(|| 0);
+
+    let carousel_class = if let Some(custom_class) = class {
+        custom_class // If the user provides a class, use it
+    } else if let Some(size) = size {
+        size.to_css_size() // Otherwise, use the predefined size's CSS
+    } else {
+        "width: 100%; height: 400px;".to_string() // Default to full width and 400px height if nothing is provided
+    };
 
     rsx! {
         style { "{CAROUSEL_STYLES}" }
 
         div {
             class: "carousel-container",
-            style: "{size.to_css_size()}",
+            style: "{carousel_class}", // Apply the determined style
 
-            // Display the current image
             img {
                 src: "{items[current_index()].image_url}",
                 alt: "Carousel Image",
