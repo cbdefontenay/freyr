@@ -1,79 +1,35 @@
+#[allow(non_snake_case)]
+
 use dioxus::prelude::*;
-use crate::enums::carousel_simple_enums::{CarouselItem, CarouselSize};
+use crate::enums::carousel_simple_enums::{CarouselItem};
 use crate::assets::carousel_simple_styles::CAROUSEL_STYLES;
 
-/// A simple carousel component that displays a set of images with navigation dots.
-///
-/// This component is used to create a carousel of images. It displays a set of `CarouselItem`
-/// images and allows the user to navigate between them using navigation dots. The size of the
-/// carousel can be adjusted using the `size` prop, and the current index of the carousel is
-/// tracked internally.
-///
-/// # Props
-/// - `items`: A vector of `CarouselItem` objects. Each item represents an image and its optional caption.
-/// - `size`: A `CarouselSize` variant that determines the size of the carousel (e.g., Small, Medium, or Large).
-///
-/// # Example
-/// ```rust
-/// use dioxus::prelude::*;
-/// use freyr::prelude::*;
-///
-/// #[component]
-/// fn Home() -> Element {
-///     const BIRD: Asset = asset!("./assets/bird.jpg");
-///     const FOX: Asset = asset!("./assets/fox.jpg");
-///     const DOG: Asset = asset!("./assets/dog.jpg");
-///
-///     let items = vec![
-///         CarouselItem::new(BIRD, Some("Caption 1".into())),
-///         CarouselItem::new(FOX, Some("Caption 2".into())),
-///         CarouselItem::new(DOG, Some("Caption 3".into())),
-///     ];
-///
-///     let size = CarouselSize::Medium;  // Set the carousel size to Medium
-///
-///     rsx! {
-///         div {
-///             style: "padding: 60px;",
-///             CarouselSimple { items: items, size: size }
-///         }
-///     }
-/// }
-/// ```
-///
-/// In this example, we create a vector of `CarouselItem` objects, each containing an image URL
-/// and an optional caption. The `CarouselSimple` component is then rendered with the provided
-/// `items` and `size` properties.
 #[component]
 pub fn CarouselSimple(
     items: Vec<CarouselItem>,
-    class: Option<String>, // Make this optional, so the user can provide custom class
-    size: Option<CarouselSize>, // Also optional, if the user does not want to use a preset size
+    class: Option<String>,
+    alt: Vec<CarouselItem>
 ) -> Element {
     let mut current_index = use_signal(|| 0);
 
     let carousel_class = if let Some(custom_class) = class {
-        custom_class // If the user provides a class, use it
-    } else if let Some(size) = size {
-        size.to_css_size() // Otherwise, use the predefined size's CSS
+        custom_class
     } else {
-        "width: 100%; height: 400px;".to_string() // Default to full width and 400px height if nothing is provided
+        "carousel-container".to_string()
     };
 
     rsx! {
         style { "{CAROUSEL_STYLES}" }
 
         div {
-            class: "carousel-container",
-            style: "{carousel_class}", // Apply the determined style
+            class: "carousel-container {carousel_class}",
 
             img {
                 src: "{items[current_index()].image_url}",
-                alt: "Carousel Image",
+                alt: "{alt[current_index()].image_alt}",
                 class: "carousel-image",
             }
 
-            // Render navigation dots
             div {
                 class: "carousel-dots",
                 for index in 0..items.len() {
