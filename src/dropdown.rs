@@ -50,9 +50,7 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
     let mut is_open = use_signal(|| false);
 
     let style_tag = rsx! {
-        style {
-            "{DROPDOWN_STYLES}"
-        }
+        style { "{DROPDOWN_STYLES}" }
     };
 
     let arrow_down_svg = rsx! {
@@ -87,18 +85,17 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
         div {
             {style_tag}
 
-            div {
-                class: "dropdown",
+            div { class: "dropdown",
 
                 button {
                     class: "dropdown-toggle",
                     style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.title_color.as_css_class()};",
                     onclick: move |_| is_open.set(!is_open()),
-                    "{config_dropdown.title}",
+                    "{config_dropdown.title}"
 
                     match is_open() {
-                        true => {arrow_up_svg},
-                        false => {arrow_down_svg},
+                        true => arrow_up_svg,
+                        false => arrow_down_svg,
                     }
                 }
 
@@ -109,7 +106,6 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
                                 div {
                                     class: "dropdown-content",
                                     style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.labels_color.as_css_class()};",
-
                                     for item in config_dropdown.label {
                                         if let Some(url) = &item.url {
                                             Link {
@@ -128,11 +124,11 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
                                     }
                                 }
                             }
-                        },
+                        }
                         false => {
                             rsx! {}
-                        },
-                    },
+                        }
+                    }
                 }
             }
         }

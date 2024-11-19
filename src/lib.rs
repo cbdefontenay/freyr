@@ -103,12 +103,13 @@ mod dropdown;
 pub mod prelude;
 mod navbar_with_logo;
 mod carousel_simple;
-
+mod carousel_with_timer;
 pub use crate::basic_button::BasicButton;
 pub use crate::nav_bar::Navbar;
 pub use crate::navbar_with_logo::NavbarWithLogo;
 pub use crate::dropdown::DropdownMenu;
 pub use crate::carousel_simple::CarouselSimple;
+pub use crate::carousel_with_timer::CarouselWithTimer;
 pub use crate::enums::carousel_simple_enums::{CarouselItem};
 pub use crate::enums::basic_button_enums::{ButtonColor, ButtonUrl};
 pub use crate::enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig, NavbarWithLogoConfig};

@@ -27,18 +27,11 @@ pub fn BasicButton(color: ButtonColor, label: &'static str, link: Option<ButtonU
         div {
             {style_tag}
             if let Some(link) = link {
-                Link {
-                    to: "{link.url}",
-                    button {
-                        class: "{color.to_css_class()}",
-                        "{label}"
-                    }
+                Link { to: "{link.url}",
+                    button { class: "{color.to_css_class()}", "{label}" }
                 }
             } else {
-                button {
-                    class: "{color.to_css_class()}",
-                    "{label}"
-                }
+                button { class: "{color.to_css_class()}", "{label}" }
             }
         }
     }

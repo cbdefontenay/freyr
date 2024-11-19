@@ -40,15 +40,13 @@ pub fn NavbarWithLogo(navbar_logo_config: NavbarWithLogoConfig) -> Element {
                 class: "navbar",
                 style: "background-color: {navbar_logo_config.background_color.as_css_class()};",
 
-                div {
-                    class: "nav-div",
+                div { class: "nav-div",
 
-                    Link {
-                        to: "{navbar_logo_config.logo_url}",
-                            img {
+                    Link { to: "{navbar_logo_config.logo_url}",
+                        img {
                             class: "nav-logo",
                             src: "{navbar_logo_config.logo_src}",
-                            alt: "{navbar_logo_config.logo_alt}"
+                            alt: "{navbar_logo_config.logo_alt}",
                         }
                     }
 
@@ -69,12 +67,10 @@ pub fn NavbarWithLogo(navbar_logo_config: NavbarWithLogoConfig) -> Element {
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
-                                        path {
-                                            d: "M18 6L6 18M6 6L18 18",
-                                        }
+                                        path { d: "M18 6L6 18M6 6L18 18" }
                                     }
                                 }
-                            },
+                            }
                             false => {
                                 rsx! {
                                     svg {
@@ -87,12 +83,10 @@ pub fn NavbarWithLogo(navbar_logo_config: NavbarWithLogoConfig) -> Element {
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
-                                        path {
-                                            d: "M4 6h16M4 12h16M4 18h16",
-                                        }
+                                        path { d: "M4 6h16M4 12h16M4 18h16" }
                                     }
                                 }
-                            },
+                            }
                         }
                     }
                 }
@@ -104,16 +98,15 @@ pub fn NavbarWithLogo(navbar_logo_config: NavbarWithLogoConfig) -> Element {
                     },
                     style: "background-color: {navbar_logo_config.background_color.as_css_class()};",
 
-                    div {
-                        class: "menu-items",
+                    div { class: "menu-items",
 
-                        for (item, link) in navbar_logo_config.nav_items.iter().zip(navbar_logo_config.nav_links.iter()) {
+                        for (item , link) in navbar_logo_config.nav_items.iter().zip(navbar_logo_config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
                                 to: "{link}",
                                 style: "color: {navbar_logo_config.nav_item_color.as_css_class()};",
                                 onclick: move |_| {
-                                    menu_open.set(false);  // Close the menu after being clicked
+                                    menu_open.set(false);
                                 },
                                 "{item}"
                             }

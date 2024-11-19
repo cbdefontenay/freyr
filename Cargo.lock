@@ -649,7 +649,7 @@ version = "0.1.5"
 dependencies = [
  "dioxus",
  "dioxus-logger",
- "manganis",
+ "serde_json",
 ]
 
 [[package]]

@@ -8,7 +8,7 @@ use crate::assets::carousel_simple_styles::CAROUSEL_STYLES;
 pub fn CarouselSimple(
     items: Vec<CarouselItem>,
     class: Option<String>,
-    alt: Vec<CarouselItem>
+    alt: Vec<CarouselItem>,
 ) -> Element {
     let mut current_index = use_signal(|| 0);
 
@@ -21,8 +21,7 @@ pub fn CarouselSimple(
     rsx! {
         style { "{CAROUSEL_STYLES}" }
 
-        div {
-            class: "carousel-container {carousel_class}",
+        div { class: "carousel-container {carousel_class}",
 
             img {
                 src: "{items[current_index()].image_url}",
@@ -30,8 +29,7 @@ pub fn CarouselSimple(
                 class: "carousel-image",
             }
 
-            div {
-                class: "carousel-dots",
+            div { class: "carousel-dots",
                 for index in 0..items.len() {
                     div {
                         class: if (*current_index)() == index { "carousel-dot active" } else { "carousel-dot" },

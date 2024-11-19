@@ -32,13 +32,9 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
                 class: "navbar",
                 style: "background-color: {navbar_config.background_color.as_css_class()};",
 
-                div {
-                    class: "nav-div",
+                div { class: "nav-div",
 
-                    div {
-                        class: "nav-header-wrapper",
-                        "{navbar_config.nav_header}"
-                    }
+                    div { class: "nav-header-wrapper", "{navbar_config.nav_header}" }
 
                     button {
                         class: "hamburger",
@@ -57,12 +53,10 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
-                                        path {
-                                            d: "M18 6L6 18M6 6L18 18",
-                                        }
+                                        path { d: "M18 6L6 18M6 6L18 18" }
                                     }
                                 }
-                            },
+                            }
                             false => {
                                 rsx! {
                                     svg {
@@ -75,12 +69,10 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
                                         stroke_width: "2",
                                         stroke_linecap: "round",
                                         stroke_linejoin: "round",
-                                        path {
-                                            d: "M4 6h16M4 12h16M4 18h16",
-                                        }
+                                        path { d: "M4 6h16M4 12h16M4 18h16" }
                                     }
                                 }
-                            },
+                            }
                         }
                     }
                 }
@@ -92,16 +84,15 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
                     },
                     style: "background-color: {navbar_config.background_color.as_css_class()};",
 
-                    div {
-                        class: "menu-items",
+                    div { class: "menu-items",
 
-                        for (item, link) in navbar_config.nav_items.iter().zip(navbar_config.nav_links.iter()) {
+                        for (item , link) in navbar_config.nav_items.iter().zip(navbar_config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
                                 to: "{link}",
                                 style: "color: {navbar_config.nav_item_color.as_css_class()};",
                                 onclick: move |_| {
-                                    menu_open.set(false);  // Close the menu after being clicked
+                                    menu_open.set(false);
                                 },
                                 "{item}"
                             }
