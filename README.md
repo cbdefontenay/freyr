@@ -22,10 +22,11 @@ components, a dropdown and the buttons.**
 
 ## Components
 
-- **BasicButton**: A customizable button with color options, hover effects, and more.
-- **Navbar**: A fully customizable navigation bar, custom colors, and responsive layouts.
-- **NavbarWithLogo**: A fully customizable navigation bar, custom colors, and responsive layouts with an image logo.
-- **Dropdown**: A dropdown menu with customizable background colors and labels colors.
+- **BasicButton**: A customizable `button` with color options, hover effects, and more.
+- **Navbar**: A fully customizable `navigation bar`, custom colors, and responsive layouts.
+- **NavbarWithLogo**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with an image logo.
+- **Dropdown**: A `dropdown` menu with customizable background colors and labels colors.
+- **Carousel**: There are two `carousel` at the moment, the CarouselSimple and the CarouselWithTimer.
 
 ## Example Usage (_using the version 0.6-alpha.4_)
 
@@ -55,3 +56,5 @@ fn HomePage() -> Element {
      }
 }
  ```
+
+For more information and documentation about freyr, please go to [docs.rs](https://docs.rs/freyr/latest/freyr/).

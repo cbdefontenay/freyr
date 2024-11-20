@@ -9,18 +9,19 @@
 //! Freyr is the norse god of fertility and prosperity and is known for his beauty. Your Dioxus app should also look good.
 //!
 //! > ### **Warning:**
-//! > **_This component is in the early stage of development. Right now there are only three components available: the navbar, the dropdown and the buttons._**
-//! > **_New components will be added, and some features may change._**
+//! > **_This component is in the early stage of development. Right now there are only five components available: the navbar, the dropdown, the two carousel and the buttons._**
+//! > **_New components will be added, and some features that already exist may change._**
 //! ## Components
 //!
 //! - **BasicButton**: A customizable button with color options, and an arbitrary hover effect.
 //! - **Navbar**: A fully customizable navigation bar with custom colors, and responsive layouts.
 //! - **Dropdown**: A dropdown menu with customizable background colors and labels colors.
+//! - **Carousel**: There are two carousel at the moment, the CarouselSimple and the CarouselWithTimer.
 //!
 //! ## Key Features
 //! - Full customization of colors, sizes, and layouts using configuration structs and enums.
 //! - Responsive designs that adapt seamlessly to mobile and desktop layouts.
-//! - Easy integration into Dioxus projects, with CSS styles scoped to each component.
+//! - Easy integration into Dioxus web projects.
 //!
 //! ## Example Usage
 //!
@@ -60,6 +61,9 @@
 //!         div {
 //!             BasicButton { color: ButtonColor::Freyr, label: "Go Home", link: ButtonUrl { url: "/".to_string() } }
 //!             BasicButton { color: ButtonColor::Primary, label: "Go to About", link: ButtonUrl { url: "/about".to_string() } }
+//!             // Here the routing is made optional
+//!             BasicButton { color: ButtonColor::Freyr, label: "Hello" }
+//!
 //!         }
 //!     }
 //! }
@@ -102,14 +106,15 @@ mod enums;
 mod dropdown;
 pub mod prelude;
 mod navbar_with_logo;
-mod carousel_simple;
-mod carousel_with_timer;
+mod carousel;
+mod scripts;
+
 pub use crate::basic_button::BasicButton;
 pub use crate::nav_bar::Navbar;
 pub use crate::navbar_with_logo::NavbarWithLogo;
 pub use crate::dropdown::DropdownMenu;
-pub use crate::carousel_simple::CarouselSimple;
-pub use crate::carousel_with_timer::CarouselWithTimer;
+pub use crate::carousel::CarouselSimple;
+pub use crate::carousel::CarouselWithTimer;
 pub use crate::enums::carousel_simple_enums::{CarouselItem};
 pub use crate::enums::basic_button_enums::{ButtonColor, ButtonUrl};
 pub use crate::enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig, NavbarWithLogoConfig};
