@@ -7,46 +7,45 @@ use crate::enums::carousel_simple_enums::{CarouselItem};
 use crate::assets::carousel_simple_styles::CAROUSEL_STYLES;
 use crate::scripts::carousel_script::CAROUSEL_SCRIPT;
 
-//! A simple carousel component for Dioxus framework.
-//!
-//! The `CarouselSimple` component provides a minimalistic image carousel for navigating through a collection of images.
-//! And the `CarouselWithTimer` one does the same, but the image changes all 5 secs by default.
-//!
-//! # Features
-//! - Displays a single image at a time, with navigation dots for switching between images.
-//! - Supports custom CSS classes for styling via the `class` prop.
-//! - Dynamically updates the displayed image when a navigation dot is clicked.
-//!
-//! # Props
-//! - `items: Vec<CarouselItem>`: A list of items to display in the carousel, where each item contains an image URL.
-//! - `class: Option<String>`: An optional CSS class to customize the styling of the carousel.
-//! - `alt: Vec<CarouselItem>`: A list of items containing alternate text for each image.
-//!
-//! # Usage
-//! ```rust
-//! use freyr::prelude::*;
-//!
-//!        const BIRD: Asset = asset!("./assets/one.jpg");
-//!        const FOX: Asset = asset!("./assets/two.jpg");
-//!        const DOG: Asset = asset!("./assets/three.jpg");
-//!
-//!        let items = vec![
-//!            CarouselItem::new(BIRD, String::from("Image 1")),
-//!            CarouselItem::new(FOX, String::from("Image 2")),
-//!            CarouselItem::new(DOG, String::from("Image 3")),
-//!        ];
-//!
-//!     let alt = items.clone(); // Alternate text can be reused if identical.
-//!
-//! rsx! {
-//!     CarouselSimple {
-//!         items: items,
-//!         alt: alt,
-//!         class: Some(String::from("w-full h-full flex justify-center rounded-lg")),
-//!     }
-//! }
-//! ```
-//! This component is suitable for straightforward carousel implementations requiring minimal external dependencies.
+/// A simple carousel component for Dioxus framework.
+///
+/// The `CarouselSimple` component provides a minimalistic image carousel for navigating through a collection of images.
+/// And the `CarouselWithTimer` one does the same, but the image changes all 5 secs by default.
+///
+/// # Features
+/// - Displays a single image at a time, with navigation dots for switching between images.
+/// - Supports custom CSS classes for styling via the `class` prop.
+/// - Dynamically updates the displayed image when a navigation dot is clicked.
+///
+/// # Props
+/// - `items: Vec<CarouselItem>`: A list of items to display in the carousel, where each item contains an image URL.
+/// - `class: Option<String>`: An optional CSS class to customize the styling of the carousel.
+/// - `alt: Vec<CarouselItem>`: A list of items containing alternate text for each image.
+///
+/// # Usage
+/// ```rust
+/// use freyr::prelude::*;
+///
+///        const BIRD: Asset = asset!("./assets/one.jpg");
+///        const FOX: Asset = asset!("./assets/two.jpg");
+///        const DOG: Asset = asset!("./assets/three.jpg");
+///
+///        let items = vec![
+///            CarouselItem::new(BIRD, String::from("Image 1")),
+///            CarouselItem::new(FOX, String::from("Image 2")),
+///            CarouselItem::new(DOG, String::from("Image 3")),
+///        ];
+///
+///     let alt = items.clone(); // Alternate text can be reused if identical.
+///
+/// rsx! {
+///     CarouselSimple {
+///         items: items,
+///         alt: alt,
+///         class: Some(String::from("w-full h-full flex justify-center rounded-lg")),
+///     }
+/// }
+/// ```
 
 #[component]
 pub fn CarouselSimple(
