@@ -58,7 +58,7 @@ pub fn CarouselSimple(
     let carousel_class = if let Some(custom_class) = class {
         custom_class
     } else {
-        "carousel-container".to_string()
+        "carousel-container-default".to_string()
     };
 
     rsx! {
@@ -95,7 +95,7 @@ pub fn CarouselWithTimer(
     let carousel_class = if let Some(custom_class) = class {
         custom_class
     } else {
-        "carousel-container".to_string()
+        "carousel-container-default".to_string()
     };
 
     let items_cloned = items.clone();

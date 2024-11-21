@@ -1,11 +1,14 @@
 pub const CAROUSEL_STYLES: &str = r#"
 .carousel-container {
-    width: 100%;
-    height: auto;
-    max-width: 1200px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+}
+
+.carousel-container-default {
+    width: 40%;
+    height: auto;
+    max-width: 1200px;
 }
 
 .carousel {
@@ -46,17 +49,9 @@ pub const CAROUSEL_STYLES: &str = r#"
     background-color: #333;
 }
 
-@media (min-width: 1025px) {
-    .carousel-container {
-        width: 50%;
-    }
-}
-
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .carousel-container {
-        width: 80%;
-        margin: 0 auto;
+@media (max-width: 1024px) {
+    .carousel-container-default {
+        width: 60%;
     }
 }
 
@@ -65,8 +60,8 @@ pub const CAROUSEL_STYLES: &str = r#"
         object-position: center center;
     }
 
-    .carousel-container {
-        width: 80%;
+    .carousel-container-default {
+        width: 70%;
         margin: 0 auto;
     }
 
@@ -85,8 +80,8 @@ pub const CAROUSEL_STYLES: &str = r#"
         bottom: 6px;
     }
 
-    .carousel-container {
-        width: 100%;
+    .carousel-container-default {
+        width: 90%;
     }
 
     .carousel-dot {
