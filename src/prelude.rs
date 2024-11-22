@@ -5,6 +5,7 @@ pub use crate::enums::basic_button_enums::{ButtonColor, ButtonUrl};
 pub use crate::dropdown::DropdownMenu;
 pub use crate::carousel::CarouselSimple;
 pub use crate::carousel::CarouselWithTimer;
+pub use crate::tabs::Tabs;
 pub use crate::enums::carousel_simple_enums::{CarouselItem};
 pub use crate::enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig, NavbarWithLogoConfig};
 pub use crate::enums::dropdown_enums::{DropdownColorScheme, DropdownConfig, DropdownTitleColor, DropdownLabelsColor, DropdownItem, DropdownHoverColor};
