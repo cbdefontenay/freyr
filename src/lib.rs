@@ -118,6 +118,8 @@ pub use crate::carousel::CarouselSimple;
 pub use crate::tabs::Tabs;
 pub use crate::carousel::CarouselWithTimer;
 pub use crate::enums::carousel_simple_enums::{CarouselItem};
+pub use crate::enums::tabs_enums::TabsProps;
+pub use crate::enums::tabs_enums::TabsColor;
 pub use crate::enums::basic_button_enums::{ButtonColor, ButtonUrl};
 pub use crate::enums::navbar_enums::{ColorScheme, IconColor, NavItemsColor, NavbarConfig, NavbarWithLogoConfig};
 pub use crate::enums::dropdown_enums::{DropdownColorScheme, DropdownConfig, DropdownHoverColor, DropdownItem, DropdownLabelsColor, DropdownTitleColor};

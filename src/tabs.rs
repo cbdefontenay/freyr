@@ -1,29 +1,23 @@
 use crate::assets::tabs_styles::TABS_STYLES;
+use crate::enums::tabs_enums::TabsColor;
+use crate::enums::tabs_enums::TabsProps;
 use dioxus::prelude::*;
-
-#[derive(PartialEq, Clone, Props)]
-pub struct TabsProps {
-    pub city_names: Vec<String>,
-    pub city_texts: Vec<String>,
-    pub custom_titles: Option<Vec<Element>>,
-    pub custom_texts: Option<Vec<Element>>,
-}
 
 #[component]
 pub fn Tabs(props: TabsProps) -> Element {
-    let mut active_city_idx = use_signal(|| 0);
+    let mut active_tab_idx = use_signal(|| 0);
 
     let title = match &props.custom_titles {
-        Some(custom_titles) => custom_titles.get(active_city_idx()).cloned(),
+        Some(custom_titles) => custom_titles.get(active_tab_idx()).cloned(),
         None => Some(rsx! {
-            h1 { class: "city-title", "{props.city_names[active_city_idx()]}" }
+            h1 { class: "tab-title", "{props.tabs_names[active_tab_idx()]}" }
         }),
     };
 
     let text = match &props.custom_texts {
-        Some(custom_texts) => custom_texts.get(active_city_idx()).cloned(),
+        Some(custom_texts) => custom_texts.get(active_tab_idx()).cloned(),
         None => Some(rsx! {
-            p { class: "city-text", "{props.city_texts[active_city_idx()]}" }
+            p { class: "tab-text", "{props.tabs_texts[active_tab_idx()]}" }
         }),
     };
 
@@ -34,19 +28,26 @@ pub fn Tabs(props: TabsProps) -> Element {
     rsx! {
         div {
             {style_tag}
-            div { id: "tabs", class: "tabs-container",
+            div {
+                id: "tabs",
+                class: "tabs-container",
 
+                // Tabs navigation
                 div { class: "tabs-navigation",
-                    for (idx, city_name) in props.city_names.iter().enumerate() {
+                    for (idx, tab_name) in props.tabs_names.iter().enumerate() {
                         div {
-                            class: "tab-item",
-                            onclick: move |_| active_city_idx.set(idx),
-                            "{city_name}"
+                            class: match &props.custom_color {
+                                Some(color) => format!("tab-item {}", color.to_css_class()),
+                                None => String::from("tab-item"),
+                            },
+                            onclick: move |_| active_tab_idx.set(idx),
+                            "{tab_name}"
                         }
                     }
                 }
 
-                div { class: "city-content",
+                // Tabs content
+                div { class: "tab-content",
                     {title}
                     {text}
                 }
