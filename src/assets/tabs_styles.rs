@@ -78,6 +78,20 @@ pub const TABS_STYLES: &str = r#"
     border-color: #211f1f;
 }
 
+.tabs-light {
+    cursor: pointer;
+    font-weight: 500;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    color: #fafafa;
+}
+
+.tabs-light:hover {
+    color: #d8e3e3;
+    border-color: #d8e3e3;
+}
+
 @keyframes fade-in {
     from {
         opacity: 0;

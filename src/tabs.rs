@@ -21,8 +21,29 @@ pub fn Tabs(props: TabsProps) -> Element {
         }),
     };
 
-    let style_tag = rsx! {
-        style { "{TABS_STYLES}" }
+    let style_tag = if let Some(TabsColor::Custom(color)) = &props.custom_color {
+        let custom_hover_styles = format!(
+            r#"
+            .custom-tab-item {{
+                color: {color};
+            }}
+            .custom-tab-item:hover {{
+                color: {color};
+                border-color: {color};
+            }}
+            "#
+        );
+
+        rsx! {
+            style {
+                "{TABS_STYLES}"
+                "{custom_hover_styles}"
+            }
+        }
+    } else {
+        rsx! {
+            style { "{TABS_STYLES}" }
+        }
     };
 
     rsx! {
@@ -32,13 +53,16 @@ pub fn Tabs(props: TabsProps) -> Element {
                 id: "tabs",
                 class: "tabs-container",
 
-                // Tabs navigation
                 div { class: "tabs-navigation",
                     for (idx, tab_name) in props.tabs_names.iter().enumerate() {
                         div {
-                            class: match &props.custom_color {
-                                Some(color) => format!("tab-item {}", color.to_css_class()),
-                                None => String::from("tab-item"),
+                            class: if matches!(&props.custom_color, Some(TabsColor::Custom(_))) {
+                                "tab-item custom-tab-item"
+                            } else {
+                                match &props.custom_color {
+                                    Some(color) => format!("tab-item {}", color.to_css_class()),
+                                    None => String::from("tab-item"),
+                                }
                             },
                             onclick: move |_| active_tab_idx.set(idx),
                             "{tab_name}"

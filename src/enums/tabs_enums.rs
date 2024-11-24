@@ -4,6 +4,8 @@ use dioxus::prelude::*;
 pub enum TabsColor {
     Freyr,
     Black,
+    Light,
+    Custom(&'static str),
 }
 
 impl TabsColor {
@@ -11,9 +13,12 @@ impl TabsColor {
         match self {
             TabsColor::Freyr => "tabs-freyr",
             TabsColor::Black => "tabs-black",
+            TabsColor::Light => "tabs-light",
+            TabsColor::Custom(_) => "",
         }
     }
 }
+
 
 #[derive(PartialEq, Clone, Props)]
 pub struct TabsProps {
