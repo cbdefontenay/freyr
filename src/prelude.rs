@@ -3,6 +3,7 @@ pub use crate::nav_bar::Navbar;
 pub use crate::navbar_with_logo::NavbarWithLogo;
 pub use crate::enums::basic_button_enums::{ButtonColor, ButtonUrl};
 pub use crate::dropdown::DropdownMenu;
+pub use crate::accordion::Accordion;
 pub use crate::carousel::CarouselSimple;
 pub use crate::carousel::CarouselWithTimer;
 pub use crate::tabs::Tabs;

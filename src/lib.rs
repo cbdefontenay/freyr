@@ -109,6 +109,7 @@ mod navbar_with_logo;
 mod carousel;
 mod scripts;
 mod tabs;
+mod accordion;
 
 pub use crate::basic_button::BasicButton;
 pub use crate::nav_bar::Navbar;
@@ -116,6 +117,7 @@ pub use crate::navbar_with_logo::NavbarWithLogo;
 pub use crate::dropdown::DropdownMenu;
 pub use crate::carousel::CarouselSimple;
 pub use crate::tabs::Tabs;
+pub use crate::accordion::Accordion;
 pub use crate::carousel::CarouselWithTimer;
 pub use crate::enums::carousel_simple_enums::{CarouselItem};
 pub use crate::enums::tabs_enums::TabsProps;
