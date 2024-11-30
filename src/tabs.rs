@@ -49,21 +49,15 @@ pub fn Tabs(props: TabsProps) -> Element {
     rsx! {
         div {
             {style_tag}
-            div {
-                id: "tabs",
-                class: "tabs-container",
+            div { id: "tabs", class: "tabs-container",
 
                 div { class: "tabs-navigation",
-                    for (idx, tab_name) in props.tabs_names.iter().enumerate() {
+                    for (idx , tab_name) in props.tabs_names.iter().enumerate() {
                         div {
-                            class: if matches!(&props.custom_color, Some(TabsColor::Custom(_))) {
-                                "tab-item custom-tab-item"
-                            } else {
-                                match &props.custom_color {
-                                    Some(color) => format!("tab-item {}", color.to_css_class()),
-                                    None => String::from("tab-item"),
-                                }
-                            },
+                            class: if matches!(&props.custom_color, Some(TabsColor::Custom(_))) { "tab-item custom-tab-item" } else { match &props.custom_color {
+                                Some(color) => format!("tab-item {}", color.to_css_class()),
+                                None => String::from("tab-item"),
+                            } },
                             onclick: move |_| active_tab_idx.set(idx),
                             "{tab_name}"
                         }
