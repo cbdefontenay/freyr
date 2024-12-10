@@ -64,6 +64,37 @@ impl IconColor {
     }
 }
 
+/// Represents a dropdown configuration with its label and items.
+#[derive(PartialEq, Clone)]
+pub struct DropdownConfigNavBar {
+    pub label: String,
+    pub title: Option<String>,
+    pub items: Vec<(String, String)>,
+    pub background_color: Option<ColorScheme>,
+    pub title_color: Option<NavItemsColor>,
+    pub item_color: Option<NavItemsColor>,
+}
+
+impl DropdownConfigNavBar {
+    pub fn new(
+        label: String,
+        items: Vec<(String, String)>,
+        title: Option<String>,
+        background_color: Option<ColorScheme>,
+        title_color: Option<NavItemsColor>,
+        item_color: Option<NavItemsColor>,
+    ) -> Self {
+        Self {
+            label,
+            items,
+            title,
+            background_color,
+            title_color,
+            item_color,
+        }
+    }
+}
+
 /// Configuration struct for the **`Navbar`** component.
 #[derive(PartialEq, Clone)]
 pub struct NavbarConfig {
@@ -86,4 +117,16 @@ pub struct NavbarWithLogoConfig {
     pub logo_url: String,
     pub logo_src: Asset,
     pub logo_alt: String,
+}
+
+/// Configuration struct for the **`NavbarDropdown`** component.
+#[derive(PartialEq, Clone)]
+pub struct NavbarDropdownConfig {
+    pub background_color: ColorScheme,
+    pub nav_header: String,
+    pub nav_items: Vec<String>,
+    pub nav_links: Vec<String>,
+    pub nav_item_color: NavItemsColor,
+    pub icon_color: IconColor,
+    pub dropdowns: Vec<DropdownConfigNavBar>,
 }
