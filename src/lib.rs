@@ -115,6 +115,7 @@ pub use crate::accordion::{Accordion, AccordionCustom};
 pub use crate::basic_button::BasicButton;
 pub use crate::carousel::CarouselSimple;
 pub use crate::carousel::CarouselWithTimer;
+pub use crate::carousel::CarouselWithNumbers;
 pub use crate::dropdown::DropdownMenu;
 pub use crate::enums::accordion_enums::{AccordionColor, AccordionProps, AccordionCustomProps};
 pub use crate::enums::basic_button_enums::{ButtonColor, ButtonUrl};

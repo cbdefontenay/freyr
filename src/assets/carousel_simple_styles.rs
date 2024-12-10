@@ -3,6 +3,9 @@ pub const CAROUSEL_STYLES: &str = r#"
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .carousel-container-default {
@@ -26,6 +29,7 @@ pub const CAROUSEL_STYLES: &str = r#"
     height: 100%;
     object-fit: cover;
     object-position: center;
+    max-width: 100%;
 }
 
 .carousel-dots {
@@ -49,9 +53,44 @@ pub const CAROUSEL_STYLES: &str = r#"
     background-color: #333;
 }
 
+.carousel-numbers {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.carousel-number {
+    padding: 4px 8px;
+    background-color: #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.carousel-number.active {
+    background-color: #333;
+    color: #fff;
+}
+
 @media (max-width: 1024px) {
     .carousel-container-default {
         width: 60%;
+    }
+
+    .carousel-dots {
+        bottom: 8px;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .carousel-numbers {
+        font-size: 0.9rem;
+        gap: 6px;
     }
 }
 
@@ -66,27 +105,32 @@ pub const CAROUSEL_STYLES: &str = r#"
     }
 
     .carousel-dots {
-        bottom: 8px;
-    }
-
-    .carousel-dot {
-        width: 8px;
-        height: 8px;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-dots {
         bottom: 6px;
-    }
-
-    .carousel-container-default {
-        width: 90%;
     }
 
     .carousel-dot {
         width: 6px;
         height: 6px;
+    }
+
+    .carousel-numbers {
+        font-size: 0.6rem;
+        gap: 5px;
+    }
+
+    .carousel-number {
+        padding: 2px 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container-default {
+        width: 90%;
+    }
+
+    .carousel-numbers {
+        font-size: 0.4rem;
+        gap: 4px;
     }
 }
 "#;

@@ -1,11 +1,10 @@
+use crate::assets::carousel_simple_styles::CAROUSEL_STYLES;
+use crate::enums::carousel_simple_enums::CarouselItem;
+use crate::scripts::carousel_script::CAROUSEL_SCRIPT;
 use dioxus::document::eval;
 #[allow(non_snake_case)]
-
 use dioxus::prelude::*;
 use serde_json::json;
-use crate::enums::carousel_simple_enums::{CarouselItem};
-use crate::assets::carousel_simple_styles::CAROUSEL_STYLES;
-use crate::scripts::carousel_script::CAROUSEL_SCRIPT;
 
 /// A simple carousel component for Dioxus framework.
 ///
@@ -69,14 +68,14 @@ pub fn CarouselSimple(
             img {
                 src: "{items[current_index()].image_url}",
                 alt: "{alt[current_index()].image_alt}",
-                class: "carousel-image",
+                class: "carousel-image"
             }
 
             div { class: "carousel-dots",
                 for index in 0..items.len() {
                     div {
                         class: if (*current_index)() == index { "carousel-dot active" } else { "carousel-dot" },
-                        onclick: move |_| current_index.set(index),
+                        onclick: move |_| current_index.set(index)
                     }
                 }
             }
@@ -100,16 +99,20 @@ pub fn CarouselWithTimer(
 
     let items_cloned = items.clone();
 
-    let items_data = items_cloned.iter().map(|item| {
-        json!({
-            "image_url": item.image_url.to_string(),
-            "image_alt": item.image_alt,
+    let items_data = items_cloned
+        .iter()
+        .map(|item| {
+            json!({
+                "image_url": item.image_url.to_string(),
+                "image_alt": item.image_alt,
+            })
         })
-    }).collect::<Vec<_>>();
+        .collect::<Vec<_>>();
 
     use_effect(move || {
         let items_json = serde_json::to_string(&items_data).unwrap();
-        let script = CAROUSEL_SCRIPT.replace("{items_len}", &items_cloned.len().to_string())
+        let script = CAROUSEL_SCRIPT
+            .replace("{items_len}", &items_cloned.len().to_string())
             .replace("{items_data}", &items_json);
         eval(&script);
     });
@@ -123,14 +126,56 @@ pub fn CarouselWithTimer(
                 id: "carousel-image",
                 src: "{items[current_index()].image_url}",
                 alt: "{alt[current_index()].image_alt}",
-                class: "carousel-image",
+                class: "carousel-image"
             }
 
             div { class: "carousel-dots",
                 for index in 0..items.len() {
                     div {
                         class: if (*current_index)() == index { "carousel-dot active" } else { "carousel-dot" },
+                        onclick: move |_| current_index.set(index)
+                    }
+                }
+            }
+        }
+    }
+}
+
+#[component]
+pub fn CarouselWithNumbers(
+    items: Vec<CarouselItem>,
+    class: Option<String>,
+    alt: Vec<CarouselItem>,
+) -> Element {
+    let mut current_index = use_signal(|| 0);
+
+    let carousel_class = if let Some(custom_class) = class {
+        custom_class
+    } else {
+        "carousel-container-default".to_string()
+    };
+
+    rsx! {
+        style { "{CAROUSEL_STYLES}" }
+
+        div { class: "carousel-container {carousel_class}",
+
+            img {
+                src: "{items[current_index()].image_url}",
+                alt: "{alt[current_index()].image_alt}",
+                class: "carousel-image"
+            }
+
+            div { class: "carousel-numbers",
+                for index in 0..items.len() {
+                    div {
+                        class: if (*current_index)() == index {
+                            "carousel-number active"
+                        } else {
+                            "carousel-number"
+                        },
                         onclick: move |_| current_index.set(index),
+                        "{index + 1}"
                     }
                 }
             }

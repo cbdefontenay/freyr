@@ -9,7 +9,7 @@ pub const NAVBAR_STYLES: &str = r#"
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 7px 25px;
+        padding: 16px 25px;
         position: relative;
         z-index: 99;
     }
@@ -47,7 +47,6 @@ pub const NAVBAR_STYLES: &str = r#"
 
     .menu-item {
         padding: 10px 15px;
-        font-size: 1.2rem;
         text-decoration: none;
         transition: color 0.3s ease, background-color 0.3s ease;
     }
@@ -96,7 +95,6 @@ pub const NAVBAR_STYLES: &str = r#"
 
         .menu-item {
             display: block;
-            font-size: 1.5rem;
             text-decoration: none;
             transition: color 0.3s ease, background-color 0.3s ease;
             color: var(--nav-item-color);
