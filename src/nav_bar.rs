@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 use crate::assets::navbar_style::NAVBAR_STYLES;
+use crate::{ColorScheme, DropdownConfigNavBar, IconColor, NavItemsColor};
 use crate::enums::navbar_enums::{NavbarConfig, NavbarDropdownConfig};
 
 /// You can configure background color, navigation items, and icon colors.
@@ -103,6 +104,40 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
         }
     }
 }
+
+/// Navbar with a Dropdown menu implementation example:
+/// ```rust
+/// #[component]
+/// pub fn Navigation() -> Element {
+///   let navbar_config = NavbarDropdownConfig {
+///        background_color: ColorScheme::Freyr,
+///        nav_header: "Freyr".to_string(),
+///        nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
+///        nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
+///        nav_item_color: NavItemsColor::Light,
+///        icon_color: IconColor::White,
+///        dropdowns: vec![
+///            DropdownConfigNavBar {
+///                label: "More".to_string(),
+///                title: None,
+///                items: vec![
+///                    ("Privacy Policy".to_string(), "/privacy".to_string()),
+///                    ("Terms of Service".to_string(), "/terms".to_string()),
+///                ],
+///                background_color: None,
+///                title_color: None,
+///                item_color: None,
+///            },
+///        ],
+///    };
+/// ```
+
+    rsx! {
+        NavbarDropdown { navbar_config },
+        Outlet::<Route> {}
+    }
+}
+
 
 #[component]
 pub fn NavbarDropdown(navbar_config: NavbarDropdownConfig) -> Element {
