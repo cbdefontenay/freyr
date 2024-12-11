@@ -4,3 +4,4 @@ pub(crate) mod dropdown_styles;
 pub(crate) mod carousel_simple_styles;
 pub(crate) mod tabs_styles;
 pub(crate) mod accordion_styles;
+pub(crate) mod navbar_dropdown_styles;

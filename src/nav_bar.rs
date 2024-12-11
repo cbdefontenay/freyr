@@ -1,6 +1,8 @@
 use dioxus::prelude::*;
 use crate::assets::navbar_style::NAVBAR_STYLES;
-use crate::{ColorScheme, DropdownConfigNavBar, IconColor, NavItemsColor};
+use crate::DropdownMenu;
+use crate::assets::navbar_dropdown_styles::NAVBAR_DROPDOWN_STYLES;
+use crate::{ColorScheme, DropdownConfig, DropdownConfigNavBar, IconColor, NavItemsColor};
 use crate::enums::navbar_enums::{NavbarConfig, NavbarDropdownConfig};
 
 /// You can configure background color, navigation items, and icon colors.
@@ -130,23 +132,26 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
 ///            },
 ///        ],
 ///    };
+///
+///     rsx! {
+///         NavbarDropdown { navbar_config },
+///         Outlet::<Route> {}
+///     }
+/// }
 /// ```
-
-    rsx! {
-        NavbarDropdown { navbar_config },
-        Outlet::<Route> {}
-    }
-}
 
 
 #[component]
-pub fn NavbarDropdown(navbar_config: NavbarDropdownConfig) -> Element {
+pub fn NavbarDropdown(
+    navbar_config: NavbarDropdownConfig,
+    config_dropdown: DropdownConfig,
+) -> Element {
     let mut menu_open = use_signal(|| false);
     let mut dropdown_open = use_signal(|| None::<usize>);
 
     rsx! {
         div {
-            style { "{NAVBAR_STYLES}" }
+            style { "{NAVBAR_DROPDOWN_STYLES}" }
 
             nav {
                 class: "navbar",
@@ -215,42 +220,9 @@ pub fn NavbarDropdown(navbar_config: NavbarDropdownConfig) -> Element {
                                 "{item}"
                             }
                         }
-
-                        for (index, dropdown) in navbar_config.dropdowns.iter().enumerate() {
-                            div {
-                                class: "menu-dropdown",
-                                onclick: move |_| {
-                                    if dropdown_open() == Some(index) {
-                                        dropdown_open.set(None);
-                                    } else {
-                                        dropdown_open.set(Some(index));
-                                    }
-                                },
-                                "{dropdown.label}",
-
-                                match dropdown_open() {
-                                    Some(open_index) if open_index == index => {
-                                        rsx! {
-                                            div {
-                                                class: "dropdown-items",
-                                                for (item_label, item_link) in dropdown.items.iter() {
-                                                    Link {
-                                                        class: "dropdown-item",
-                                                        to: "{item_link}",
-                                                        style: "color: {navbar_config.nav_item_color.as_css_class()};",
-                                                        onclick: move |_| {
-                                                            dropdown_open.set(None);
-                                                            menu_open.set(false);
-                                                        },
-                                                        "{item_label}"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    _ => rsx! {}
-                                }
-                            }
+                        div {
+                            class:"dropdown-navbar",
+                            DropdownMenu { config_dropdown }
                         }
                     }
                 }
