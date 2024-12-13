@@ -31,6 +31,11 @@ pub const NAVBAR_DROPDOWN_STYLES: &str = r#"
         cursor: pointer;
     }
 
+    .dropdown-navbar {
+        padding-top: 3px;
+        margin-right: 18px;
+    }
+
     .hamburger {
         display: none;
     }
@@ -59,6 +64,10 @@ pub const NAVBAR_DROPDOWN_STYLES: &str = r#"
     .menu-item:hover {
         color: #ccc;
         background-color: transparent;
+    }
+
+    .dropdown-navbar {
+        position: relative;
     }
 
     @media (max-width: 600px) {
@@ -96,7 +105,11 @@ pub const NAVBAR_DROPDOWN_STYLES: &str = r#"
         .menu.open {
             display: flex;
             animation: slideDown 0.4s ease-in-out;
-       }
+        }
+
+        .menu-items {
+            flex-direction: column;
+        }
 
         .menu-item {
             display: block;
@@ -109,11 +122,6 @@ pub const NAVBAR_DROPDOWN_STYLES: &str = r#"
         .menu-item:hover {
             color: #ccc;
             background-color: transparent;
-        }
-
-        .menu-dropdown {
-            position: relative;
-            text-align: center;
         }
     }
 

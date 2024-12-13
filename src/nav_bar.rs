@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 use crate::assets::navbar_style::NAVBAR_STYLES;
-use crate::DropdownMenu;
+use crate::{DropdownColorScheme, DropdownHoverColor, DropdownItem, DropdownLabelsColor, DropdownMenu, DropdownTitleColor};
 use crate::assets::navbar_dropdown_styles::NAVBAR_DROPDOWN_STYLES;
 use crate::{ColorScheme, DropdownConfig, DropdownConfigNavBar, IconColor, NavItemsColor};
 use crate::enums::navbar_enums::{NavbarConfig, NavbarDropdownConfig};
@@ -111,43 +111,62 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
 /// ```rust
 /// #[component]
 /// pub fn Navigation() -> Element {
-///   let navbar_config = NavbarDropdownConfig {
-///        background_color: ColorScheme::Freyr,
-///        nav_header: "Freyr".to_string(),
-///        nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
-///        nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
-///        nav_item_color: NavItemsColor::Light,
-///        icon_color: IconColor::White,
-///        dropdowns: vec![
-///            DropdownConfigNavBar {
-///                label: "More".to_string(),
-///                title: None,
-///                items: vec![
-///                    ("Privacy Policy".to_string(), "/privacy".to_string()),
-///                    ("Terms of Service".to_string(), "/terms".to_string()),
-///                ],
-///                background_color: None,
-///                title_color: None,
-///                item_color: None,
-///            },
-///        ],
-///    };
+///     let navbar_config = NavbarConfig {
+///         background_color: ColorScheme::Freyr,
+///         nav_header: "Freyr".to_string(),
+///         nav_items: vec![
+///             "Home".to_string(),
+///             "About".to_string(),
+///             "Contact".to_string(),
+///         ],
+///         nav_links: vec![
+///             "/".to_string(),
+///             "/about".to_string(),
+///             "/contact".to_string(),
+///         ],
+///         nav_item_color: NavItemsColor::Light,
+///         icon_color: IconColor::White,
+///     };
+///
+///     let dropdown_items = vec![
+///         DropdownItem {
+///             label: "Home".to_string(),
+///             url: Some("/".to_string()),
+///         },
+///         DropdownItem {
+///             label: "About".to_string(),
+///             url: Some("/about".to_string()),
+///         },
+///         DropdownItem::without_url("A Label without route"),
+///         DropdownItem {
+///             label: "Contact".to_string(),
+///             url: None,
+///         },
+///     ];
+///
+///     let config_dropdown = DropdownConfig {
+///         title: "My dropdown".to_string(),
+///         label: dropdown_items,
+///         background_color: DropdownColorScheme::Dark,
+///         title_color: DropdownTitleColor::Light,
+///         labels_color: DropdownLabelsColor::Light,
+///         hover_color: DropdownHoverColor::Custom("#47453e"),
+///     };
 ///
 ///     rsx! {
-///         NavbarDropdown { navbar_config },
+///         NavbarDropdown { navbar_config, config_dropdown },
 ///         Outlet::<Route> {}
 ///     }
 /// }
 /// ```
 
-
 #[component]
 pub fn NavbarDropdown(
-    navbar_config: NavbarDropdownConfig,
+    navbar_config: NavbarConfig,
     config_dropdown: DropdownConfig,
 ) -> Element {
     let mut menu_open = use_signal(|| false);
-    let mut dropdown_open = use_signal(|| None::<usize>);
+    let dropdown_open = use_signal(|| None::<usize>);
 
     rsx! {
         div {

@@ -3,18 +3,20 @@ pub const TABS_STYLES: &str = r#"
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100%;
-    padding: 10px;
 }
 
 .tabs-navigation {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    border-bottom: 1px solid #d1d5db;
+    gap: 1.5rem;
+    border-bottom: 1px solid #c8ccd2;
     padding-bottom: 4px;
     margin-bottom: 6px;
     flex-wrap: nowrap;
+}
+
+.tab-content {
+    max-width: 60%;
 }
 
 .tab-item {
@@ -26,28 +28,14 @@ pub const TABS_STYLES: &str = r#"
     transition: all 0.3s;
 }
 
-.tab-item:hover {
+.tab-item.active-tab {
+    border-bottom: 2px solid #3b82f6;
     color: #3b82f6;
-    border-color: #3b82f6;
 }
 
-.city-content {
-    border-radius: 8px;
-    padding: 8px;
-    width: 100%;
-    text-align: center;
-    animation: fade-in 0.5s;
-}
-
-.city-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #1f2937;
-}
-
-.city-text {
-    color: #4b5563;
-    margin-top: 1rem;
+.tab-item:hover {
+    border-bottom-color: #3b82f6;
+    color: #3b82f6;
 }
 
 .tabs-freyr {
@@ -101,22 +89,15 @@ pub const TABS_STYLES: &str = r#"
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .tabs-navigation {
         flex-direction: row;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
-    .city-content {
-        padding: 6px;
+    .tab-content {
+        max-width: 90%;
     }
 
-    .city-title {
-        font-size: 1.25rem;
-    }
-
-    .city-text {
-        font-size: 0.875rem;
-    }
 }
 "#;

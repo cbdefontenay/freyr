@@ -18,17 +18,18 @@ with flexible configuration options for color schemes, layouts, and responsivene
 > **This component is in the early stage of development. Right now there are only four components available: two navbar
 components, a dropdown and the buttons.**
 >
-> **_If you are using Dioxus version ```0.5```, please download the ```version 0.1.4```, else the higher ones._**
+> **_If you are using Dioxus version ```0.5```, please download the ```version 0.1.4```, else use the highest one._**
 
 ## Components
 
 - **BasicButton**: A customizable `button` with color options, hover effects, and more.
 - **Navbar**: A fully customizable `navigation bar`, custom colors, and responsive layouts.
 - **NavbarWithLogo**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with an image logo.
+- **NavbarDropdown**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with a dropdown menu included.
 - **Dropdown**: A `dropdown` menu with customizable background colors and labels colors.
-- **Carousel**: There are two `carousel` at the moment, the CarouselSimple and the CarouselWithTimer.
+- **Carousel**: There are three `carousel` at the moment, the CarouselSimple, the CarouselWithTimer, and the CarouselWithNumbers (meaning numbers instead of dots).
 
-## Example Usage (_using the version 0.6-alpha.4_)
+## Example Usage (_using the version 0.6.0 of Dioxus_)
 
  ```rust
  #![allow(non_snake_case)]

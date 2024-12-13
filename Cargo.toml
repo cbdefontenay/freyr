@@ -1,9 +1,9 @@
 [package]
 name = "freyr"
 authors = ["Cyprien"]
-version = "0.1.7"
+version = "0.1.8"
 edition = "2021"
-description = "A UI crate for Dioxus web."
+description = "A UI component crate for Dioxus web."
 license = "MIT"
 documentation = "https://docs.rs/freyr/latest/freyr/"
 repository = "https://github.com/cbdefontenay/freyr"

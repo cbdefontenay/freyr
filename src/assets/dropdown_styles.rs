@@ -2,13 +2,11 @@ pub const DROPDOWN_STYLES: &str = r#"
     .dropdown {
         position: relative;
         display: inline-block;
-        font-family: Arial, sans-serif;
     }
 
 .dropdown-toggle {
     color: white;
-    padding: 12px 14px;
-    font-size: 16px;
+    padding: 7px 9px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -19,9 +17,9 @@ pub const DROPDOWN_STYLES: &str = r#"
 }
 
 .dropdown-toggle svg {
-    margin-left: 10px;
     width: 16px;
     height: 16px;
+    margin-left: 10px;
 }
 
     .dropdown-content {
@@ -31,13 +29,14 @@ pub const DROPDOWN_STYLES: &str = r#"
         z-index: 1;
         border-radius: 8px;
         padding: 8px 0;
+        width: max-content;
+    }
 
     .link {
-        padding: 12px 20px;
+        padding: 10px 13px;
         text-decoration: none;
         display: block;
         transition: background-color 0.3s ease, color 0.3s ease;
-        font-size: 15px;
 
           &:hover {
              background: var(--custom_color);
@@ -49,33 +48,21 @@ pub const DROPDOWN_STYLES: &str = r#"
     }
 
       @media (max-width: 768px) {
-        .dropdown {
-            width: 100%;
-        }
-
         .dropdown-toggle {
-            width: 100%;
-            padding: 12px;
-            font-size: 18px;
+            padding: 8px;
         }
 
         .dropdown-content {
-            position: static;
-            width: 100%;
-            box-shadow: none;
-            border-radius: 0;
+            border-radius: 2px;
             padding: 0;
-            background-color: #1E201E;
         }
 
         .link {
-            padding: 16px 20px;
-            font-size: 16px;
-            text-align: center;
+            padding: 10px 12px;
         }
 
         .dropdown-toggle svg {
-            margin-left: auto;
+            margin-left: 10px;
         }
     }
 "#;
