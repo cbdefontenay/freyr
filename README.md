@@ -15,9 +15,7 @@ It allows developers to easily integrate and style components such as navbars an
 with flexible configuration options for color schemes, layouts, and responsiveness.
 
 > ### **Warning:**
-> **This component is in the early stage of development. Right now there are only four components available: two navbar
-components, a dropdown and the buttons.**
->
+> **This component is in the early stage of development. Components may change.
 > **_If you are using Dioxus version ```0.5```, please download the ```version 0.1.4```, else use the highest one._**
 
 ## Components
@@ -28,6 +26,8 @@ components, a dropdown and the buttons.**
 - **NavbarDropdown**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with a dropdown menu included.
 - **Dropdown**: A `dropdown` menu with customizable background colors and labels colors.
 - **Carousel**: There are three `carousel` at the moment, the CarouselSimple, the CarouselWithTimer, and the CarouselWithNumbers (meaning numbers instead of dots).
+- **Tabs**: You may use a standard `Tabs` component with a single text or a personalized one.
+- **Accordion**: Make your own or use a more standard one.
 
 ## Example Usage (_using the version 0.6.0 of Dioxus_)
 
