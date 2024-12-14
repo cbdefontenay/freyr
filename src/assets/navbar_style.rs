@@ -9,7 +9,7 @@ pub const NAVBAR_STYLES: &str = r#"
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 16px 25px;
+        padding: 12px 25px;
         position: relative;
         z-index: 99;
     }
@@ -55,6 +55,17 @@ pub const NAVBAR_STYLES: &str = r#"
         color: #ccc;
         background-color: transparent;
     }
+@media (min-width: 2000px)
+     .navbar {
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 25px;
+        position: relative;
+        z-index: 99;
+    }
+}
 
     @media (max-width: 600px) {
         .hamburger {

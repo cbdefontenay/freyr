@@ -659,7 +659,7 @@ dependencies = [
 
 [[package]]
 name = "freyr"
-version = "0.1.8"
+version = "0.1.9"
 dependencies = [
  "dioxus",
  "serde_json",
