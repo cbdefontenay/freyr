@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 use crate::assets::dropdown_styles::DROPDOWN_STYLES;
+use crate::DropdownButtonConfig;
 use crate::enums::dropdown_enums::{
     DropdownConfig, DropdownItem, DropdownColorScheme, DropdownTitleColor, DropdownLabelsColor, DropdownHoverColor,
 };
@@ -134,3 +135,113 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
         }
     }
 }
+
+/// Usage example of a dropdown that passes onclick events to its items like a dummy counter:
+/// ```rust
+///let mut counter = use_signal(|| 0);
+///
+///     let dropdown_items = vec!["Increment".to_string(), "Decrement".to_string()];
+///
+///     let increment = move |_| counter += 1;
+///     let decrement = move |_| counter -= 1;
+///
+///     let onclick_handlers: Vec<EventHandler<MouseEvent>> =
+///         vec![EventHandler::new(increment), EventHandler::new(decrement)];
+///
+///     let config_dropdown = DropdownButtonConfig {
+///         title: "Counter".to_string(),
+///         labels: dropdown_items,
+///         onclick: onclick_handlers,
+///         background_color: DropdownColorScheme::Dark,
+///         title_color: DropdownTitleColor::Light,
+///         labels_color: DropdownLabelsColor::Light,
+///         hover_color: DropdownHoverColor::Custom("#03346E"),
+///     };
+///
+///     rsx! {
+///         div {
+///             class: "w-full flex justify-center items-center mt-20",
+///             DropdownMenuButton { config_dropdown }
+///             p { "Counter: {counter}"}
+///         }
+///     }
+/// ```
+#[component]
+pub fn DropdownMenuButton(config_dropdown: DropdownButtonConfig) -> Element {
+    let mut is_open = use_signal(|| false);
+
+    let style_tag = rsx! {
+        style { "{DROPDOWN_STYLES}" }
+    };
+
+    let arrow_down_svg = rsx! {
+        svg {
+            xmlns: "http://www.w3.org/2000/svg",
+            view_box: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            stroke_width: "2",
+            stroke_linecap: "round",
+            stroke_linejoin: "round",
+            class: "feather feather-chevron-down",
+            path { d: "M6 9l6 6 6-6" }
+        }
+    };
+
+    let arrow_up_svg = rsx! {
+        svg {
+            xmlns: "http://www.w3.org/2000/svg",
+            view_box: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            stroke_width: "2",
+            stroke_linecap: "round",
+            stroke_linejoin: "round",
+            class: "feather feather-chevron-up",
+            path { d: "M18 15l-6-6-6 6" }
+        }
+    };
+
+    rsx! {
+        div {
+            {style_tag}
+
+            div { class: "dropdown",
+                button {
+                    class: "dropdown-toggle",
+                    style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.title_color.as_css_class()};",
+                    onclick: move |_| is_open.set(!is_open()),
+                    "{config_dropdown.title}"
+
+                    match is_open() {
+                        true => arrow_up_svg,
+                        false => arrow_down_svg,
+                    }
+                }
+
+                div {
+                    match is_open() {
+                        true => {
+                            rsx! {
+                                div {
+                                    class: "dropdown-content",
+                                    style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.labels_color.as_css_class()};",
+                                    for (label, onclick_handler) in config_dropdown.labels.iter().zip(config_dropdown.onclick.iter()) {
+                                        button {
+                                            onclick: onclick_handler.clone(),
+                                            class: "button-config",
+                                            style: "color: {config_dropdown.labels_color.as_css_class()}; --custom_color: {config_dropdown.hover_color.as_css_class()};",
+                                            "{label}"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        false => rsx! {},
+                    }
+                }
+            }
+        }
+    }
+}
+

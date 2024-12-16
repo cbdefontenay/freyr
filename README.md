@@ -24,37 +24,64 @@ with flexible configuration options for color schemes, layouts, and responsivene
 - **Navbar**: A fully customizable `navigation bar`, custom colors, and responsive layouts.
 - **NavbarWithLogo**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with an image logo.
 - **NavbarDropdown**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with a dropdown menu included.
-- **Dropdown**: A `dropdown` menu with customizable background colors and labels colors.
+- **NavbarDropdownButtons**: The same as the navbar with dropdown menu, but this time you may pass onclick events to the drop items.
+- **Dropdown**: A `dropdown` menu with customizable background colors and labels colors, and one that passes onclick events instead of routes.
 - **Carousel**: There are three `carousel` at the moment, the CarouselSimple, the CarouselWithTimer, and the CarouselWithNumbers (meaning numbers instead of dots).
 - **Tabs**: You may use a standard `Tabs` component with a single text or a personalized one.
 - **Accordion**: Make your own or use a more standard one.
 
-## Example Usage (_using the version 0.6.0 of Dioxus_)
+## Example of the use of the navbar with a dropdown menu that uses **dioxus-i18n** (_using the version 0.6.0 of Dioxus_):
 
  ```rust
- #![allow(non_snake_case)]
-use freyr::prelude::*;
 use dioxus::prelude::*;
+use freyr::prelude::*;
 
 #[component]
-fn HomePage() -> Element {
-    let navbar_config = NavbarConfig {
-        background_color: ColorScheme::Freyr,
-        nav_header: "Freyr".to_string(),
-        nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
-        nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
-        nav_item_color: NavItemsColor::Custom("#990000"),
-        icon_color: IconColor::Custom("#99cc00"),
+pub fn Navigation() -> Element {
+    let mut i18n = i18n();
+
+    let change_to_english = move |_| i18n.set_language(langid!("en-US"));
+    let change_to_french = move |_| i18n.set_language(langid!("fr-FR"));
+
+    let dropdown_items = vec!["English".to_string(), "Français".to_string()];
+
+    let onclick_handlers: Vec<EventHandler<MouseEvent>> = vec![
+        EventHandler::new(change_to_english),
+        EventHandler::new(change_to_french),
+    ];
+
+    let config_dropdown = DropdownButtonConfig {
+        title: t!("languages"),
+        labels: dropdown_items,
+        onclick: onclick_handlers,
+        background_color: DropdownColorScheme::Dark,
+        title_color: DropdownTitleColor::Light,
+        labels_color: DropdownLabelsColor::Light,
+        hover_color: DropdownHoverColor::Custom("#03346E"),
     };
 
-    rsx! {
-         Navbar { navbar_config }
+    let navbar_config = NavbarConfig {
+        background_color: ColorScheme::Freyr,
+        nav_header: String::from("Freyr"),
+        nav_items: vec![
+            "Home".to_string(),
+            t!("about"),
+            "Contact".to_string(),
+        ],
+        nav_links: vec![
+            "/".to_string(),
+            "/about".to_string(),
+            "/contact".to_string(),
+        ],
+        nav_item_color: NavItemsColor::Light,
+        icon_color: IconColor::White,
+    };
 
-         div {
-             style: "margin-top: 5em;",
-             BasicButton { color: ButtonColor::Freyr, label: "Go Home", link: ButtonUrl { url: "/".to_string() } }
-         }
-     }
+
+    rsx! {
+        NavbarDropdownButtons { navbar_config, config_dropdown }
+        Outlet::<Route> {}
+    }
 }
  ```
 

@@ -9,7 +9,7 @@ pub const NAVBAR_STYLES: &str = r#"
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 12px 25px;
+        padding: 16px 25px;
         position: relative;
         z-index: 99;
     }
@@ -26,8 +26,8 @@ pub const NAVBAR_STYLES: &str = r#"
     }
 
     .nav-logo {
-        height: 55px;
-        width: 55px;
+        height: 52px;
+        width: 52px;
         cursor: pointer;
     }
 
@@ -45,6 +45,11 @@ pub const NAVBAR_STYLES: &str = r#"
         height: 40px;
     }
 
+    .menu-items {
+        display: flex;
+        flex-direction: row;
+    }
+
     .menu-item {
         padding: 10px 15px;
         text-decoration: none;
@@ -55,17 +60,6 @@ pub const NAVBAR_STYLES: &str = r#"
         color: #ccc;
         background-color: transparent;
     }
-@media (min-width: 2000px)
-     .navbar {
-        margin: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 25px;
-        position: relative;
-        z-index: 99;
-    }
-}
 
     @media (max-width: 600px) {
         .hamburger {
@@ -99,9 +93,18 @@ pub const NAVBAR_STYLES: &str = r#"
             z-index: 15;
         }
 
+        .nav-logo {
+            height: 30px;
+            width: 30px;
+        }
+
         .menu.open {
             display: flex;
             animation: slideDown 0.4s ease-in-out;
+        }
+
+        .menu-items {
+            flex-direction: column;
         }
 
         .menu-item {

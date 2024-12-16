@@ -1,3 +1,6 @@
+use dioxus::events::MouseEvent;
+use dioxus::prelude::EventHandler;
+
 /// Represents different background color schemes for the dropdown.
 #[derive(PartialEq, Clone)]
 pub enum DropdownColorScheme {
@@ -115,6 +118,17 @@ impl DropdownItem {
 pub struct DropdownConfig {
     pub title: String,
     pub label: Vec<DropdownItem>,
+    pub background_color: DropdownColorScheme,
+    pub title_color: DropdownTitleColor,
+    pub labels_color: DropdownLabelsColor,
+    pub hover_color: DropdownHoverColor,
+}
+
+#[derive(PartialEq, Clone)]
+pub struct DropdownButtonConfig {
+    pub title: String,
+    pub labels: Vec<String>,
+    pub onclick: Vec<EventHandler<MouseEvent>>,
     pub background_color: DropdownColorScheme,
     pub title_color: DropdownTitleColor,
     pub labels_color: DropdownLabelsColor,

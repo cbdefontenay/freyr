@@ -1,8 +1,8 @@
 //! # Freyr UI Components Library for Dioxus.
 //!
 //! This crate provides a set of customizable UI components for use in Dioxus projects.
-//! It allows developers to easily integrate and style components such as navbars and buttons,
-//! with flexible configuration options for color schemes, layouts, and responsiveness.
+//! It allows developers to easily integrate and style components such as navbars, carousels and buttons,
+//! with flexible configuration options for color schemes and layouts. Just make it your own!
 //!
 //! ## Why the name Freyr?
 //!
@@ -13,14 +13,18 @@
 //! > **_New components will be added, and some features that already exist may change._**
 //! ## Components
 //!
-//! - **BasicButton**: A customizable button with color options, and an arbitrary hover effect.
-//! - **Navbar**: A fully customizable navigation bar with custom colors, and responsive layouts.
-//! - **Dropdown**: A dropdown menu with customizable background colors and labels colors.
-//! - **Carousel**: There are two carousel at the moment, the CarouselSimple and the CarouselWithTimer.
+//! - **BasicButton**: A customizable `button` with color options, hover effects, and more.
+//! - **Navbar**: A fully customizable `navigation bar`, custom colors, and responsive layouts.
+//! - **NavbarWithLogo**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with an image logo.
+//! - **NavbarDropdown**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with a dropdown menu included.
+//! - **NavbarDropdownButtons**: The same as the navbar with dropdown menu, but this time you may pass onclick events to the drop items.
+//! - **Dropdown**: A `dropdown` menu with customizable background colors and labels colors, and one that passes onclick events instead of routes.
+//! - **Carousel**: There are three `carousel` at the moment, the CarouselSimple, the CarouselWithTimer, and the CarouselWithNumbers (meaning numbers instead of dots).
+//! - **Tabs**: You may use a standard `Tabs` component with a single text or a personalized one.
+//! - **Accordion**: Make your own or use a more standard one.
 //!
 //! ## Key Features
 //! - Full customization of colors, sizes, and layouts using configuration structs and enums.
-//! - Responsive designs that adapt seamlessly to mobile and desktop layouts.
 //! - Easy integration into Dioxus web projects.
 //!
 //! ## Example Usage
@@ -92,13 +96,7 @@
 //! }
 //! ```
 //!
-//! ## Features in Development
-//! - Additional components (e.g., carousel, dropdowns)
-//! - Extended customization options for more complex layouts
-//!
-//! ## Contribution
-//! Contributions are welcome! Feel free to open an issue or submit a pull request on [GitHub](https://github.com/cbdefontenay/freyr).
-
+//! For more documentation about the actual components, please go to the [functions](https://docs.rs/freyr/latest/freyr/#functions).
 mod accordion;
 mod assets;
 mod basic_button;
@@ -116,20 +114,23 @@ pub use crate::basic_button::BasicButton;
 pub use crate::carousel::CarouselSimple;
 pub use crate::carousel::CarouselWithNumbers;
 pub use crate::carousel::CarouselWithTimer;
-pub use crate::dropdown::DropdownMenu;
-pub use crate::enums::accordion_enums::{AccordionColor, AccordionCustomProps, AccordionProps, AccordionIconColor};
+pub use crate::dropdown::{DropdownMenu, DropdownMenuButton};
+pub use crate::enums::accordion_enums::{
+    AccordionColor, AccordionCustomProps, AccordionIconColor, AccordionProps,
+};
 pub use crate::enums::basic_button_enums::{ButtonColor, ButtonUrl};
 pub use crate::enums::carousel_simple_enums::CarouselItem;
 pub use crate::enums::dropdown_enums::{
-    DropdownColorScheme, DropdownConfig, DropdownHoverColor, DropdownItem, DropdownLabelsColor,
-    DropdownTitleColor,
+    DropdownButtonConfig, DropdownColorScheme, DropdownConfig, DropdownHoverColor, DropdownItem,
+    DropdownLabelsColor, DropdownTitleColor,
 };
 pub use crate::enums::navbar_enums::{
-    ColorScheme, IconColor, NavItemsColor, NavbarConfig, NavbarWithLogoConfig, NavbarDropdownConfig, DropdownConfigNavBar
+    ColorScheme, DropdownConfigNavBar, IconColor, NavItemsColor, NavbarConfig,
+    NavbarDropdownConfig, NavbarWithLogoConfig,
 };
 pub use crate::enums::tabs_enums::TabsColor;
 pub use crate::enums::tabs_enums::TabsProps;
-pub use crate::nav_bar::Navbar;
 pub use crate::nav_bar::NavbarDropdown;
+pub use crate::nav_bar::{Navbar, NavbarDropdownButtons};
 pub use crate::navbar_with_logo::NavbarWithLogo;
 pub use crate::tabs::Tabs;
