@@ -1,0 +1,10 @@
+C:\Users\cbdef\Documents\freyr\target\package\freyr-0.1.8\target\debug\deps\libconst_serialize-ffd6f67aa73032b9.rmeta: C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src/lib.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\const_buffers.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\const_vec.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\../README.md
+
+C:\Users\cbdef\Documents\freyr\target\package\freyr-0.1.8\target\debug\deps\libconst_serialize-ffd6f67aa73032b9.rlib: C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src/lib.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\const_buffers.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\const_vec.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\../README.md
+
+C:\Users\cbdef\Documents\freyr\target\package\freyr-0.1.8\target\debug\deps\const_serialize-ffd6f67aa73032b9.d: C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src/lib.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\const_buffers.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\const_vec.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\../README.md
+
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src/lib.rs:
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\const_buffers.rs:
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\const_vec.rs:
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\const-serialize-0.6.0\src\../README.md:

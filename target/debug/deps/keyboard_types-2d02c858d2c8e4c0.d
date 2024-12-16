@@ -1,0 +1,10 @@
+C:\Users\cbdef\Documents\freyr\target\debug\deps\libkeyboard_types-2d02c858d2c8e4c0.rmeta: C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\lib.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\code.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\key.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\location.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\modifiers.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\shortcuts.rs
+
+C:\Users\cbdef\Documents\freyr\target\debug\deps\keyboard_types-2d02c858d2c8e4c0.d: C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\lib.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\code.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\key.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\location.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\modifiers.rs C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\shortcuts.rs
+
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\lib.rs:
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\code.rs:
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\key.rs:
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\location.rs:
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\modifiers.rs:
+C:\Users\cbdef\.cargo\registry\src\index.crates.io-6f17d22bba15001f\keyboard-types-0.7.0\src\shortcuts.rs:

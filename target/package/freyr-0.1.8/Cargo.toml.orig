@@ -1,0 +1,13 @@
+[package]
+name = "freyr"
+authors = ["Cyprien"]
+version = "0.1.8"
+edition = "2021"
+description = "A UI component crate for Dioxus web."
+license = "MIT"
+documentation = "https://docs.rs/freyr/latest/freyr/"
+repository = "https://github.com/cbdefontenay/freyr"
+
+[dependencies]
+dioxus = { version = "0.6.0", features = ["web", "router"] }
+serde_json = "1.0.133"
