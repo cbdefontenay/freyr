@@ -57,8 +57,11 @@ pub const CAROUSEL_STYLES: &str = r#"
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-top: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     font-size: 1rem;
+   padding: 8px 0;
 }
 
 .carousel-number {
@@ -126,6 +129,7 @@ pub const CAROUSEL_STYLES: &str = r#"
 @media (max-width: 480px) {
     .carousel-container-default {
         width: 90%;
+        height: 50%;
     }
 
     .carousel-numbers {

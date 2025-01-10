@@ -6,7 +6,7 @@ use dioxus::document::eval;
 use dioxus::prelude::*;
 use serde_json::json;
 
-/// A simple carousel component for Dioxus framework.
+/// A simple carousel component for Dioxus.
 ///
 /// The `CarouselSimple` component provides a minimalistic image carousel for navigating through a collection of images.
 /// And the `CarouselWithTimer` one does the same, but the image changes all 5 secs by default.
@@ -83,11 +83,13 @@ pub fn CarouselSimple(
     }
 }
 
+/// Use it like the CarouselSimple component, just add the ```timer_seconds``` prop like that: ```timer_seconds: 5```
 #[component]
 pub fn CarouselWithTimer(
     items: Vec<CarouselItem>,
     class: Option<String>,
     alt: Vec<CarouselItem>,
+    timer_seconds: u64,
 ) -> Element {
     let mut current_index = use_signal(|| 0);
 
@@ -109,11 +111,14 @@ pub fn CarouselWithTimer(
         })
         .collect::<Vec<_>>();
 
+    let timer_ms = timer_seconds * 1000;
+
     use_effect(move || {
         let items_json = serde_json::to_string(&items_data).unwrap();
         let script = CAROUSEL_SCRIPT
             .replace("{items_len}", &items_cloned.len().to_string())
-            .replace("{items_data}", &items_json);
+            .replace("{items_data}", &items_json)
+            .replace("{timer_ms}", &timer_ms.to_string());
         eval(&script);
     });
 
@@ -141,6 +146,7 @@ pub fn CarouselWithTimer(
     }
 }
 
+/// To be used like the CarouselSimple component.
 #[component]
 pub fn CarouselWithNumbers(
     items: Vec<CarouselItem>,

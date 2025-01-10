@@ -4,7 +4,6 @@ pub const CAROUSEL_SCRIPT: &str = r#"
     const items = {items_data};
 
     const currentIndexElement = document.getElementById('carousel-image');
-
     const dots = document.querySelectorAll('.carousel-dot');
 
     setInterval(() => {
@@ -14,5 +13,5 @@ pub const CAROUSEL_SCRIPT: &str = r#"
 
         dots.forEach(dot => dot.classList.remove('active'));
         dots[index].classList.add('active');
-    }, 5000);
+    }, {timer_ms});
 "#;
