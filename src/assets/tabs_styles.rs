@@ -16,7 +16,7 @@ pub const TABS_STYLES: &str = r#"
 }
 
 .tab-content {
-    max-width: 60%;
+    // max-width: 60%;
 }
 
 .tab-item {
@@ -29,8 +29,8 @@ pub const TABS_STYLES: &str = r#"
 }
 
 .tab-item.active-tab {
-    border-bottom: 2px solid #3b82f6;
-    color: #3b82f6;
+    border-bottom: 2px solid;
+    // color: #3b82f6;
 }
 
 .tab-item:hover {
@@ -41,7 +41,6 @@ pub const TABS_STYLES: &str = r#"
 .tabs-freyr {
     cursor: pointer;
     color: #3795BD;
-    font-weight: 500;
     padding-bottom: 2px;
     border-bottom: 2px solid transparent;
     transition: all 0.3s;

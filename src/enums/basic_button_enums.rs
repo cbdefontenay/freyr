@@ -1,3 +1,6 @@
+use dioxus::events::MouseEvent;
+use dioxus::prelude::*;
+
 /// Enum that defines which color you want to use for the button.
 #[derive(PartialEq, Clone)]
 pub enum ButtonColor {
@@ -25,4 +28,11 @@ impl ButtonColor {
 #[derive(PartialEq, Clone)]
 pub struct ButtonUrl {
     pub url: String,
+}
+
+#[derive(Props, PartialEq, Clone)]
+pub struct ButtonProps {
+    pub color: ButtonColor,
+    pub label: String,
+    pub onclick: EventHandler<MouseEvent>,
 }

@@ -8,6 +8,7 @@ use dioxus::prelude::*;
 ///                 title: title_one.clone(),
 ///                 accordion_text: first_text.clone(),
 ///                 icon_color: AccordionIconColor::Dark,
+///                 optional_text: Some("Optional text here".to_string()),
 ///                 class: Some(String::from("w-96")),
 ///                 title_class: Some(String::from("text-xl font-bold text-center")),
 ///                 accordion_wrapper: Some(String::from("bg-orange-200 rounded-t-lg")),
@@ -100,7 +101,8 @@ pub fn Accordion(props: AccordionProps) -> Element {
                 match menu_open() {
                     true => rsx! {
                         div { class: "{accordion_content} accordion-content open",
-                            p { "{props.accordion_text}" }
+                            p { {props.accordion_text}}
+                            p {{props.optional_text}}
                         }
                     },
                     false => rsx! {},

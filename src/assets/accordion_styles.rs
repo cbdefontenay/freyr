@@ -2,14 +2,13 @@ pub const ACCORDION_STYLES: &str = r#"
 .accordion {
     width: 100%;
     max-width: 700px;
-    // margin: 20px auto;
 }
 
 .accordion-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    // width: 100%;
     padding: 10px;
     cursor: pointer;
     position: relative;
@@ -19,7 +18,7 @@ pub const ACCORDION_STYLES: &str = r#"
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 28rem;
     padding: 10px;
     background-color: #6081b9;
     border-radius: 5px 5px 0 0;
@@ -29,7 +28,6 @@ pub const ACCORDION_STYLES: &str = r#"
 
 .title-wrapper-default {
     flex-grow: 1;
-    font-size: 18px;
     color: #fff;
 }
 
@@ -80,4 +78,9 @@ pub const ACCORDION_STYLES: &str = r#"
     height: 24px;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .accordion-wrapper-default {
+        width: 19rem;
+    }
 "#;
