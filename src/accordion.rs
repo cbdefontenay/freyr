@@ -7,6 +7,7 @@ use dioxus::prelude::*;
 ///            Accordion {
 ///                 title: title_one.clone(),
 ///                 accordion_text: first_text.clone(),
+///                 optional_text: Some(String::from("Optional text displayed here. ignore me if you want!")),
 ///                 icon_color: AccordionIconColor::Dark,
 ///                 optional_text: Some("Optional text here".to_string()),
 ///                 class: Some(String::from("w-96")),

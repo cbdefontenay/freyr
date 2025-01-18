@@ -36,10 +36,12 @@ impl AccordionIconColor {
     }
 }
 
+/// Props are: ```title```, ```accordion_text```, ```optional_text```, ```icon_color```, ```class```, ```title_class```, ```accordion_wrapper```, ```accordion_content```
 #[derive(Props, PartialEq, Clone)]
 pub struct AccordionProps {
     pub title: String,
     pub accordion_text: String,
+    pub optional_text: Option<String>,
     pub icon_color: AccordionIconColor,
     pub class: Option<String>,
     pub title_class: Option<String>,
