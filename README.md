@@ -18,19 +18,14 @@ with flexible configuration options for color schemes, layouts, and responsivene
 > **This component is in the early stage of development. Components may change.
 > **_If you are using Dioxus version ```0.5```, please download the ```version 0.1.4```, else use the highest one._**
 
-## Components
+### **Features**
+- [x] Buttons
+- [x] Tabs
+- [x] Navbar
+- [x] Accordion
+- [x] Dropdown
 
-- **BasicButton**: A customizable `button` with color options, hover effects, and more.
-- **Navbar**: A fully customizable `navigation bar`, custom colors, and responsive layouts.
-- **NavbarWithLogo**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with an image logo.
-- **NavbarDropdown**: A fully customizable `navigation bar`, custom colors, and responsive layouts and with a dropdown menu included.
-- **NavbarDropdownButtons**: The same as the navbar with dropdown menu, but this time you may pass onclick events to the drop items.
-- **Dropdown**: A `dropdown` menu with customizable background colors and labels colors, and one that passes onclick events instead of routes.
-- **Carousel**: There are three `carousel` at the moment, the CarouselSimple, the CarouselWithTimer, and the CarouselWithNumbers (meaning numbers instead of dots).
-- **Tabs**: You may use a standard `Tabs` component with a single text or a personalized one.
-- **Accordion**: Make your own or use a more standard one.
-
-## Example of the use of the navbar with a dropdown menu that uses **dioxus-i18n** (_using the version 0.6.0 of Dioxus_):
+## Example of the use of the navbar with a dropdown menu that uses **dioxus-i18n** (_using the version 0.6.1 of Dioxus_):
 
  ```rust
 use dioxus::prelude::*;
