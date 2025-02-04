@@ -82,4 +82,4 @@ pub fn Navigation() -> Element {
 }
  ```
 
-For more information and documentation about freyr, please go to [docs.rs](https://docs.rs/freyr/latest/freyr/).
+For more information and documentation about freyr, please go to [docs.rs](https://docs.rs/freyr/latest/freyr/). There you may have a look at the different options that each component may provide you.
