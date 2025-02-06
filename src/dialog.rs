@@ -2,7 +2,7 @@
 use dioxus::prelude::*;
 use crate::enums::dialog_enums::DialogProps;
 
-const TAILWIND_CSS: Asset = asset!("src/output.css");
+const TAILWIND_CSS: Asset = asset!("/src/output.css");
 
 /// Usage example of the ```dialog``` component:
 /// ```rust
@@ -74,7 +74,7 @@ pub fn Dialog(props: DialogProps) -> Element {
     rsx! {
         div {
             button {
-                class: if let Some(class) = &props.dialog_button_class { {class.to_string()} } else { "bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition" },
+                class: if let Some(class) = &props.dialog_button_class { class.to_string() } else { "bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition" },
                 onclick: move |_| show_modal.set(!show_modal()),
                 {props.label}
             }
@@ -92,15 +92,11 @@ pub fn Dialog(props: DialogProps) -> Element {
                                 view_box: "0 0 24 24",
                                 stroke_width: "2",
                                 stroke: "currentColor",
-                                class: if let Some(class) = &props.cross_svg_class {
-                                    { class.to_string() }
-                                } else {
-                                    "w-6 h-6 text-gray-500 hover:text-gray-700".to_string()
-                                },
+                                class: if let Some(class) = &props.cross_svg_class { {class.to_string()} } else { "w-6 h-6 text-gray-500 hover:text-gray-700".to_string() },
                                 path {
                                     stroke_linecap: "round",
                                     stroke_linejoin: "round",
-                                    d: "M6 18L18 6M6 6l12 12"
+                                    d: "M6 18L18 6M6 6l12 12",
                                 }
                             }
                         }

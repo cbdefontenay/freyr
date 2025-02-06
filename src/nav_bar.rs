@@ -239,8 +239,7 @@ pub fn NavbarDropdown(
                                 "{item}"
                             }
                         }
-                        div {
-                            class:"dropdown-navbar",
+                        div { class: "dropdown-navbar",
                             DropdownMenu { config_dropdown }
                         }
                     }
@@ -377,8 +376,7 @@ pub fn NavbarDropdownButtons(navbar_config: NavbarConfig, config_dropdown: Dropd
                                 "{item}"
                             }
                         }
-                        div {
-                            class:"dropdown-navbar",
+                        div { class: "dropdown-navbar",
                             DropdownMenuButton { config_dropdown }
                         }
                     }

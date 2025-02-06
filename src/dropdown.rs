@@ -226,7 +226,7 @@ pub fn DropdownMenuButton(config_dropdown: DropdownButtonConfig) -> Element {
                                 div {
                                     class: "dropdown-content",
                                     style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.labels_color.as_css_class()};",
-                                    for (label, onclick_handler) in config_dropdown.labels.iter().zip(config_dropdown.onclick.iter()) {
+                                    for (label , onclick_handler) in config_dropdown.labels.iter().zip(config_dropdown.onclick.iter()) {
                                         button {
                                             onclick: onclick_handler.clone(),
                                             class: "button-config",

@@ -102,8 +102,8 @@ pub fn Accordion(props: AccordionProps) -> Element {
                 match menu_open() {
                     true => rsx! {
                         div { class: "{accordion_content} accordion-content open",
-                            p { {props.accordion_text}}
-                            p {{props.optional_text}}
+                            p { {props.accordion_text} }
+                            p { {props.optional_text} }
                         }
                     },
                     false => rsx! {},
@@ -163,7 +163,7 @@ pub fn AccordionCustom(props: AccordionCustomProps) -> Element {
             fill: "none",
             view_box: "0 0 24 24",
             stroke_width: "2",
-            stroke: {props.icon_color.as_css_class()},
+            stroke: props.icon_color.as_css_class(),
             width: "24",
             height: "24",
             path {
@@ -181,7 +181,7 @@ pub fn AccordionCustom(props: AccordionCustomProps) -> Element {
             fill: "none",
             view_box: "0 0 24 24",
             stroke_width: "2",
-            stroke: {props.icon_color.as_css_class()},
+            stroke: props.icon_color.as_css_class(),
             width: "24",
             height: "24",
             path {
@@ -195,12 +195,9 @@ pub fn AccordionCustom(props: AccordionCustomProps) -> Element {
     rsx! {
         div {
             style { "{ACCORDION_STYLES}" }
-            div {
-                class: "{accordion_class}",
-                div {
-                    class: "{accordion_wrapper} accordion-wrapper",
-                    div {
-                        class: "{accordion_title_class}",
+            div { class: "{accordion_class}",
+                div { class: "{accordion_wrapper} accordion-wrapper",
+                    div { class: "{accordion_title_class}",
                         h1 { "{props.title}" }
                     }
                     button {

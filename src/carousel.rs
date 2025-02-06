@@ -68,14 +68,14 @@ pub fn CarouselSimple(
             img {
                 src: "{items[current_index()].image_url}",
                 alt: "{alt[current_index()].image_alt}",
-                class: "carousel-image"
+                class: "carousel-image",
             }
 
             div { class: "carousel-dots",
                 for index in 0..items.len() {
                     div {
                         class: if (*current_index)() == index { "carousel-dot active" } else { "carousel-dot" },
-                        onclick: move |_| current_index.set(index)
+                        onclick: move |_| current_index.set(index),
                     }
                 }
             }
@@ -131,14 +131,14 @@ pub fn CarouselWithTimer(
                 id: "carousel-image",
                 src: "{items[current_index()].image_url}",
                 alt: "{alt[current_index()].image_alt}",
-                class: "carousel-image"
+                class: "carousel-image",
             }
 
             div { class: "carousel-dots",
                 for index in 0..items.len() {
                     div {
                         class: if (*current_index)() == index { "carousel-dot active" } else { "carousel-dot" },
-                        onclick: move |_| current_index.set(index)
+                        onclick: move |_| current_index.set(index),
                     }
                 }
             }
@@ -169,17 +169,13 @@ pub fn CarouselWithNumbers(
             img {
                 src: "{items[current_index()].image_url}",
                 alt: "{alt[current_index()].image_alt}",
-                class: "carousel-image"
+                class: "carousel-image",
             }
 
             div { class: "carousel-numbers",
                 for index in 0..items.len() {
                     div {
-                        class: if (*current_index)() == index {
-                            "carousel-number active"
-                        } else {
-                            "carousel-number"
-                        },
+                        class: if (*current_index)() == index { "carousel-number active" } else { "carousel-number" },
                         onclick: move |_| current_index.set(index),
                         "{index + 1}"
                     }

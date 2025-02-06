@@ -117,9 +117,7 @@ pub fn Tabs(props: TabsProps) -> Element {
                     }
                 }
 
-                div { class: "tab-content",
-                    {text}
-                }
+                div { class: "tab-content", {text} }
             }
         }
     }
