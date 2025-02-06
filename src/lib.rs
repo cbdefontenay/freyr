@@ -105,9 +105,11 @@ mod navbar_with_logo;
 pub mod prelude;
 mod scripts;
 mod tabs;
+mod dialog;
 
 pub use crate::accordion::{Accordion, AccordionCustom};
 pub use crate::basic_button::BasicButton;
+pub use crate::dialog::*;
 pub use crate::basic_button::EventButton;
 pub use crate::carousel::CarouselSimple;
 pub use crate::carousel::CarouselWithNumbers;

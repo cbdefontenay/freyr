@@ -1,5 +1,6 @@
-pub use crate::accordion::{Accordion, AccordionCustom};
-pub use crate::basic_button::BasicButton;
+pub use crate::accordion::*;
+pub use crate::basic_button::*;
+pub use crate::dialog::*;
 pub use crate::basic_button::EventButton;
 pub use crate::carousel::CarouselSimple;
 pub use crate::carousel::CarouselWithNumbers;

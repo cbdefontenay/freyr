@@ -24,6 +24,7 @@ with flexible configuration options for color schemes, layouts, and responsivene
 - [x] Navbar
 - [x] Accordion
 - [x] Dropdown
+- [x] Dialog
 
 All those components have more features than you think. For more information about them please chack them [here](https://docs.rs/freyr/latest/freyr/#functions). 
 
