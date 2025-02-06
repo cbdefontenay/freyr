@@ -1,20 +1,72 @@
 #[allow(non_snake_case)]
 use dioxus::prelude::*;
+use crate::enums::dialog_enums::DialogProps;
 
 const TAILWIND_CSS: Asset = asset!("src/output.css");
 
-#[derive(Props, PartialEq, Clone)]
-pub struct DialogProps {
-    pub label: String,
-    pub dialog_content: Option<Element>,
-    pub dialog_button_class: Option<String>,
-    pub wrap_class: String,
-    pub button_class: String,
-    pub close_button_class: Option<String>,
-    pub close_button_label: Option<String>,
-    pub cross_svg_class: Option<String>,
-}
-
+/// Usage example of the ```dialog``` component:
+/// ```rust
+/// #[component]
+/// pub fn DialogComponent() -> Element {
+///     let mut todos: Signal<Vec<String>> = use_signal(|| vec![]);
+///     let mut new_todo: Signal<String> = use_signal(|| "".to_string());
+///
+///     let dialog_props = DialogProps {
+///         label: "Add todo".to_string(),
+///         dialog_button_class: Some(
+///             "bg-green-800 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-700 transition"
+///                 .to_string(),
+///         ),
+///         dialog_content: Some(rsx! {
+///             h2 { class: "text-xl font-semibold mb-4", "Add a new To-Do" }
+///             input {
+///                 class: "border border-gray-300 rounded-md p-2 w-full",
+///                 r#type: "text",
+///                 value: "{new_todo()}",
+///                 autofocus: true,
+///                 oninput: move |e| new_todo.set(e.value().clone())
+///             }
+///             button {
+///                 class: "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition mt-4",
+///                 onclick: move |_| {
+///                     if !new_todo().is_empty() {
+///                         todos.write().push(new_todo().clone());
+///                         new_todo.set("".to_string());
+///                     }
+///                 },
+///                 "Add Todo"
+///             }
+///         }),
+///         wrap_class: "bg-white rounded-lg shadow-lg w-full max-w-md p-6".to_string(),
+///         button_class: "mt-4 rounded-lg py-2 px-4 bg-red-600 text-slate-100".to_string(),
+///         close_button_label: Some("Close".to_string()),
+///         close_button_class: Some(
+///             "bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition".to_string(),
+///         ),
+///         cross_svg_class: None,
+///     };
+///
+///     rsx! {
+///         div { class: "mt-10 ml-20",
+///             Dialog {
+///                 label: dialog_props.label,
+///                 dialog_button_class: dialog_props.dialog_button_class,
+///                 dialog_content: dialog_props.dialog_content,
+///                 wrap_class: dialog_props.wrap_class,
+///                 button_class: dialog_props.button_class,
+///                 close_button_label: dialog_props.close_button_label,
+///                 close_button_class: dialog_props.close_button_class,
+///                 cross_svg_class: dialog_props.cross_svg_class,
+///             }
+///             ul { class: "mt-6",
+///                 for todo in todos().iter() {
+///                     li { class: "p-2 border-b border-gray-300", "{todo}" }
+///                 }
+///             }
+///         }
+///     }
+/// }
+/// ```
 #[component]
 pub fn Dialog(props: DialogProps) -> Element {
     let mut show_modal = use_signal(|| false);
