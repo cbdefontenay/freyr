@@ -28,7 +28,7 @@ with flexible configuration options for color schemes, layouts, and responsivene
 
 All those components have more features than you think. For more information about them please chack them [here](https://docs.rs/freyr/latest/freyr/#functions). 
 
-## Example of the use of the navbar with a dropdown menu that uses **dioxus-i18n** (_using the version 0.6.1 of Dioxus_):
+## Example of the use of the navbar with a dropdown menu that uses **dioxus-i18n** (_using the version 0.6.3 of Dioxus_):
 
  ```rust
 use dioxus::prelude::*;
