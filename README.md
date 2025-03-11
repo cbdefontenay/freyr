@@ -15,8 +15,7 @@ It allows developers to easily integrate and style components such as navbars an
 with flexible configuration options for color schemes, layouts, and responsiveness.
 
 > ### **Warning:**
-> **This component is in the early stage of development. Components may change.
-> **_If you are using Dioxus version ```0.5```, please download the ```version 0.1.4```, else use the highest one._**
+> **This component is in the early stage of development. Components may change. Be aware of that.**
 
 ### **Features**
 - [x] Buttons
