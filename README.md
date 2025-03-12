@@ -21,6 +21,7 @@ with flexible configuration options for color schemes, layouts, and responsivene
 - [x] Buttons
 - [x] Tabs
 - [x] Navbar
+- [x] Carousel
 - [x] Accordion
 - [x] Dropdown
 - [x] Dialog

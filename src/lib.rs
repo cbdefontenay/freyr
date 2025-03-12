@@ -17,6 +17,7 @@
 //! - [x] Tabs
 //! - [x] Navbar
 //! - [x] Accordion
+//! - [x] Carousel
 //! - [x] Dropdown
 //! - [x] Dialog
 //!
