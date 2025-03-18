@@ -108,6 +108,7 @@ pub mod prelude;
 mod scripts;
 mod tabs;
 mod dialog;
+mod spinner;
 
 pub use crate::accordion::*;
 pub use crate::basic_button::*;
