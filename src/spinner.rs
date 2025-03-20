@@ -8,6 +8,18 @@ pub struct SpinnerProps {
     spinner_bg_color: Option<String>,
 }
 
+/// Use example:
+/// ```rust
+/// rsx! {
+///     div {
+///         Spinner {
+///             height: "90".to_string(),
+///             width: "90".to_string(),
+///             spinner_color: Some("#000".to_string()),
+///             spinner_bg_color: None }
+///     }
+// }
+/// ```
 #[component]
 pub fn Spinner(props: SpinnerProps) -> Element {
     let height = props.height.unwrap_or_else(|| "24px".to_string());
