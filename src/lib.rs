@@ -11,6 +11,7 @@
 //! > ### **Warning:**
 //! > **_This component is in the early stage of development. Right now there are only five components available: the navbar, the dropdown, the two carousel and the buttons._**
 //! > **_New components will be added, and some features that already exist may change._**
+//! > **_Also keep in mind that this crate is not meant to be THE alternative to existing professional UI component libraries for Dioxus. I just made it for fun, and shared it in the hope it also could help other developers._**
 //!
 //! ### **Features**
 //! - [x] Buttons
@@ -20,6 +21,7 @@
 //! - [x] Carousel
 //! - [x] Dropdown
 //! - [x] Dialog
+//! - [x] Spinner
 //!
 //! All those components have more features than you think. For more information about them please chack them [here](https://docs.rs/freyr/latest/freyr/#functions).
 //! ## Key Features
@@ -62,10 +64,10 @@
 //! fn Home() -> Element {
 //!     rsx! {
 //!         div {
-//!             BasicButton { color: ButtonColor::Freyr, label: "Go Home", link: ButtonUrl { url: "/".to_string() } }
-//!             BasicButton { color: ButtonColor::Primary, label: "Go to About", link: ButtonUrl { url: "/about".to_string() } }
+//!             BasicButton { color: ButtonColor::Freyr, label: String::from("Go Home"), link: ButtonUrl { url: "/".to_string() } }
+//!             BasicButton { color: ButtonColor::Primary, label: String::from("Go to About"), link: ButtonUrl { url: "/about".to_string() } }
 //!             // Here the routing is made optional
-//!             BasicButton { color: ButtonColor::Freyr, label: "Hello" }
+//!             BasicButton { color: ButtonColor::Freyr, label: String::from("Hello") }
 //!
 //!         }
 //!     }
@@ -100,32 +102,33 @@ mod accordion;
 mod assets;
 mod basic_button;
 mod carousel;
+mod dialog;
 mod dropdown;
 mod enums;
 mod nav_bar;
 mod navbar_with_logo;
 pub mod prelude;
 mod scripts;
-mod tabs;
-mod dialog;
 mod spinner;
+mod tabs;
 
 pub use crate::accordion::*;
 pub use crate::basic_button::*;
-pub use crate::dialog::*;
 pub use crate::basic_button::*;
 pub use crate::carousel::*;
 pub use crate::carousel::*;
 pub use crate::carousel::*;
+pub use crate::dialog::*;
 pub use crate::dropdown::*;
 pub use crate::enums::accordion_enums::*;
-pub use crate::enums::dialog_enums::*;
 pub use crate::enums::basic_button_enums::*;
 pub use crate::enums::carousel_simple_enums::*;
+pub use crate::enums::dialog_enums::*;
 pub use crate::enums::dropdown_enums::*;
 pub use crate::enums::navbar_enums::*;
 pub use crate::enums::tabs_enums::*;
 pub use crate::enums::tabs_enums::*;
 pub use crate::nav_bar::*;
+pub use crate::spinner::*;
 pub use crate::navbar_with_logo::*;
 pub use crate::tabs::Tabs;

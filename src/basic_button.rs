@@ -10,15 +10,15 @@ use dioxus::prelude::*;
 /// Using a "Freyr", and a "Transparent" button:
 ///
 /// ```rust
-/// BasicButton { color: ButtonColor::Primary, label: "Go Home", link: ButtonUrl { url: "/".to_string() } }
+/// BasicButton { color: ButtonColor::Primary, label: String::from("Go Home"), link: ButtonUrl { url: "/".to_string() } };
 ///
 /// // Here the routing is made optional
-/// BasicButton { color: ButtonColor::Freyr, label: "Hello" }
+/// BasicButton { color: ButtonColor::Freyr, label: String::from("Hello") }
 /// ```
 ///
 /// Those buttons have arbitrary colors, that you may not customize to you wishes.
 #[component]
-pub fn BasicButton(color: ButtonColor, label: &'static str, link: Option<ButtonUrl>) -> Element {
+pub fn BasicButton(color: ButtonColor, label: String, link: Option<ButtonUrl>) -> Element {
     let style_tag = rsx! {
         style { "{BUTTON_STYLES}" }
     };
@@ -50,7 +50,7 @@ pub fn BasicButton(color: ButtonColor, label: &'static str, link: Option<ButtonU
 ///             EventButton {
 ///                 color: ButtonColor::Freyr,
 ///                 onclick: increment,
-///                 label: "Increment".to_string(),
+///                 label: String::from("Increment"),
 ///             }
 ///             div { class: "ml-4", "{count}" }
 ///         }

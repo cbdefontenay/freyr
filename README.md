@@ -16,7 +16,7 @@ with flexible configuration options for color schemes, layouts, and responsivene
 
 > ### **Warning:**
 > **This component is in the early stage of development. Components may change. Be aware of that.**
-
+> **Also keep in mind that this crate is not meant to be THE alternative to existing professional UI component libraries for Dioxus. I just made it for fun, and shared it in the hope it also could help other developers**
 ### **Features**
 - [x] Buttons
 - [x] Tabs
@@ -25,6 +25,7 @@ with flexible configuration options for color schemes, layouts, and responsivene
 - [x] Accordion
 - [x] Dropdown
 - [x] Dialog
+- [x] Spinner
 
 All those components have more features than you think. For more information about them please chack them [here](https://docs.rs/freyr/latest/freyr/#functions). 
 

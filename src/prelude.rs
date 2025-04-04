@@ -17,3 +17,4 @@ pub use crate::enums::tabs_enums::*;
 pub use crate::nav_bar::*;
 pub use crate::navbar_with_logo::*;
 pub use crate::tabs::Tabs;
+pub use crate::spinner::*;

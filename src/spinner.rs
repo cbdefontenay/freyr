@@ -1,14 +1,7 @@
 use dioxus::prelude::*;
+use crate::enums::spinner_enums::SpinnerProps;
 
-#[derive(Props, PartialEq, Clone)]
-pub struct SpinnerProps {
-    height: Option<String>,
-    width: Option<String>,
-    spinner_color: Option<String>,
-    spinner_bg_color: Option<String>,
-}
-
-/// Use example:
+/// Usage example:
 /// ```rust
 /// rsx! {
 ///     div {
@@ -20,13 +13,15 @@ pub struct SpinnerProps {
 ///     }
 // }
 /// ```
+///
+/// Be aware that at the moment the spinner is only available if you use Tailwind. This will change in the future.
 #[component]
 pub fn Spinner(props: SpinnerProps) -> Element {
     let height = props.height.unwrap_or_else(|| "24px".to_string());
     let width = props.width.unwrap_or_else(|| "24px".to_string());
 
     rsx! {
-        div { class: "grid w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible",
+        div { class: "grid rounded-lg p-6",
             svg {
                 class: "animate-spin",
                 fill: "none",
