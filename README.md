@@ -5,6 +5,12 @@
 Freyr is the norse god of fertility and prosperity and is known for his beauty. Your Dioxus app should also look good,
 even beautiful.
 
+## Documentation:
+
+#### See the documentation at this link to see how to implement all components in your web app: [freyr doc](https://docs.rs/freyr/latest/freyr/)
+#### If you wanna see a showcase of the UI components, please go to that website: [freyr showcase](https://freyr-doc.onrender.com/)
+> _Please note that the showcase website is still under development and may improve over time._
+
 ## **First**:
 ```bash
 cargo add freyr
