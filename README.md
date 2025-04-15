@@ -8,7 +8,8 @@ even beautiful.
 ## Documentation:
 
 #### See the documentation at this link to see how to implement all components in your web app: [freyr doc](https://docs.rs/freyr/latest/freyr/)
-#### If you wanna see a showcase of the UI components, please go to that website: [freyr showcase](https://freyr-doc.onrender.com/)
+#### If you wanna see a showcase of the UI components, please go to that website: [freyr showcase](https://freyr-doc.onrender.com/). 
+Find the GitHub repo here: [freyr doc repo](https://github.com/cbdefontenay/freyr-doc).
 > _Please note that the showcase website is still under development and may improve over time._
 
 ## **First**:
