@@ -53,6 +53,7 @@ pub const NAVBAR_STYLES: &str = r#"
     .menu-item {
         padding: 10px 15px;
         text-decoration: none;
+        cursor: pointer;
         transition: color 0.3s ease, background-color 0.3s ease;
     }
 
