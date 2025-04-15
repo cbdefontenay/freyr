@@ -23,6 +23,7 @@ pub const NAVBAR_STYLES: &str = r#"
         font-size: 1.5rem;
         font-weight: bold;
         color: #fff;
+        cursor: pointer;
     }
 
     .nav-logo {

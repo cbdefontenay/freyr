@@ -1,9 +1,12 @@
-use dioxus::prelude::*;
-use crate::assets::navbar_style::NAVBAR_STYLES;
-use crate::{DropdownButtonConfig, DropdownColorScheme, DropdownHoverColor, DropdownItem, DropdownLabelsColor, DropdownMenu, DropdownMenuButton, DropdownTitleColor};
 use crate::assets::navbar_dropdown_styles::NAVBAR_DROPDOWN_STYLES;
-use crate::{ColorScheme, DropdownConfig, DropdownConfigNavBar, IconColor, NavItemsColor};
+use crate::assets::navbar_style::NAVBAR_STYLES;
 use crate::enums::navbar_enums::{NavbarConfig, NavbarDropdownConfig};
+use crate::{ColorScheme, DropdownConfig, DropdownConfigNavBar, IconColor, NavItemsColor};
+use crate::{
+    DropdownButtonConfig, DropdownColorScheme, DropdownHoverColor, DropdownItem,
+    DropdownLabelsColor, DropdownMenu, DropdownMenuButton, DropdownTitleColor,
+};
+use dioxus::prelude::*;
 
 /// You can configure background color, navigation items, and icon colors.
 ///
@@ -37,7 +40,9 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
 
                 div { class: "nav-div",
 
-                    div { class: "nav-header-wrapper", "{navbar_config.nav_header}" }
+                    div { class: "nav-header-wrapper",
+                        Link { to: "/", "{navbar_config.nav_header}" }
+                    }
 
                     button {
                         class: "hamburger",
@@ -161,10 +166,7 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
 /// ```
 
 #[component]
-pub fn NavbarDropdown(
-    navbar_config: NavbarConfig,
-    config_dropdown: DropdownConfig,
-) -> Element {
+pub fn NavbarDropdown(navbar_config: NavbarConfig, config_dropdown: DropdownConfig) -> Element {
     let mut menu_open = use_signal(|| false);
     let dropdown_open = use_signal(|| None::<usize>);
 
@@ -178,7 +180,9 @@ pub fn NavbarDropdown(
 
                 div { class: "nav-div",
 
-                    div { class: "nav-header-wrapper", "{navbar_config.nav_header}" }
+                    div { class: "nav-header-wrapper",
+                        Link { to: "/", "{navbar_config.nav_header}" }
+                    }
 
                     button {
                         class: "hamburger",
@@ -301,7 +305,10 @@ pub fn NavbarDropdown(
 /// }
 /// ```
 #[component]
-pub fn NavbarDropdownButtons(navbar_config: NavbarConfig, config_dropdown: DropdownButtonConfig) -> Element {
+pub fn NavbarDropdownButtons(
+    navbar_config: NavbarConfig,
+    config_dropdown: DropdownButtonConfig,
+) -> Element {
     let mut menu_open = use_signal(|| false);
     let dropdown_open = use_signal(|| None::<usize>);
 
