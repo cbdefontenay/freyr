@@ -1,12 +1,13 @@
 [package]
 name = "freyr"
 authors = ["Cyprien"]
-version = "0.1.14"
+version = "0.1.15"
 edition = "2021"
-description = "A UI component crate for Dioxus web."
+description = "A UI component library for Dioxus web."
 license = "MIT"
 documentation = "https://docs.rs/freyr/latest/freyr/"
 repository = "https://github.com/cbdefontenay/freyr"
+homepage = "https://freyr-doc.onrender.com/"
 
 [dependencies]
 dioxus = { version = "0.6.3", features = ["web", "router"] }
@@ -15,4 +16,3 @@ serde_json = "1.0.140"
 [features]
 default = ["web"]
 web = ["dioxus/web"]
-desktop = ["dioxus/desktop"]
