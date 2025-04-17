@@ -169,7 +169,6 @@ pub fn CarouselWithNumbers(
         style { "{CAROUSEL_STYLES}" }
 
         div { class: "carousel-container {carousel_class}",
-
             div { class: "carousel-content-wrapper",
                 img {
                     src: "{items[current_index()].image_url}",
