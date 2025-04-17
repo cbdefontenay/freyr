@@ -45,6 +45,7 @@ pub const DROPDOWN_STYLES: &str = r#"
     .button-config {
         padding: 10px 13px;
         display: block;
+        cursor: pointer;
         transition: background-color 0.3s ease, color 0.3s ease;
 
           &:hover {

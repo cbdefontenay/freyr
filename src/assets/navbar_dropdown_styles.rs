@@ -22,6 +22,7 @@ pub const NAVBAR_DROPDOWN_STYLES: &str = r#"
     .nav-header-wrapper {
         font-size: 1.5rem;
         font-weight: bold;
+        cursor: pointer;
         color: #fff;
     }
 
