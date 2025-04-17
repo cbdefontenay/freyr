@@ -107,6 +107,7 @@ pub const NAVBAR_STYLES: &str = r#"
 
         .menu-items {
             flex-direction: column;
+            align-items: center;
         }
 
         .menu-item {

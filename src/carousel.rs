@@ -1,8 +1,8 @@
+#[allow(non_snake_case)]
 use crate::assets::carousel_simple_styles::CAROUSEL_STYLES;
 use crate::enums::carousel_simple_enums::CarouselItem;
 use crate::scripts::carousel_script::CAROUSEL_SCRIPT;
 use dioxus::document::eval;
-#[allow(non_snake_case)]
 use dioxus::prelude::*;
 use serde_json::json;
 
@@ -45,7 +45,6 @@ use serde_json::json;
 ///     }
 /// }
 /// ```
-
 #[component]
 pub fn CarouselSimple(
     items: Vec<CarouselItem>,
@@ -64,18 +63,18 @@ pub fn CarouselSimple(
         style { "{CAROUSEL_STYLES}" }
 
         div { class: "carousel-container {carousel_class}",
-
-            img {
-                src: "{items[current_index()].image_url}",
-                alt: "{alt[current_index()].image_alt}",
-                class: "carousel-image",
-            }
-
-            div { class: "carousel-dots",
-                for index in 0..items.len() {
-                    div {
-                        class: if (*current_index)() == index { "carousel-dot active" } else { "carousel-dot" },
-                        onclick: move |_| current_index.set(index),
+            div { class: "carousel-content-wrapper",
+                img {
+                    src: "{items[current_index()].image_url}",
+                    alt: "{alt[current_index()].image_alt}",
+                    class: "carousel-image",
+                }
+                div { class: "carousel-dots",
+                    for index in 0..items.len() {
+                        div {
+                            class: if current_index() == index { "carousel-dot active" } else { "carousel-dot" },
+                            onclick: move |_| current_index.set(index),
+                        }
                     }
                 }
             }
@@ -116,6 +115,7 @@ pub fn CarouselWithTimer(
     use_effect(move || {
         let items_json = serde_json::to_string(&items_data).unwrap();
         let script = CAROUSEL_SCRIPT
+            .replace("{initial_index}", &current_index().to_string())
             .replace("{items_len}", &items_cloned.len().to_string())
             .replace("{items_data}", &items_json)
             .replace("{timer_ms}", &timer_ms.to_string());
@@ -126,19 +126,23 @@ pub fn CarouselWithTimer(
         style { "{CAROUSEL_STYLES}" }
 
         div { class: "carousel-container {carousel_class}",
+            div { class: "carousel-content-wrapper",
+                img {
+                    id: "carousel-image",
+                    src: "{items[current_index()].image_url}",
+                    alt: "{alt[current_index()].image_alt}",
+                    class: "carousel-image",
+                }
 
-            img {
-                id: "carousel-image",
-                src: "{items[current_index()].image_url}",
-                alt: "{alt[current_index()].image_alt}",
-                class: "carousel-image",
-            }
-
-            div { class: "carousel-dots",
-                for index in 0..items.len() {
-                    div {
-                        class: if (*current_index)() == index { "carousel-dot active" } else { "carousel-dot" },
-                        onclick: move |_| current_index.set(index),
+                div { class: "carousel-dots",
+                    for index in 0..items.len() {
+                        div {
+                            class: if current_index() == index { "carousel-dot active" } else { "carousel-dot" },
+                            onclick: move |_| {
+                                current_index.set(index);
+                                eval(&format!("window.setCarouselIndex({})", index));
+                            },
+                        }
                     }
                 }
             }
@@ -166,18 +170,20 @@ pub fn CarouselWithNumbers(
 
         div { class: "carousel-container {carousel_class}",
 
-            img {
-                src: "{items[current_index()].image_url}",
-                alt: "{alt[current_index()].image_alt}",
-                class: "carousel-image",
-            }
+            div { class: "carousel-content-wrapper",
+                img {
+                    src: "{items[current_index()].image_url}",
+                    alt: "{alt[current_index()].image_alt}",
+                    class: "carousel-image",
+                }
 
-            div { class: "carousel-numbers",
-                for index in 0..items.len() {
-                    div {
-                        class: if (*current_index)() == index { "carousel-number active" } else { "carousel-number" },
-                        onclick: move |_| current_index.set(index),
-                        "{index + 1}"
+                div { class: "carousel-numbers",
+                    for index in 0..items.len() {
+                        div {
+                            class: if (*current_index)() == index { "carousel-number active" } else { "carousel-number" },
+                            onclick: move |_| current_index.set(index),
+                            "{index + 1}"
+                        }
                     }
                 }
             }

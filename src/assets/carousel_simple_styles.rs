@@ -6,12 +6,19 @@ pub const CAROUSEL_STYLES: &str = r#"
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: fit-content;
 }
 
 .carousel-container-default {
     width: 40%;
     height: auto;
     max-width: 1200px;
+}
+
+.carousel-content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .carousel {
@@ -29,7 +36,7 @@ pub const CAROUSEL_STYLES: &str = r#"
     height: 100%;
     object-fit: cover;
     object-position: center;
-    max-width: 100%;
+    display: block;
 }
 
 .carousel-dots {
@@ -38,7 +45,10 @@ pub const CAROUSEL_STYLES: &str = r#"
     gap: 8px;
     position: absolute;
     bottom: 10px;
-    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .carousel-dot {
@@ -47,6 +57,7 @@ pub const CAROUSEL_STYLES: &str = r#"
     background-color: #fff;
     border-radius: 50%;
     cursor: pointer;
+    pointer-events: auto;
 }
 
 .carousel-dot.active {
@@ -87,12 +98,12 @@ pub const CAROUSEL_STYLES: &str = r#"
     }
 
     .carousel-dot {
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
 
     .carousel-numbers {
-        font-size: 0.9rem;
+        font-size: 0.10rem;
         gap: 6px;
     }
 }
@@ -112,12 +123,12 @@ pub const CAROUSEL_STYLES: &str = r#"
     }
 
     .carousel-dot {
-        width: 6px;
-        height: 6px;
+        width: 10px;
+        height: 10px;
     }
 
     .carousel-numbers {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         gap: 5px;
     }
 
@@ -131,9 +142,14 @@ pub const CAROUSEL_STYLES: &str = r#"
         width: 90%;
         height: 50%;
     }
+   
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
 
     .carousel-numbers {
-        font-size: 0.4rem;
+        font-size: 0.6rem;
         gap: 4px;
     }
 }
