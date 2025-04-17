@@ -15,6 +15,32 @@ pub const CAROUSEL_STYLES: &str = r#"
     max-width: 1200px;
 }
 
+.carousel-simple-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.carousel-simple-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-simple-dot.active {
+    background-color: #333;
+}
+
 .carousel-content-wrapper {
     position: relative;
     width: 100%;

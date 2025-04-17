@@ -69,10 +69,14 @@ pub fn CarouselSimple(
                     alt: "{alt[current_index()].image_alt}",
                     class: "carousel-image",
                 }
-                div { class: "carousel-dots",
+                div { class: "carousel-simple-dots",
                     for index in 0..items.len() {
                         div {
-                            class: if current_index() == index { "carousel-dot active" } else { "carousel-dot" },
+                            class: if current_index() == index { 
+                                "carousel-simple-dot active" 
+                            } else { 
+                                "carousel-simple-dot" 
+                            },
                             onclick: move |_| current_index.set(index),
                         }
                     }
