@@ -10,6 +10,21 @@ pub enum ColorScheme {
     Custom(&'static str),
 }
 
+#[derive(PartialEq, Clone)]
+pub enum Orientation {
+    Left,
+    Center,
+    Right,
+}
+
+#[derive(PartialEq, Clone)]
+pub enum HeaderColor {
+    Freyr,
+    Dark,
+    Light,
+    Custom(&'static str),
+}
+
 impl ColorScheme {
     /// Returns the CSS class or custom color for the background.
     pub fn as_css_class(&self) -> &'static str {
@@ -18,6 +33,18 @@ impl ColorScheme {
             ColorScheme::Dark => "#222",
             ColorScheme::Light => "#fff",
             ColorScheme::Custom(color) => color,
+        }
+    }
+}
+
+impl HeaderColor {
+    /// Returns the CSS class or custom color for the background.
+    pub fn as_css_class(&self) -> &'static str {
+        match self {
+            HeaderColor::Freyr => "#3795BD",
+            HeaderColor::Dark => "#222",
+            HeaderColor::Light => "#fff",
+            HeaderColor::Custom(color) => color,
         }
     }
 }
@@ -99,11 +126,13 @@ impl DropdownConfigNavBar {
 #[derive(PartialEq, Clone)]
 pub struct NavbarConfig {
     pub background_color: ColorScheme,
-    pub nav_header: String,
+    pub header_color: HeaderColor,
+    pub nav_header: Option<String>,
     pub nav_items: Vec<String>,
     pub nav_links: Vec<String>,
     pub nav_item_color: NavItemsColor,
     pub icon_color: IconColor,
+    pub orientation: Option<Orientation>,
 }
 
 /// Configuration struct for the **`NavbarWithLogo`** component.
@@ -117,16 +146,19 @@ pub struct NavbarWithLogoConfig {
     pub logo_url: String,
     pub logo_src: Asset,
     pub logo_alt: String,
+    pub orientation: Option<Orientation>,
 }
 
 /// Configuration struct for the **`NavbarDropdown`** component.
 #[derive(PartialEq, Clone)]
 pub struct NavbarDropdownConfig {
     pub background_color: ColorScheme,
-    pub nav_header: String,
+    pub nav_header: Option<String>,
+    pub header_color: HeaderColor,
     pub nav_items: Vec<String>,
     pub nav_links: Vec<String>,
     pub nav_item_color: NavItemsColor,
     pub icon_color: IconColor,
     pub dropdowns: Vec<DropdownConfigNavBar>,
+    pub orientation: Option<Orientation>,
 }

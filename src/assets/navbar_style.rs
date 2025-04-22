@@ -22,7 +22,6 @@ pub const NAVBAR_STYLES: &str = r#"
     .nav-header-wrapper {
         font-size: 1.5rem;
         font-weight: bold;
-        color: #fff;
         cursor: pointer;
     }
 
@@ -44,11 +43,13 @@ pub const NAVBAR_STYLES: &str = r#"
         padding: 0;
         align-items: center;
         height: 40px;
+        width: 100%;
     }
 
     .menu-items {
         display: flex;
         flex-direction: row;
+        width: 100%;
     }
 
     .menu-item {
@@ -57,6 +58,18 @@ pub const NAVBAR_STYLES: &str = r#"
         cursor: pointer;
         transition: color 0.3s ease, background-color 0.3s ease;
     }
+   
+    .menu-items.left {
+        justify-content: flex-start;
+    }
+   
+    .menu-items.center {
+        justify-content: center;
+    }
+   
+    .menu-items.right {
+        justify-content: flex-end;
+    }
 
     .menu-item:hover {
         color: #ccc;
@@ -64,6 +77,10 @@ pub const NAVBAR_STYLES: &str = r#"
     }
 
     @media (max-width: 600px) {
+        .no-nav-header {
+            padding: 16px 25px;
+        }
+       
         .hamburger {
             cursor: pointer;
             display: flex;
@@ -116,11 +133,6 @@ pub const NAVBAR_STYLES: &str = r#"
             transition: color 0.3s ease, background-color 0.3s ease;
             color: var(--nav-item-color);
             padding: 20px;
-        }
-
-        .menu-item:hover {
-            color: #ccc;
-            background-color: transparent;
         }
     }
 

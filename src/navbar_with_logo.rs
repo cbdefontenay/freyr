@@ -1,6 +1,7 @@
-use dioxus::prelude::*;
 use crate::assets::navbar_style::NAVBAR_STYLES;
 use crate::enums::navbar_enums::NavbarWithLogoConfig;
+use crate::Orientation;
+use dioxus::prelude::*;
 
 /// This navbar works the same as the normal **navbar** component, but instead of taking a logo as _String_ it takes an _image_.
 ///
@@ -15,6 +16,7 @@ use crate::enums::navbar_enums::NavbarWithLogoConfig;
 ///         background_color: ColorScheme::Freyr,
 ///         nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
 ///         nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
+///         orientation: Some(Orientation::Center),
 ///         nav_item_color: NavItemsColor::Light,
 ///         icon_color: IconColor::White,
 ///         logo_url: String::from("/"),
@@ -31,6 +33,15 @@ use crate::enums::navbar_enums::NavbarWithLogoConfig;
 #[component]
 pub fn NavbarWithLogo(navbar_logo_config: NavbarWithLogoConfig) -> Element {
     let mut menu_open = use_signal(|| false);
+    let orientation_class = match navbar_logo_config
+        .orientation
+        .clone()
+        .unwrap_or(Orientation::Right)
+    {
+        Orientation::Left => "menu-items left",
+        Orientation::Center => "menu-items center",
+        Orientation::Right => "menu-items right",
+    };
 
     rsx! {
         div {
@@ -98,16 +109,13 @@ pub fn NavbarWithLogo(navbar_logo_config: NavbarWithLogoConfig) -> Element {
                     },
                     style: "background-color: {navbar_logo_config.background_color.as_css_class()};",
 
-                    div { class: "menu-items",
-
+                    div { class: "{orientation_class}",
                         for (item , link) in navbar_logo_config.nav_items.iter().zip(navbar_logo_config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
                                 to: "{link}",
                                 style: "color: {navbar_logo_config.nav_item_color.as_css_class()};",
-                                onclick: move |_| {
-                                    menu_open.set(false);
-                                },
+                                onclick: move |_| menu_open.set(false),
                                 "{item}"
                             }
                         }

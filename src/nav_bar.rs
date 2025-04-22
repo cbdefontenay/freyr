@@ -1,11 +1,8 @@
 use crate::assets::navbar_dropdown_styles::NAVBAR_DROPDOWN_STYLES;
 use crate::assets::navbar_style::NAVBAR_STYLES;
-use crate::enums::navbar_enums::{NavbarConfig, NavbarDropdownConfig};
-use crate::{ColorScheme, DropdownConfig, DropdownConfigNavBar, IconColor, NavItemsColor};
-use crate::{
-    DropdownButtonConfig, DropdownColorScheme, DropdownHoverColor, DropdownItem,
-    DropdownLabelsColor, DropdownMenu, DropdownMenuButton, DropdownTitleColor,
-};
+use crate::enums::navbar_enums::NavbarConfig;
+use crate::DropdownConfig;
+use crate::{DropdownButtonConfig, DropdownMenu, DropdownMenuButton, Orientation};
 use dioxus::prelude::*;
 
 /// You can configure background color, navigation items, and icon colors.
@@ -15,7 +12,9 @@ use dioxus::prelude::*;
 /// ```rust
 /// let navbar_config = NavbarConfig {
 ///     background_color: ColorScheme::Freyr,
-///     nav_header: "Freyr".to_string(),
+///     nav_header: Some(String::from("Freyr")),
+///     orientation: Some(Orientation::Center),
+///     header_color: HeaderColor::Light,
 ///     nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
 ///     nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
 ///     nav_item_color: NavItemsColor::Light,
@@ -29,6 +28,15 @@ use dioxus::prelude::*;
 #[component]
 pub fn Navbar(navbar_config: NavbarConfig) -> Element {
     let mut menu_open = use_signal(|| false);
+    let orientation_class = match navbar_config
+        .orientation
+        .clone()
+        .unwrap_or(Orientation::Right)
+    {
+        Orientation::Left => "menu-items left",
+        Orientation::Center => "menu-items center",
+        Orientation::Right => "menu-items right",
+    };
 
     rsx! {
         div {
@@ -40,8 +48,21 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
 
                 div { class: "nav-div",
 
-                    div { class: "nav-header-wrapper",
-                        Link { to: "/", "{navbar_config.nav_header}" }
+                    div { class: "",
+                        match &navbar_config.nav_header {
+                            Some(header) => rsx! {
+                                div {
+                                    class: "nav-header-wrapper",
+                                    style: "color: {navbar_config.header_color.as_css_class()};",
+                                    Link { to: "/", "{header}" }
+                                }
+                            },
+                            None => rsx! {
+                                div { class: "no-nav-header",
+                                    span { "" }
+                                }
+                            },
+                        }
                     }
 
                     button {
@@ -92,16 +113,13 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
                     },
                     style: "background-color: {navbar_config.background_color.as_css_class()};",
 
-                    div { class: "menu-items",
-
+                    div { class: "{orientation_class}",
                         for (item , link) in navbar_config.nav_items.iter().zip(navbar_config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
                                 to: "{link}",
                                 style: "color: {navbar_config.nav_item_color.as_css_class()};",
-                                onclick: move |_| {
-                                    menu_open.set(false);
-                                },
+                                onclick: move |_| menu_open.set(false),
                                 "{item}"
                             }
                         }
@@ -118,7 +136,9 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
 /// pub fn Navigation() -> Element {
 ///     let navbar_config = NavbarConfig {
 ///         background_color: ColorScheme::Freyr,
-///         nav_header: "Freyr".to_string(),
+///         nav_header: Some(String::from("Freyr")),
+///         orientation: Some(Orientation::Center),
+///         header_color: HeaderColor::Light,
 ///         nav_items: vec![
 ///             "Home".to_string(),
 ///             "About".to_string(),
@@ -168,20 +188,48 @@ pub fn Navbar(navbar_config: NavbarConfig) -> Element {
 #[component]
 pub fn NavbarDropdown(navbar_config: NavbarConfig, config_dropdown: DropdownConfig) -> Element {
     let mut menu_open = use_signal(|| false);
-    let dropdown_open = use_signal(|| None::<usize>);
+    let _dropdown_open = use_signal(|| None::<usize>);
+    let orientation_class = match navbar_config
+        .orientation
+        .clone()
+        .unwrap_or(Orientation::Right)
+    {
+        Orientation::Left => "menu-items left",
+        Orientation::Center => "menu-items center",
+        Orientation::Right => "menu-items right",
+    };
+
+    let has_header = navbar_config.nav_header.is_some();
+    let navbar_class = if has_header {
+        "navbar"
+    } else {
+        "navbar no-header"
+    };
 
     rsx! {
         div {
             style { "{NAVBAR_DROPDOWN_STYLES}" }
 
             nav {
-                class: "navbar",
+                class: "{navbar_class}",
                 style: "background-color: {navbar_config.background_color.as_css_class()};",
-
                 div { class: "nav-div",
 
-                    div { class: "nav-header-wrapper",
-                        Link { to: "/", "{navbar_config.nav_header}" }
+                    div { class: "",
+                        match &navbar_config.nav_header {
+                            Some(header) => rsx! {
+                                div {
+                                    class: "nav-header-wrapper",
+                                    style: "color: {navbar_config.header_color.as_css_class()};",
+                                    Link { to: "/", "{header}" }
+                                }
+                            },
+                            None => rsx! {
+                                div { class: "no-nav-header",
+                                    span { "" }
+                                }
+                            },
+                        }
                     }
 
                     button {
@@ -232,8 +280,7 @@ pub fn NavbarDropdown(navbar_config: NavbarConfig, config_dropdown: DropdownConf
                     },
                     style: "background-color: {navbar_config.background_color.as_css_class()};",
 
-                    div { class: "menu-items",
-
+                    div { class: "{orientation_class}",
                         for (item , link) in navbar_config.nav_items.iter().zip(navbar_config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
@@ -244,7 +291,7 @@ pub fn NavbarDropdown(navbar_config: NavbarConfig, config_dropdown: DropdownConf
                             }
                         }
                         div { class: "dropdown-navbar",
-                            DropdownMenu { config_dropdown }
+                            DropdownMenu { config_dropdown: config_dropdown.clone() }
                         }
                     }
                 }
@@ -282,7 +329,9 @@ pub fn NavbarDropdown(navbar_config: NavbarConfig, config_dropdown: DropdownConf
 ///
 ///     let navbar_config = NavbarConfig {
 ///         background_color: ColorScheme::Freyr,
-///         nav_header: String::from("Freyr"),
+///         nav_header: Some(String::from("Freyr")),
+///         orientation: Some(Orientation::Center),
+///         header_color: HeaderColor::Light,
 ///         nav_items: vec![
 ///             "Home".to_string(),
 ///             t!("about"),
@@ -310,7 +359,16 @@ pub fn NavbarDropdownButtons(
     config_dropdown: DropdownButtonConfig,
 ) -> Element {
     let mut menu_open = use_signal(|| false);
-    let dropdown_open = use_signal(|| None::<usize>);
+    let _dropdown_open = use_signal(|| None::<usize>);
+    let orientation_class = match navbar_config
+        .orientation
+        .clone()
+        .unwrap_or(Orientation::Right)
+    {
+        Orientation::Left => "menu-items left",
+        Orientation::Center => "menu-items center",
+        Orientation::Right => "menu-items right",
+    };
 
     rsx! {
         div {
@@ -321,9 +379,22 @@ pub fn NavbarDropdownButtons(
                 style: "background-color: {navbar_config.background_color.as_css_class()};",
 
                 div { class: "nav-div",
-
-                    div { class: "nav-header-wrapper", "{navbar_config.nav_header}" }
-
+                    div { class: "",
+                        match &navbar_config.nav_header {
+                            Some(header) => rsx! {
+                                div {
+                                    class: "nav-header-wrapper",
+                                    style: "color: {navbar_config.header_color.as_css_class()};",
+                                    Link { to: "/", "{header}" }
+                                }
+                            },
+                            None => rsx! {
+                                div { class: "no-nav-header",
+                                    span { "" }
+                                }
+                            },
+                        }
+                    }
                     button {
                         class: "hamburger",
                         onclick: move |_| menu_open.set(!menu_open()),
@@ -372,8 +443,7 @@ pub fn NavbarDropdownButtons(
                     },
                     style: "background-color: {navbar_config.background_color.as_css_class()};",
 
-                    div { class: "menu-items",
-
+                    div { class: "{orientation_class}",
                         for (item , link) in navbar_config.nav_items.iter().zip(navbar_config.nav_links.iter()) {
                             Link {
                                 class: "menu-item",
@@ -384,7 +454,7 @@ pub fn NavbarDropdownButtons(
                             }
                         }
                         div { class: "dropdown-navbar",
-                            DropdownMenuButton { config_dropdown }
+                            DropdownMenuButton { config_dropdown: config_dropdown.clone() }
                         }
                     }
                 }

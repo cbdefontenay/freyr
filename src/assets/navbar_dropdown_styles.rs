@@ -41,7 +41,7 @@ pub const NAVBAR_DROPDOWN_STYLES: &str = r#"
         display: none;
     }
 
-    .menu {
+     .menu {
         display: flex;
         position: static;
         flex-direction: row;
@@ -49,11 +49,25 @@ pub const NAVBAR_DROPDOWN_STYLES: &str = r#"
         padding: 0;
         align-items: center;
         height: 40px;
+        width: 100%;
     }
 
     .menu-items {
         display: flex;
         flex-direction: row;
+        width: 100%;
+    }
+   
+    .menu-items.left {
+        justify-content: flex-start;
+    }
+   
+    .menu-items.center {
+        justify-content: center;
+    }
+   
+    .menu-items.right {
+        justify-content: flex-end;
     }
 
     .menu-item {
