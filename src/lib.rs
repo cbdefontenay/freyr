@@ -47,7 +47,9 @@
 //! fn Navigation() -> Element {
 //!     let navbar_config = NavbarConfig {
 //!         background_color: ColorScheme::Dark,
-//!         nav_header: "Freyr".to_string(),
+//!         nav_header: Some(String::from("Freyr")),
+//!         orientation: Some(Orientation::Center),
+//!         header_color: HeaderColor::Light,
 //!         nav_items: vec!["Home".to_string(), "About".to_string(), "Contact".to_string()],
 //!         nav_links: vec!["/".to_string(), "/about".to_string(), "/contact".to_string()],
 //!         nav_item_color: NavItemsColor::Custom("#990000"),

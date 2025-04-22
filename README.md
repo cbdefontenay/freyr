@@ -68,7 +68,9 @@ pub fn Navigation() -> Element {
 
     let navbar_config = NavbarConfig {
         background_color: ColorScheme::Freyr,
-        nav_header: String::from("Freyr"),
+        nav_header: Some(String::from("Freyr")),
+        orientation: Some(Orientation::Center),
+        header_color: HeaderColor::Light,
         nav_items: vec![
             "Home".to_string(),
             t!("about"),
