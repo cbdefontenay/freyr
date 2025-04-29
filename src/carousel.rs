@@ -72,11 +72,7 @@ pub fn CarouselSimple(
                 div { class: "carousel-simple-dots",
                     for index in 0..items.len() {
                         div {
-                            class: if current_index() == index { 
-                                "carousel-simple-dot active" 
-                            } else { 
-                                "carousel-simple-dot" 
-                            },
+                            class: if current_index() == index { "carousel-simple-dot active" } else { "carousel-simple-dot" },
                             onclick: move |_| current_index.set(index),
                         }
                     }

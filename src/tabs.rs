@@ -1,5 +1,6 @@
-use crate::assets::tabs_styles::TABS_STYLES;
+use crate::assets::tabs_styles::{TABS_SECONDARY_STYLES, TABS_STYLES};
 use crate::enums::tabs_enums::{TabsColor, TabsProps};
+use crate::TabsSecondaryProps;
 use dioxus::prelude::*;
 
 /// Tabs usage example:
@@ -46,7 +47,7 @@ use dioxus::prelude::*;
 ///     rsx! {
 ///         div { class: "flex flex-col items-center justify-center mt-20 w-full",
 ///             div { class:"mt-20 flex flex-col items-center justify-center",
-///                 Tabs {
+///                 TabsPrimary {
 ///                     tabs_names: tabs_names,
 ///                     custom_texts: Some(custom_text),
 ///                     custom_color: TabsColor::Freyr
@@ -58,7 +59,7 @@ use dioxus::prelude::*;
 /// ```
 /// The use of tailwind is not required, but as you see, you have the option.
 #[component]
-pub fn Tabs(props: TabsProps) -> Element {
+pub fn TabsPrimary(props: TabsProps) -> Element {
     let mut active_tab_idx = use_signal(|| 0);
 
     let text = match &props.custom_texts {
@@ -118,6 +119,109 @@ pub fn Tabs(props: TabsProps) -> Element {
                 }
 
                 div { class: "tab-content", {text} }
+            }
+        }
+    }
+}
+
+/// Code implementation:
+/// ```rust
+/// rsx! {
+///     div { class: "flex flex-col items-center justify-center mt-10 w-full",
+///         // Note that you have to implement colors, width and css properties 
+///         // like you would do in a normal CSS project.
+///         TabsSecondary {
+///             tabs_names,
+///             custom_texts: Some(custom_text),
+///             tab_max_width: Some(String::from("500px")),
+///             tab_top_radius: Some(String::from("1.5em 1.5em 1.5em 1.5em")),
+///             tab_bottom_radius: Some(String::from("0em 0em 1em 1em")),
+///             tab_header_hover: Some(String::from("#624b6b")),
+///             header_bg_color: Some("#bf7ed9".to_string()),
+///             header_text_color: Some("#37064a".to_string()),
+///             active_bg_color: Some("#d5b8e0".to_string()),
+///             active_text_color: Some("#2a0738".to_string()),
+///             tab_shadow: None,
+///         }
+///     }
+/// }
+/// ```
+#[component]
+pub fn TabsSecondary(props: TabsSecondaryProps) -> Element {
+    let custom_style = format!(
+        r#"
+    :root {{
+        --tab-max-width: {};
+        --tab-header-hover: {};
+        --tab-header-bg: {};
+        --tab-header-text: {};
+        --tab-active-bg: {};
+        --tab-active-text: {};
+        --tab-radius: {};
+        --tab-shadow: {};
+    }}
+    "#,
+        props
+            .tab_max_width
+            .clone()
+            .unwrap_or_else(|| "700px".to_string()),
+        props
+            .tab_header_hover
+            .clone()
+            .unwrap_or_else(|| "#e5e5e5".to_string()),
+        props
+            .header_bg_color
+            .clone()
+            .unwrap_or_else(|| "#e5e5e5".to_string()),
+        props
+            .header_text_color
+            .clone()
+            .unwrap_or_else(|| "#7f7f7f".to_string()),
+        props
+            .active_bg_color
+            .clone()
+            .unwrap_or_else(|| "#ffffff".to_string()),
+        props
+            .active_text_color
+            .clone()
+            .unwrap_or_else(|| "#000000".to_string()),
+        props
+            .tab_radius
+            .clone()
+            .unwrap_or_else(|| "1em 1em 1em 1em)".to_string()),
+        props.tab_shadow.clone().unwrap_or_else(|| "".to_string()),
+    );
+
+    let style_tag = rsx! {
+        style { "{TABS_SECONDARY_STYLES}" }
+        style { "{custom_style}" }
+    };
+
+    let texts = props.custom_texts.clone().unwrap_or_default();
+
+    rsx! {
+        div {
+            {style_tag}
+            div { class: "tabs",
+                for (idx , name) in props.tabs_names.iter().enumerate() {
+                    input {
+                        r#type: "radio",
+                        class: "input",
+                        id: format!("tab-{idx}"),
+                        name: "tabs",
+                        checked: idx == 0,
+                    }
+                    label {
+                        class: "label label-default",
+                        r#for: format!("tab-{idx}"),
+                        "{name}"
+                    }
+                    div { class: "panel",
+                        {texts.get(idx).cloned().unwrap_or(rsx! {
+                            div {}
+                        })}
+                    }
+                }
             }
         }
     }

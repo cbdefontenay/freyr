@@ -83,7 +83,7 @@ pub fn Dialog(props: DialogProps) -> Element {
                     div { class: "{props.wrap_class} relative",
 
                         button {
-                            class: "absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 transition",
+                            class: "absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 transition cursor-pointer",
                             onclick: move |_| show_modal.set(false),
                             svg {
                                 xmlns: "http://www.w3.org/2000/svg",
@@ -106,7 +106,7 @@ pub fn Dialog(props: DialogProps) -> Element {
                             p { class: "text-gray-700 mb-4", "You may add some text here." }
                         }
 
-                        div { class: "flex justify-end space-x-2 mt-4",
+                        div { class: "flex justify-end space-x-2 mt-4 cursor-pointer",
                             button {
                                 class: if let Some(class) = &props.close_button_class { class.to_string() } else { "bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition" },
                                 onclick: move |_| show_modal.set(false),
@@ -167,7 +167,7 @@ pub fn DialogWithoutButton(mut props: DialogWithoutButtonProps) -> Element {
                     div { class: "{props.wrap_class} relative",
 
                         button {
-                            class: "absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 transition",
+                            class: "absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 transition cursor-pointer",
                             onclick: move |_| props.show_modal.set(false),
                             svg {
                                 xmlns: "http://www.w3.org/2000/svg",
@@ -190,9 +190,9 @@ pub fn DialogWithoutButton(mut props: DialogWithoutButtonProps) -> Element {
                             p { class: "text-gray-700 mb-4", "You may add some text here." }
                         }
 
-                        div { class: "flex justify-end space-x-2 mt-4",
+                        div { class: "flex justify-end space-x-2 mt-4 cursor-pointer",
                             button {
-                                class: if let Some(class) = &props.close_button_class { class.to_string() } else { "bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition" },
+                                class: if let Some(class) = &props.close_button_class { class.to_string() } else { "cursor-pointer bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition" },
                                 onclick: move |_| props.show_modal.set(false),
                                 if let Some(label) = &props.close_button_label {
                                     {label.clone()}
