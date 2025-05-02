@@ -59,3 +59,21 @@ pub struct AccordionCustomProps {
     pub accordion_wrapper: Option<String>,
     pub accordion_content: Option<String>,
 }
+
+#[derive(Props, PartialEq, Clone)]
+pub struct AccordionLeftProps {
+    pub accordion_width: Option<String>,
+    pub accordion_header_bg_color: Option<String>,
+    pub title: String,
+    pub children: Element,
+    pub accordion_open_max_height: Option<String>,
+    pub box_shadow: Option<String>,
+    pub border_radius: Option<String>,
+    pub title_color: Option<String>,
+    pub title_font_size: Option<String>,
+    pub title_font_weight: Option<String>,
+    pub content_padding: Option<String>,
+
+    #[props(default = AccordionIconColor::Freyr)]
+    pub icon_color: AccordionIconColor,
+}

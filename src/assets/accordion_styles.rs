@@ -84,3 +84,66 @@ pub const ACCORDION_STYLES: &str = r#"
         width: 19rem;
     }
 "#;
+
+pub const ACCORDION_NEW_STYLES: &str = r#"
+    .accordion-left {
+        background-color: var(--header-background-color, #f0f9ff);
+        width: var(--accordion-width, 700px);
+        margin: 0.5rem auto;
+        border-radius: var(--border-radius, 10px);
+        overflow: hidden;
+        box-shadow: var(--box-shadow, none);
+    }
+   
+    .accordion-left-header {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .accordion-left-icon {
+        margin-right: 1rem;
+        transition: transform 0.3s ease;
+    }
+   
+    .accordion-left-icon.open {
+        transform: rotate(90deg);
+    }
+   
+    .accordion-left-title {
+        flex-grow: 1;
+        color: var(--title-color, #000000);
+        font-size: var(--title-font-size, 1.25rem);
+        font-weight: var(--title-font-weight, 600);
+        margin: 0;
+    }
+   
+    .accordion-left-content {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 var(--content-padding, 1rem);
+        transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+   
+    .accordion-left-content.open {
+        max-height: var(--accordion-open-max-height, 500px);
+        padding: var(--content-padding, 1rem);
+    }
+   
+    @media (max-width: 1000px) {
+        .accordion-left {
+            width: 100%;
+        }
+    }
+    @media (max-width: 758px) {
+        .accordion-left {
+            width: 100%;
+        }
+   
+        .accordion-left-title {
+            font-size: 1rem;
+        }
+    }
+"#;
