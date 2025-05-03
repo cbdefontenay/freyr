@@ -60,6 +60,7 @@ pub struct AccordionCustomProps {
     pub accordion_content: Option<String>,
 }
 
+/// The "title", "icon_color", and "children" properties are mandatory, but all the other ones are optional propreties.
 #[derive(Props, PartialEq, Clone)]
 pub struct AccordionLeftProps {
     pub accordion_width: Option<String>,

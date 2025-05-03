@@ -134,7 +134,6 @@ pub fn TabsPrimary(props: TabsProps) -> Element {
 ///             tabs_names,
 ///             custom_texts: Some(custom_text),
 ///             tab_max_width: Some(String::from("500px")),
-///             tab_top_radius: Some(String::from("1.5em 1.5em 1.5em 1.5em")),
 ///             tab_bottom_radius: Some(String::from("0em 0em 1em 1em")),
 ///             tab_header_hover: Some(String::from("#624b6b")),
 ///             header_bg_color: Some("#bf7ed9".to_string()),

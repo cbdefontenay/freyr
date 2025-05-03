@@ -11,7 +11,7 @@
 //! > ### **Warning:**
 //! > **_This component is in the early stage of development. Right now there are only five components available: the navbar, the dropdown, the two carousel and the buttons._**
 //! > **_New components will be added, and some features that already exist may change._**
-//! > **_Also keep in mind that this crate is not meant to be THE alternative to existing professional UI component libraries for Dioxus. I just made it for fun, and shared it in the hope it also could help other developers._**
+//! > **Freyr was created out of fun to help me reuse the components I had already used in other project, while I was learning _Rust_ and Dioxus. So I also hope it's going to help you too.**
 //!
 //! ### **Features**
 //! - [x] Buttons

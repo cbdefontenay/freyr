@@ -225,6 +225,22 @@ pub fn AccordionCustom(props: AccordionCustomProps) -> Element {
     }
 }
 
+/// Accordion where the icon and title are placed on the left:
+/// ```rust
+/// AccordionLeft {
+///     accordion_width: None,
+///     // You have to pass colors as you would in a normal CSS file
+///     accordion_header_bg_color: Some("#821e43".to_string()),
+///     title: "Custom Accordion".to_string(),
+///     title_color: Some(String::from("#ede9df")),
+///     icon_color: AccordionIconColor::Light,
+///     // Doesn't have to be "px", could also be "%", "em" or "rem" values for example
+///     accordion_open_max_height: Some("600px".to_string()),
+///     children: rsx! {
+///             div { class:"text-slate-100", "Custom content here" }
+///         },
+///  }
+/// ```
 #[component]
 pub fn AccordionLeft(props: AccordionLeftProps) -> Element {
     let mut is_open = use_signal(|| false);

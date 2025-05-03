@@ -156,6 +156,9 @@ pub const TABS_SECONDARY_STYLES: &str = r#"
     }
 
     .panel {
+      flex-basis: 100%;
+      width: 100%;
+      order: 99;
       display: none;
       padding: 20px 30px 30px;
       background: var(--tab-active-bg, #fff);

@@ -89,7 +89,6 @@ pub const ACCORDION_NEW_STYLES: &str = r#"
     .accordion-left {
         background-color: var(--header-background-color, #f0f9ff);
         width: var(--accordion-width, 700px);
-        margin: 0.5rem auto;
         border-radius: var(--border-radius, 10px);
         overflow: hidden;
         box-shadow: var(--box-shadow, none);
