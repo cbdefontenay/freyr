@@ -126,6 +126,12 @@ pub fn TabsPrimary(props: TabsProps) -> Element {
 
 /// Code implementation:
 /// ```rust
+///     let tabs_names = vec![
+///         String::from("Puffin"),
+///         String::from("Otto I"),
+///         String::from("Barbarossa"),
+///     ];
+///
 /// rsx! {
 ///     div { class: "flex flex-col items-center justify-center mt-10 w-full",
 ///         // Note that you have to implement colors, width and css properties 
