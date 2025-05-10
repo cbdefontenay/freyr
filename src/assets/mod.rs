@@ -6,3 +6,4 @@ pub(crate) mod tabs_styles;
 pub(crate) mod accordion_styles;
 pub(crate) mod navbar_dropdown_styles;
 pub(crate) mod spinner_styles;
+pub(crate) mod dialog_styles;
