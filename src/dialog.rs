@@ -1,7 +1,8 @@
+use crate::assets::dialog_styles::DIALOG_STYLES;
 use crate::enums::dialog_enums::DialogProps;
+use crate::DialogWithoutButtonProps;
 #[allow(non_snake_case)]
 use dioxus::prelude::*;
-use crate::DialogWithoutButtonProps;
 
 const TAILWIND_CSS: Asset = asset!("/src/output.css");
 
@@ -70,50 +71,58 @@ const TAILWIND_CSS: Asset = asset!("/src/output.css");
 pub fn Dialog(props: DialogProps) -> Element {
     let mut show_modal = use_signal(|| false);
 
+    let style_tag = rsx! {
+        style { "{DIALOG_STYLES}" }
+    };
+
     rsx! {
         div {
-            button {
-                class: if let Some(class) = &props.dialog_button_class { class.to_string() } else { "bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition" },
-                onclick: move |_| show_modal.set(!show_modal()),
-                {props.label}
-            }
+            {style_tag}
+            div {
 
-            if show_modal() {
-                div { class: "fixed inset-0 backdrop-blur-md flex items-center justify-center z-50",
-                    div { class: "{props.wrap_class} relative",
+                button {
+                    class: if let Some(class) = &props.dialog_button_class { class.to_string() } else { "dialog-button-default" },
+                    onclick: move |_| show_modal.set(!show_modal()),
+                    {props.label}
+                }
 
-                        button {
-                            class: "absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 transition cursor-pointer",
-                            onclick: move |_| show_modal.set(false),
-                            svg {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                fill: "none",
-                                view_box: "0 0 24 24",
-                                stroke_width: "2",
-                                stroke: "currentColor",
-                                class: if let Some(class) = &props.cross_svg_class { class.to_string() } else { "w-6 h-6 text-gray-500 hover:text-gray-700".to_string() },
-                                path {
-                                    stroke_linecap: "round",
-                                    stroke_linejoin: "round",
-                                    d: "M6 18L18 6M6 6l12 12",
+                if show_modal() {
+                    div { class: "dialog-overlay",
+                        div { style: "position: relative;", class: "{props.wrap_class}",
+
+                            button {
+                                class: "dialog-close-cross",
+                                onclick: move |_| show_modal.set(false),
+                                svg {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    fill: "none",
+                                    view_box: "0 0 24 24",
+                                    stroke_width: "2",
+                                    stroke: "currentColor",
+                                    class: if let Some(class) = &props.cross_svg_class { class.to_string() } else { "dialog-cross-svg".to_string() },
+                                    path {
+                                        stroke_linecap: "round",
+                                        stroke_linejoin: "round",
+                                        d: "M6 18L18 6M6 6l12 12",
+                                    }
                                 }
                             }
-                        }
 
-                        if let Some(content) = &props.dialog_content {
-                            div { {content} }
-                        } else {
-                            p { class: "text-gray-700 mb-4", "You may add some text here." }
-                        }
+                            if let Some(content) = &props.dialog_content {
+                                div { {content} }
+                            } else {
+                                p { class: "dialog-footer", "You may add some text here." }
+                            }
 
-                        div { class: "flex justify-end space-x-2 mt-4 cursor-pointer",
-                            button {
-                                class: if let Some(class) = &props.close_button_class { class.to_string() } else { "bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition" },
-                                onclick: move |_| show_modal.set(false),
-                                if let Some(label) = &props.close_button_label {
-                                    {label.clone()}
-                                } else {
-                                    "Close"
+                            div { class: "flex justify-end space-x-2 mt-4 cursor-pointer",
+                                button {
+                                    class: if let Some(class) = &props.close_button_class { class.to_string() } else { "dialog-close-button-default" },
+                                    onclick: move |_| show_modal.set(false),
+                                    if let Some(label) = &props.close_button_label {
+                                        {label.clone()}
+                                    } else {
+                                        "Close"
+                                    }
                                 }
                             }
                         }

@@ -279,21 +279,21 @@ pub fn AccordionLeft(props: AccordionLeftProps) -> Element {
     );
 
     let chevron_svg = rsx! {
-         svg {
-             class: format_args!("accordion-left-icon {}", if is_open() { "open" } else { "" }),
-             xmlns: "http://www.w3.org/2000/svg",
-             fill: "none",
-             view_box: "0 0 24 24",
-             stroke_width: "2",
-             stroke: "var(--icon-color)",
-             width: "20",
-             height: "20",
-             path {
-                 stroke_linecap: "round",
-                 stroke_linejoin: "round",
-                 d: "M9 5l7 7-7 7",
-             }
-         }
+        svg {
+            class: format_args!("accordion-left-icon {}", if is_open() { "open" } else { "" }),
+            xmlns: "http://www.w3.org/2000/svg",
+            fill: "none",
+            view_box: "0 0 24 24",
+            stroke_width: "2",
+            stroke: "var(--icon-color)",
+            width: "20",
+            height: "20",
+            path {
+                stroke_linecap: "round",
+                stroke_linejoin: "round",
+                d: "M9 5l7 7-7 7",
+            }
+        }
     };
 
     let style_tag = rsx! {
