@@ -1,80 +1,65 @@
 pub const DIALOG_STYLES: &str = r#"
-.dialog-button-default {
-    background-color: #2563eb; /* blue-600 */
-    color: white;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s;
-}
-.dialog-button-default:hover {
-    background-color: #1d4ed8; /* blue-700 */
-}
-
 .dialog-overlay {
     position: fixed;
     inset: 0;
-    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     z-index: 50;
 }
 
-.dialog-wrap-default {
+.dialog-wrap {
     background-color: white;
     border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 28rem;
     width: 100%;
-    max-width: 28rem; /* max-w-md */
     padding: 1.5rem;
     position: relative;
 }
 
-.dialog-close-cross {
+.dialog-close-icon {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 9999px;
-    transition: background-color 0.3s;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
     cursor: pointer;
-}
-.dialog-close-cross:hover {
-    background-color: #e5e7eb; /* hover:bg-gray-200 */
 }
 
 .dialog-cross-svg {
-    width: 1.5rem; /* w-6 */
-    height: 1.5rem; /* h-6 */
-    color: #6b7280; /* text-gray-500 */
-    transition: color 0.3s;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #4B5563; /* Tailwind gray-600 */
+    transition: color 0.2s;
 }
 .dialog-cross-svg:hover {
-    color: #374151; /* hover:text-gray-700 */
+    color: #1F2937; /* Tailwind gray-800 */
 }
 
-.dialog-default-text {
-    color: #374151; /* text-gray-700 */
-    margin-bottom: 1rem;
+.dialog-body {
+    margin-bottom: 1.5rem;
 }
 
-.dialog-footer {
+.dialog-placeholder {
+    color: #6B7280; /* Tailwind gray-500 */
+    text-align: center;
+}
+
+.dialog-actions {
     display: flex;
     justify-content: flex-end;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    cursor: pointer;
 }
 
-.dialog-close-button-default {
-    background-color: #dc2626; /* red-600 */
+.dialog-close-button {
+    background-color: #4F46E5; /* Tailwind indigo-600 */
     color: white;
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s;
 }
-.dialog-close-button-default:hover {
-    background-color: #b91c1c; /* red-700 */
+.dialog-close-button:hover {
+    background-color: #4338CA; /* Tailwind indigo-700 */
 }
 "#;
