@@ -3,7 +3,7 @@ use crate::DialogWithoutButtonProps;
 #[allow(non_snake_case)]
 use dioxus::prelude::*;
 
-/// Usage:
+/// Usage with Tailwind (but Tailwind is an option):
 /// ```rust
 /// use dioxus::prelude::Element;
 ///
