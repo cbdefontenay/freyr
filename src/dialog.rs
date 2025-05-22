@@ -3,10 +3,6 @@ use crate::DialogWithoutButtonProps;
 #[allow(non_snake_case)]
 use dioxus::prelude::*;
 
-
-/// This dialog is similar to the ```Dialog``` component but does not get a starting button to display it.
-/// Instead, you have to create your own button or whatever you want to activate it.
-///
 /// Usage:
 /// ```rust
 /// use dioxus::prelude::Element;
