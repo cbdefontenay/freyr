@@ -6,7 +6,8 @@ pub const DIALOG_STYLES: &str = r#"
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 50;
+    z-index: 999;
+    padding: 0 10px;
 }
 
 .dialog-wrap {
