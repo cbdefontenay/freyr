@@ -1,9 +1,10 @@
-use dioxus::prelude::*;
 use crate::assets::dropdown_styles::DROPDOWN_STYLES;
-use crate::DropdownButtonConfig;
 use crate::enums::dropdown_enums::{
-    DropdownConfig, DropdownItem, DropdownColorScheme, DropdownTitleColor, DropdownLabelsColor, DropdownHoverColor,
+    DropdownColorScheme, DropdownConfig, DropdownHoverColor, DropdownItem, DropdownLabelsColor,
+    DropdownTitleColor,
 };
+use crate::DropdownButtonConfig;
+use dioxus::prelude::*;
 
 /// `DropdownMenu` is a customizable dropdown menu component.
 /// You can pass a `DropdownConfig` to customize the list of items,
@@ -85,9 +86,8 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
     rsx! {
         div {
             {style_tag}
-
             div { class: "dropdown",
-
+            onclick: move |_| is_open.set(is_open()),
                 button {
                     class: "dropdown-toggle",
                     style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.title_color.as_css_class()};",
@@ -207,6 +207,7 @@ pub fn DropdownMenuButton(config_dropdown: DropdownButtonConfig) -> Element {
             {style_tag}
 
             div { class: "dropdown",
+                onclick: move |_| is_open.set(is_open()),
                 button {
                     class: "dropdown-toggle",
                     style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.title_color.as_css_class()};",
@@ -244,4 +245,3 @@ pub fn DropdownMenuButton(config_dropdown: DropdownButtonConfig) -> Element {
         }
     }
 }
-
