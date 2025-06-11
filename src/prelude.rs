@@ -14,3 +14,4 @@ pub use crate::nav_bar::*;
 pub use crate::navbar_with_logo::*;
 pub use crate::tabs::*;
 pub use crate::spinner::*;
+pub use crate::card::*;

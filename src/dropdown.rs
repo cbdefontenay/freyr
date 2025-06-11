@@ -84,10 +84,15 @@ pub fn DropdownMenu(config_dropdown: DropdownConfig) -> Element {
     };
 
     rsx! {
+        {style_tag},
+            if is_open() {
+                div {
+                    class: "dropdown-overlay",
+                    onclick: move |_| is_open.set(false),
+                }
+            }
         div {
-            {style_tag}
             div { class: "dropdown",
-            onclick: move |_| is_open.set(is_open()),
                 button {
                     class: "dropdown-toggle",
                     style: "background-color: {config_dropdown.background_color.as_css_class()}; color: {config_dropdown.title_color.as_css_class()};",
@@ -203,9 +208,14 @@ pub fn DropdownMenuButton(config_dropdown: DropdownButtonConfig) -> Element {
     };
 
     rsx! {
+        {style_tag},
+            if is_open() {
+                div {
+                    class: "dropdown-overlay",
+                    onclick: move |_| is_open.set(false),
+                }
+            }
         div {
-            {style_tag}
-
             div { class: "dropdown",
                 onclick: move |_| is_open.set(is_open()),
                 button {

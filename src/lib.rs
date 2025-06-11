@@ -113,6 +113,7 @@ pub mod prelude;
 mod scripts;
 mod spinner;
 mod tabs;
+mod card;
 
 pub use crate::accordion::*;
 pub use crate::basic_button::*;
@@ -130,3 +131,4 @@ pub use crate::nav_bar::*;
 pub use crate::spinner::*;
 pub use crate::navbar_with_logo::*;
 pub use crate::tabs::*;
+pub use crate::card::*;

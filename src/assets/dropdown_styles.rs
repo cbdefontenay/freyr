@@ -56,6 +56,16 @@ pub const DROPDOWN_STYLES: &str = r#"
     .dropdown-toggle:hover {
         background-color: #2980b9;
     }
+    
+    .dropdown-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        cursor: default;
+    }
 
       @media (max-width: 768px) {
         .dropdown-toggle {
