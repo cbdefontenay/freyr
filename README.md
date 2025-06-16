@@ -22,8 +22,9 @@ It allows developers to easily integrate and style components such as navbars an
 with flexible configuration options for color schemes, layouts, and responsiveness.
 
 > ### **Warning:**
-> **This component is in the early stage of development. Components may change. Be aware of that.**
+> Some components may change a bit, so keep that in mind, but overall they work just fine.
 > **Freyr was created out of fun to help me reuse the components I had already used in other project, while I was learning _Rust_ and Dioxus. So I also hope it's going to help you too.**
+
 ### **Features**
 - [x] Buttons
 - [x] Tabs
@@ -32,11 +33,12 @@ with flexible configuration options for color schemes, layouts, and responsivene
 - [x] Accordion
 - [x] Dropdown
 - [x] Dialog
+- [x] Card
 - [x] Spinner
 
 All those components have more features than you think. For more information about them please chack them [here](https://docs.rs/freyr/latest/freyr/#functions). 
 
-## Example of the use of the navbar with a dropdown menu that uses **dioxus-i18n** (_using the version 0.6.3 of Dioxus_):
+### Example of the use of the navbar with a dropdown menu that uses **dioxus-i18n**:
 
  ```rust
 use dioxus::prelude::*;
@@ -92,5 +94,42 @@ pub fn Navigation() -> Element {
     }
 }
  ```
+
+### Other example of a **card component** (You do not need ```Tailwind```, this is just an example):
+```rust
+rsx! {
+    div { class: "mt-20 flex w-full px-4 flex-col md:flex-row gap-6",
+        FreyrCard {
+            has_shadow: true,
+            class: Some("w-full md:w-[700px]".to_string()),
+            children: rsx! {
+                div { class: "flex flex-col bg-[#eb4034] text-slate-100 rounded-xl overflow-hidden",
+                    // Header
+                    div { class: "px-6 pt-8 pb-4",
+                        h1 { class: "text-3xl font-bold mb-2", "Welcome to FreyrCard" }
+                        p { class: "text-slate-200 text-sm", "This is a test card with styled content." }
+                    }
+               
+                    // Divider
+                    div { class: "border-t border-red-300 mx-6" }
+               
+                    // Body
+                    div { class: "px-6 py-6 space-y-3 text-base",
+                        p { "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+                        p { "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }
+                        p { "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris." }
+                        p { "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore." }
+                    }
+               
+                    // Footer
+                    div { class: "bg-[#d6372e] px-6 py-4 text-right text-sm italic",
+                        "This card was styled using Dioxus + Tailwind."
+                    }
+                }
+            },
+        }
+    }
+}
+```
 
 For more information and documentation about freyr, please go to [docs.rs](https://docs.rs/freyr/latest/freyr/). There you may have a look at the different options that each component may provide you.

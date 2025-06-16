@@ -9,7 +9,6 @@
 //! Freyr is the norse god of fertility and prosperity and is known for his beauty. Your Dioxus web app should also look good.
 //!
 //! > ### **Warning:**
-//! > **_This component is in the early stage of development. Right now there are only five components available: the navbar, the dropdown, the two carousel and the buttons._**
 //! > **_New components will be added, and some features that already exist may change._**
 //! > **Freyr was created out of fun to help me reuse the components I had already used in other project, while I was learning _Rust_ and Dioxus. So I also hope it's going to help you too.**
 //!
@@ -22,6 +21,7 @@
 //! - [x] Dropdown
 //! - [x] Dialog
 //! - [x] Spinner
+//! - [x] Card
 //!
 //! All those components have more features than you think. For more information about them please chack them [here](https://docs.rs/freyr/latest/freyr/#functions).
 //! ## Key Features
