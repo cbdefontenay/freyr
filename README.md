@@ -2,8 +2,7 @@
 
 ## Why the name Freyr?
 
-Freyr is the norse god of fertility and prosperity and is known for his beauty. Your Dioxus app should also look good,
-even beautiful.
+Freyr is the norse god of fertility and prosperity and is known for his beauty. Your Dioxus app should also be as beautiful as the god Freyr is.
 
 ## Documentation:
 
