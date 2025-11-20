@@ -1037,7 +1037,7 @@ dependencies = [
 
 [[package]]
 name = "freyr"
-version = "0.2.5"
+version = "0.2.6"
 dependencies = [
  "dioxus",
  "serde_json",
