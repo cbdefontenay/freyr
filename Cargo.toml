@@ -10,7 +10,7 @@ repository = "https://github.com/cbdefontenay/freyr"
 homepage = "https://freyr-doc.onrender.com/"
 
 [dependencies]
-dioxus = { version = "0.7.0-rc.2", features = ["web", "router"] }
+dioxus = { version = "0.7.1", features = ["web", "router"] }
 serde_json = "1.0.145"
 
 [features]
