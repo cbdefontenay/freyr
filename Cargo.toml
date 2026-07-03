@@ -1,17 +1,18 @@
 [package]
 name = "freyr"
 authors = ["Cyprien"]
-version = "0.2.8"
+version = "0.2.9"
 edition = "2021"
 description = "A UI component library for Dioxus web."
 license = "MIT"
 documentation = "https://docs.rs/freyr/latest/freyr/"
 repository = "https://github.com/cbdefontenay/freyr"
 homepage = "https://freyr-doc.onrender.com/"
+keywords = ["Dioxus", "Web", "UI", "component"]
 
 [dependencies]
-dioxus = { version = "0.7.3", features = ["web", "router"] }
-serde_json = "1.0.149"
+dioxus = { version = "0.8.0-alpha.0", features = ["web", "router"] }
+serde_json = "1.0.150"
 
 [features]
 default = ["web"]
